@@ -101,8 +101,8 @@ for(var _bi=0;_bi<12;_bi++){var _bb=document.createElement('div');_bb.className=
 
 <script>
 var FB = 'https://mako-global-leaderboard-default-rtdb.firebaseio.com';
-const GOLD_IMG='assets/gold-mako.png';
-const MAKO_IMG='assets/mako-coin.png';
+var GOLD_IMG = 'assets/gold-mako.png';
+var MAKO_IMG = 'assets/mako-coin.png';
 var teams = {};
 
 function showToast(msg) {
@@ -118,7 +118,7 @@ function setConnStatus(ok, msg) {
   el.className = 'conn-status ' + (ok ? 'conn-ok' : 'conn-err');
 }
 
-// ── LOAD ──
+// LOAD
 async function loadTeams() {
   try {
     var res = await fetch(FB + '/teams.json');
@@ -134,7 +134,7 @@ async function loadTeams() {
   }
 }
 
-// ── RENDER ──
+// RENDER
 function renderTeams() {
   var list = document.getElementById('teamsList');
   var keys = Object.keys(teams);
@@ -143,52 +143,178 @@ function renderTeams() {
     list.innerHTML = '<div class="no-teams">No teams yet — add one above</div>';
     return;
   }
-  var html = '';
+
+  // Build DOM nodes instead of string concat with onclick — avoids all quote issues
+  list.innerHTML = '';
   keys.forEach(function(id) {
     var t = teams[id];
     var g = t.gold || 0;
     var m = t.mako || 0;
-    html += '<div class="team-admin-row">';
-    html += '  <div class="team-top-row">';
-    html += '    <span class="team-display-name" id="dn_' + id + '">' + escHtml(t.name) + '</span>';
-    html += '    <input class="team-edit-inp" id="ei_' + id + '" type="text" value="' + escHtml(t.name) + '" maxlength="30">';
-    html += '    <button class="tag-btn tag-edit" id="eb_' + id + '" onclick="startEdit('' + id + '')">Edit</button>';
-    html += '    <button class="tag-btn tag-save" id="sb_' + id + '" onclick="saveName('' + id + '')">Save</button>';
-    html += '    <button class="tag-btn tag-del" onclick="delTeam('' + id + '')">Remove</button>';
-    html += '  </div>';
-    html += '  <div class="coin-controls">';
+
+    var row = document.createElement('div');
+    row.className = 'team-admin-row';
+
+    // Top row
+    var topRow = document.createElement('div');
+    topRow.className = 'team-top-row';
+
+    var dn = document.createElement('span');
+    dn.className = 'team-display-name';
+    dn.id = 'dn_' + id;
+    dn.textContent = t.name;
+
+    var ei = document.createElement('input');
+    ei.className = 'team-edit-inp';
+    ei.id = 'ei_' + id;
+    ei.type = 'text';
+    ei.value = t.name;
+    ei.maxLength = 30;
+    ei.style.display = 'none';
+
+    var editBtn = document.createElement('button');
+    editBtn.className = 'tag-btn tag-edit';
+    editBtn.id = 'eb_' + id;
+    editBtn.textContent = 'Edit';
+    editBtn.onclick = function() { startEdit(id); };
+
+    var saveBtn = document.createElement('button');
+    saveBtn.className = 'tag-btn tag-save';
+    saveBtn.id = 'sb_' + id;
+    saveBtn.textContent = 'Save';
+    saveBtn.style.display = 'none';
+    saveBtn.onclick = function() { saveName(id); };
+
+    var delBtn = document.createElement('button');
+    delBtn.className = 'tag-btn tag-del';
+    delBtn.textContent = 'Remove';
+    delBtn.onclick = function() { delTeam(id); };
+
+    topRow.appendChild(dn);
+    topRow.appendChild(ei);
+    topRow.appendChild(editBtn);
+    topRow.appendChild(saveBtn);
+    topRow.appendChild(delBtn);
+
+    // Coin controls
+    var coinControls = document.createElement('div');
+    coinControls.className = 'coin-controls';
+
     // Gold row
-    html += '    <div class="coin-row-ctrl">';
-    html += '      <img class="coin-img-sm" id="gimg_' + id + '" alt="Gold">';
-    html += '      <span class="coin-lbl">GOLD</span>';
-    html += '      <button class="c-btn minus gold" onclick="adjCoin('' + id + '','gold',-1)">&minus;</button>';
-    html += '      <span class="coin-val gold" id="cg_' + id + '">' + g + '</span>';
-    html += '      <button class="c-btn plus gold" onclick="adjCoin('' + id + '','gold',1)">+</button>';
-    html += '      <input class="c-inp" id="cgi_' + id + '" type="number" value="10" min="1" max="9999">';
-    html += '      <button class="c-add-btn add-gold" onclick="bulkCoin('' + id + '','gold',1)">+ADD</button>';
-    html += '      <button class="c-add-btn sub-gold" onclick="bulkCoin('' + id + '','gold',-1)">&minus;SUB</button>';
-    html += '    </div>';
+    var goldRow = document.createElement('div');
+    goldRow.className = 'coin-row-ctrl';
+
+    var gImg = document.createElement('img');
+    gImg.className = 'coin-img-sm';
+    gImg.src = GOLD_IMG;
+    gImg.alt = 'Gold';
+
+    var gLbl = document.createElement('span');
+    gLbl.className = 'coin-lbl';
+    gLbl.textContent = 'GOLD';
+
+    var gMinus = document.createElement('button');
+    gMinus.className = 'c-btn minus gold';
+    gMinus.innerHTML = '&minus;';
+    gMinus.onclick = function() { adjCoin(id, 'gold', -1); };
+
+    var gVal = document.createElement('span');
+    gVal.className = 'coin-val gold';
+    gVal.id = 'cg_' + id;
+    gVal.textContent = g;
+
+    var gPlus = document.createElement('button');
+    gPlus.className = 'c-btn plus gold';
+    gPlus.textContent = '+';
+    gPlus.onclick = function() { adjCoin(id, 'gold', 1); };
+
+    var gInp = document.createElement('input');
+    gInp.className = 'c-inp';
+    gInp.id = 'cgi_' + id;
+    gInp.type = 'number';
+    gInp.value = 10;
+    gInp.min = 1;
+    gInp.max = 9999;
+
+    var gAdd = document.createElement('button');
+    gAdd.className = 'c-add-btn add-gold';
+    gAdd.textContent = '+ADD';
+    gAdd.onclick = function() { bulkCoin(id, 'gold', 1); };
+
+    var gSub = document.createElement('button');
+    gSub.className = 'c-add-btn sub-gold';
+    gSub.innerHTML = '&minus;SUB';
+    gSub.onclick = function() { bulkCoin(id, 'gold', -1); };
+
+    goldRow.appendChild(gImg);
+    goldRow.appendChild(gLbl);
+    goldRow.appendChild(gMinus);
+    goldRow.appendChild(gVal);
+    goldRow.appendChild(gPlus);
+    goldRow.appendChild(gInp);
+    goldRow.appendChild(gAdd);
+    goldRow.appendChild(gSub);
+
     // Mako row
-    html += '    <div class="coin-row-ctrl">';
-    html += '      <img class="coin-img-sm" id="mimg_' + id + '" alt="Mako">';
-    html += '      <span class="coin-lbl">MAKO</span>';
-    html += '      <button class="c-btn minus mako" onclick="adjCoin('' + id + '','mako',-1)">&minus;</button>';
-    html += '      <span class="coin-val mako" id="cm_' + id + '">' + m + '</span>';
-    html += '      <button class="c-btn plus mako" onclick="adjCoin('' + id + '','mako',1)">+</button>';
-    html += '      <input class="c-inp" id="cmi_' + id + '" type="number" value="10" min="1" max="9999">';
-    html += '      <button class="c-add-btn add-mako" onclick="bulkCoin('' + id + '','mako',1)">+ADD</button>';
-    html += '      <button class="c-add-btn sub-mako" onclick="bulkCoin('' + id + '','mako',-1)">&minus;SUB</button>';
-    html += '    </div>';
-    html += '  </div>';
-    html += '</div>';
-  });
-  list.innerHTML = html;
-  // Set coin images AFTER innerHTML (avoids base64 in string concat entirely)
-  keys.forEach(function(id) {
-    var gi = document.getElementById('gimg_' + id);
-    var mi = document.getElementById('mimg_' + id);
-    if (gi) gi.src = GOLD_IMG;
-    if (mi) mi.src = MAKO_IMG;
+    var makoRow = document.createElement('div');
+    makoRow.className = 'coin-row-ctrl';
+
+    var mImg = document.createElement('img');
+    mImg.className = 'coin-img-sm';
+    mImg.src = MAKO_IMG;
+    mImg.alt = 'Mako';
+
+    var mLbl = document.createElement('span');
+    mLbl.className = 'coin-lbl';
+    mLbl.textContent = 'MAKO';
+
+    var mMinus = document.createElement('button');
+    mMinus.className = 'c-btn minus mako';
+    mMinus.innerHTML = '&minus;';
+    mMinus.onclick = function() { adjCoin(id, 'mako', -1); };
+
+    var mVal = document.createElement('span');
+    mVal.className = 'coin-val mako';
+    mVal.id = 'cm_' + id;
+    mVal.textContent = m;
+
+    var mPlus = document.createElement('button');
+    mPlus.className = 'c-btn plus mako';
+    mPlus.textContent = '+';
+    mPlus.onclick = function() { adjCoin(id, 'mako', 1); };
+
+    var mInp = document.createElement('input');
+    mInp.className = 'c-inp';
+    mInp.id = 'cmi_' + id;
+    mInp.type = 'number';
+    mInp.value = 10;
+    mInp.min = 1;
+    mInp.max = 9999;
+
+    var mAdd = document.createElement('button');
+    mAdd.className = 'c-add-btn add-mako';
+    mAdd.textContent = '+ADD';
+    mAdd.onclick = function() { bulkCoin(id, 'mako', 1); };
+
+    var mSub = document.createElement('button');
+    mSub.className = 'c-add-btn sub-mako';
+    mSub.innerHTML = '&minus;SUB';
+    mSub.onclick = function() { bulkCoin(id, 'mako', -1); };
+
+    makoRow.appendChild(mImg);
+    makoRow.appendChild(mLbl);
+    makoRow.appendChild(mMinus);
+    makoRow.appendChild(mVal);
+    makoRow.appendChild(mPlus);
+    makoRow.appendChild(mInp);
+    makoRow.appendChild(mAdd);
+    makoRow.appendChild(mSub);
+
+    coinControls.appendChild(goldRow);
+    coinControls.appendChild(makoRow);
+
+    row.appendChild(topRow);
+    row.appendChild(coinControls);
+    list.appendChild(row);
   });
 }
 
@@ -196,7 +322,7 @@ function escHtml(s) {
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-// ── ADD TEAM ──
+// ADD TEAM
 async function addTeam() {
   var inp = document.getElementById('newTeamName');
   var btn = document.getElementById('addTeamBtn');
@@ -226,7 +352,7 @@ async function addTeam() {
   }
 }
 
-// ── EDIT NAME ──
+// EDIT NAME
 function startEdit(id) {
   document.getElementById('dn_' + id).style.display = 'none';
   document.getElementById('ei_' + id).style.display = 'block';
@@ -256,7 +382,7 @@ async function saveName(id) {
   } catch(e) { showToast('Error: ' + e.message); }
 }
 
-// ── DELETE ──
+// DELETE
 async function delTeam(id) {
   var name = teams[id] ? teams[id].name : id;
   if (!confirm('Remove ' + name + '? This cannot be undone.')) return;
@@ -272,7 +398,7 @@ async function delTeam(id) {
   } catch(e) { showToast('Error: ' + e.message); }
 }
 
-// ── COINS ──
+// COINS
 async function adjCoin(id, type, delta) {
   var cur = (teams[id] && teams[id][type]) || 0;
   var nv = Math.max(0, cur + delta);
@@ -295,7 +421,7 @@ async function bulkCoin(id, type, sign) {
   showToast((sign > 0 ? '+' : '-') + amount + ' ' + (type === 'gold' ? 'Gold Mako' : 'Mako Coins') + ' for ' + name);
 }
 
-// ── RESET ALL ──
+// RESET ALL
 async function resetAll() {
   if (!confirm('Reset ALL coin balances to zero? Cannot be undone.')) return;
   var ids = Object.keys(teams);
@@ -312,7 +438,7 @@ async function resetAll() {
   } catch(e) { showToast('Error: ' + e.message); }
 }
 
-// ── INIT ──
+// INIT
 loadTeams();
 setInterval(loadTeams, 10000);
 </script>
