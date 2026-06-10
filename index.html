@@ -20,44 +20,45 @@
     @keyframes waveScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
     .content{position:relative;z-index:3;width:100%;max-width:680px;padding:100px 20px 80px}
     .logo-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:6px}
-    .logo-coin{width:56px;height:56px;object-fit:contain;opacity:0.9;filter:drop-shadow(0 0 12px rgba(168,228,255,0.4))}
+    .logo-coin{width:72px;height:72px;object-fit:contain;opacity:0.9;filter:drop-shadow(0 0 14px rgba(168,228,255,0.4))}
     h1{font-family:'Bangers',cursive;font-size:clamp(38px,9vw,68px);letter-spacing:4px;color:#a8e4ff;text-shadow:0 0 30px rgba(0,229,255,0.5),0 4px 0 rgba(0,0,0,0.4);text-align:center;line-height:1}
     .tagline{text-align:center;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:rgba(168,228,255,0.5);margin-bottom:36px;margin-top:6px}
     .coin-legend{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
     .legend-pill{display:flex;align-items:center;gap:8px;background:rgba(5,20,40,0.6);border-radius:20px;padding:7px 16px;border:1px solid rgba(255,255,255,0.08);font-size:13px;font-weight:700}
-    .legend-coin{width:26px;height:26px;object-fit:contain;opacity:0.85}
+    .legend-coin{width:34px;height:34px;object-fit:contain;opacity:0.85}
     .legend-gold{color:#f0c040}.legend-mako{color:#74c0fc}
     .live-row{display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(168,228,255,0.55);margin-bottom:18px}
     .live-dot{width:8px;height:8px;border-radius:50%;background:#6bcb77;animation:pulse 1.2s infinite}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.2}}
     .lb-card{background:rgba(5,20,40,0.75);backdrop-filter:blur(10px);border-radius:20px;border:1px solid rgba(0,229,255,0.12);overflow:hidden}
-    .lb-header{display:grid;grid-template-columns:44px 1fr 90px 90px;padding:12px 20px;border-bottom:1px solid rgba(255,255,255,0.07);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(168,228,255,0.4)}
+    .lb-header{display:grid;grid-template-columns:44px 1fr 100px 100px;padding:12px 20px;border-bottom:1px solid rgba(255,255,255,0.07);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(168,228,255,0.4)}
     .col-coin{display:flex;align-items:center;gap:5px;justify-content:center}
-    .hdr-coin{width:18px;height:18px;object-fit:contain;opacity:0.7}
-    .team-row{display:grid;grid-template-columns:44px 1fr 90px 90px;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.05);align-items:center;transition:background 0.2s}
+    .hdr-coin{width:24px;height:24px;object-fit:contain;opacity:0.8}
+    .team-row{display:grid;grid-template-columns:44px 1fr 100px 100px;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.05);align-items:center;transition:background 0.2s}
     .team-row:last-child{border-bottom:none}
     .team-row:hover{background:rgba(0,229,255,0.04)}
     .team-row.rank-1{background:rgba(255,215,0,0.06);border-left:3px solid gold}
     .team-row.rank-2{background:rgba(192,192,192,0.05);border-left:3px solid silver}
     .team-row.rank-3{background:rgba(205,127,50,0.05);border-left:3px solid #cd7f32}
-    .rank{font-family:'Bangers',cursive;font-size:22px;color:rgba(168,228,255,0.35);text-align:center}
+    .rank{font-family:'Bangers',cursive;font-size:22px;color:rgba(168,228,255,0.35);text-align:center;display:flex;align-items:center;justify-content:center}
     .rank-1 .rank{color:gold;text-shadow:0 0 10px rgba(255,215,0,0.5)}
     .rank-2 .rank{color:silver}
     .rank-3 .rank{color:#cd7f32}
     .team-info{display:flex;flex-direction:column;gap:2px}
     .team-name-lb{font-size:16px;font-weight:900;color:#a8e4ff}
     .team-sub{font-size:11px;color:rgba(168,228,255,0.35);letter-spacing:1px}
-    .coin-cell{display:flex;align-items:center;justify-content:center;gap:5px}
-    .coin-thumb{width:24px;height:24px;object-fit:contain;opacity:0.85;flex-shrink:0}
-    .coin-amount{font-family:'Bangers',cursive;font-size:22px}
+    .coin-cell{display:flex;align-items:center;justify-content:center;gap:6px}
+    .coin-thumb{width:30px;height:30px;object-fit:contain;opacity:0.9;flex-shrink:0}
+    .coin-amount{font-family:'Bangers',cursive;font-size:24px}
     .coin-amount.gold{color:#f0c040;text-shadow:0 0 8px rgba(240,192,64,0.35)}
     .coin-amount.mako{color:#74c0fc;text-shadow:0 0 8px rgba(116,192,252,0.35)}
     .empty-state{text-align:center;padding:48px 20px;font-size:14px;color:rgba(168,228,255,0.3);letter-spacing:1px}
     .totals-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:18px}
-    .total-pill{background:rgba(5,20,40,0.7);border-radius:14px;padding:10px 20px;border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:8px;font-size:13px}
+    .total-pill{background:rgba(5,20,40,0.7);border-radius:14px;padding:10px 20px;border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:10px;font-size:13px}
     .total-label{color:rgba(168,228,255,0.5);font-weight:700;letter-spacing:1px}
-    .total-val{font-family:'Bangers',cursive;font-size:22px}
+    .total-val{font-family:'Bangers',cursive;font-size:24px}
     .total-val.gold{color:#f0c040}.total-val.mako{color:#74c0fc}
+    .total-coin-img{width:30px;height:30px;object-fit:contain;opacity:0.85}
     .admin-link-row{text-align:center;margin-top:32px}
     .admin-link{font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;padding:10px 24px;border-radius:10px;border:1px solid rgba(255,64,64,0.3);cursor:pointer;background:rgba(5,20,40,0.6);color:rgba(255,107,107,0.6);letter-spacing:1px;transition:all 0.2s;text-decoration:none;display:inline-block}
     .admin-link:hover{border-color:rgba(255,64,64,0.7);color:#ff6b6b;background:rgba(255,64,64,0.08)}
@@ -78,8 +79,9 @@
     .modal-cancel{font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;padding:9px 24px;border-radius:9px;border:1px solid rgba(168,228,255,0.2);background:transparent;color:rgba(168,228,255,0.5);cursor:pointer;letter-spacing:1px}
     .modal-cancel:hover{background:rgba(168,228,255,0.08);color:#a8e4ff}
     @media(max-width:480px){
-      .lb-header,.team-row{grid-template-columns:36px 1fr 70px 70px;padding:12px 12px}
-      .coin-amount{font-size:18px}.coin-thumb{width:20px;height:20px}
+      .lb-header,.team-row{grid-template-columns:36px 1fr 80px 80px;padding:12px 12px}
+      .coin-amount{font-size:20px}.coin-thumb{width:26px;height:26px}
+      .hdr-coin{width:20px;height:20px}
     }
   </style>
 </head>
@@ -146,12 +148,12 @@
   </div>
   <div class="totals-row" id="totalsRow" style="display:none">
     <div class="total-pill">
-      <img id="totalGoldImg" src="" style="width:24px;height:24px;object-fit:contain;opacity:0.8" alt="">
+      <img id="totalGoldImg" class="total-coin-img" src="" alt="">
       <span class="total-label">TOTAL GOLD</span>
       <span class="total-val gold" id="totalGold">0</span>
     </div>
     <div class="total-pill">
-      <img id="totalMakoImg" src="" style="width:24px;height:24px;object-fit:contain;opacity:0.8" alt="">
+      <img id="totalMakoImg" class="total-coin-img" src="" alt="">
       <span class="total-label">TOTAL MAKO</span>
       <span class="total-val mako" id="totalMako">0</span>
     </div>
@@ -174,7 +176,14 @@ for(var i=0;i<22;i++){var b=document.createElement('div');b.className='bubble';v
 var rEl=document.getElementById('rays');
 for(var j=0;j<6;j++){var r=document.createElement('div');r.className='ray';r.style.cssText='left:'+(6+j*16)+'%;animation-duration:'+(4+Math.random()*4)+'s;animation-delay:-'+Math.random()*4+'s';rEl.appendChild(r);}
 
-const medals=['&#127945;','&#127946;','&#127947;'];
+const medalSVGs=[
+  // Gold medal
+  '<svg viewBox="0 0 32 36" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><polygon points="16,2 20,12 31,12 22,19 25,30 16,23 7,30 10,19 1,12 12,12" fill="#FFD700" stroke="#B8860B" stroke-width="1"/><circle cx="16" cy="17" r="7" fill="#FFC200" stroke="#B8860B" stroke-width="0.8" opacity="0.5"/></svg>',
+  // Silver medal
+  '<svg viewBox="0 0 32 36" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><polygon points="16,2 20,12 31,12 22,19 25,30 16,23 7,30 10,19 1,12 12,12" fill="#C0C0C0" stroke="#808080" stroke-width="1"/><circle cx="16" cy="17" r="7" fill="#A8A8A8" stroke="#808080" stroke-width="0.8" opacity="0.5"/></svg>',
+  // Bronze medal
+  '<svg viewBox="0 0 32 36" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><polygon points="16,2 20,12 31,12 22,19 25,30 16,23 7,30 10,19 1,12 12,12" fill="#CD7F32" stroke="#8B4513" stroke-width="1"/><circle cx="16" cy="17" r="7" fill="#B8691A" stroke="#8B4513" stroke-width="0.8" opacity="0.5"/></svg>'
+];
 
 async function loadLB(){
   try{
@@ -187,7 +196,7 @@ async function loadLB(){
     if(teams.length===0){container.innerHTML='<div class="empty-state">No teams yet &mdash; check back soon!</div>';return;}
     container.innerHTML=teams.map(function(t,i){
       var rankClass=i<3?'rank-'+(i+1):'';
-      var rankDisp=i<3?medals[i]:String(i+1);
+      var rankDisp=i<3?medalSVGs[i]:String(i+1);
       return '<div class="team-row '+rankClass+'">'
         +'<div class="rank">'+rankDisp+'</div>'
         +'<div class="team-info"><div class="team-name-lb">'+t.name+'</div><div class="team-sub">'+(t.gold+t.mako)+' total coins</div></div>'
