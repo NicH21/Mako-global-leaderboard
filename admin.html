@@ -41,7 +41,8 @@
     .c-btn:hover{transform:scale(1.15)}
     .c-btn.plus.gold{border-color:#f0c040;color:#f0c040}.c-btn.minus.gold{border-color:#ff6b6b;color:#ff6b6b}
     .c-btn.plus.mako{border-color:#74c0fc;color:#74c0fc}.c-btn.minus.mako{border-color:#ff6b6b;color:#ff6b6b}
-    .c-inp{width:50px;padding:6px 6px;border-radius:7px;border:1px solid rgba(255,255,255,0.15);background:rgba(2,11,24,0.7);color:white;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;text-align:center;outline:none}
+    .c-inp{width:72px;padding:9px 8px;border-radius:7px;border:1px solid rgba(255,255,255,0.25);background:rgba(2,11,24,0.7);color:white;font-family:'Nunito',sans-serif;font-size:16px;font-weight:700;text-align:center;outline:none;transition:border-color 0.2s}
+    .c-inp:focus{border-color:rgba(0,229,255,0.6)}
     .c-add-btn{font-family:'Bangers',cursive;font-size:13px;padding:6px 11px;border-radius:8px;border:1.5px solid;background:rgba(2,11,24,0.8);cursor:pointer;transition:background 0.15s,transform 0.1s;white-space:nowrap}
     .c-add-btn:hover{transform:scale(1.04)}
     .c-add-btn.add-gold{border-color:#f0c040;color:#f0c040}.c-add-btn.add-gold:hover{background:rgba(240,192,64,0.1)}
@@ -119,6 +120,7 @@ function setConnStatus(ok, msg) {
 }
 
 var editingId = null;
+var coinInputFocused = false;
 
 // LOAD
 async function loadTeams() {
@@ -128,7 +130,7 @@ async function loadTeams() {
     var data = await res.json();
     teams = data || {};
     setConnStatus(true, 'Connected to Firebase');
-    if (!editingId) renderTeams();
+    if (!editingId && !coinInputFocused) renderTeams();
   } catch(e) {
     setConnStatus(false, 'Firebase error: ' + e.message + ' — check database rules');
     document.getElementById('teamsList').innerHTML = '<div class="no-teams" style="color:#ff6b6b">Cannot reach database. Open browser console (F12) for details.</div>';
@@ -235,6 +237,8 @@ function renderTeams() {
     gInp.value = 10;
     gInp.min = 1;
     gInp.max = 9999;
+    gInp.addEventListener('focus', function(){ coinInputFocused = true; });
+    gInp.addEventListener('blur', function(){ coinInputFocused = false; });
 
     var gAdd = document.createElement('button');
     gAdd.className = 'c-add-btn add-gold';
@@ -290,6 +294,8 @@ function renderTeams() {
     mInp.value = 10;
     mInp.min = 1;
     mInp.max = 9999;
+    mInp.addEventListener('focus', function(){ coinInputFocused = true; });
+    mInp.addEventListener('blur', function(){ coinInputFocused = false; });
 
     var mAdd = document.createElement('button');
     mAdd.className = 'c-add-btn add-mako';
