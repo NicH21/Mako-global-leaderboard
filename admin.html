@@ -15,40 +15,47 @@
     .subtitle{text-align:center;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:rgba(168,228,255,0.55);margin-bottom:32px}
     .card{background:rgba(5,20,40,0.75);backdrop-filter:blur(8px);border-radius:18px;border:1px solid rgba(0,229,255,0.15);padding:24px 24px 20px;margin-bottom:20px}
     .card-title{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(168,228,255,0.5);margin-bottom:18px}
+
+    /* Goal progress in admin */
+    .goal-bar-wrap{background:rgba(2,11,24,0.6);border-radius:999px;height:18px;border:1px solid rgba(0,229,255,0.15);overflow:hidden;margin-bottom:8px}
+    .goal-bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#1a9e5c,#6bcb77);transition:width 0.6s ease;display:flex;align-items:center;justify-content:flex-end;padding-right:8px}
+    .goal-bar-pct{font-family:'Bangers',cursive;font-size:12px;color:rgba(2,11,24,0.9)}
+    .goal-stats{display:flex;justify-content:space-between;font-size:12px;color:rgba(168,228,255,0.4);margin-bottom:4px}
+    .goal-total{font-family:'Bangers',cursive;font-size:22px;color:#6bcb77}
+
     .add-team-row{display:flex;gap:10px;flex-wrap:wrap}
     .team-name-inp{flex:1;min-width:160px;background:rgba(5,30,55,0.8);border:1px solid rgba(0,229,255,0.25);border-radius:9px;padding:10px 14px;color:#a8e4ff;font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;outline:none;transition:border-color 0.2s}
     .team-name-inp:focus{border-color:rgba(0,229,255,0.7)}
     .add-team-btn{font-family:'Bangers',cursive;font-size:19px;letter-spacing:1px;padding:10px 22px;border-radius:10px;border:2px solid #6bcb77;box-shadow:0 0 10px rgba(107,203,119,0.3);cursor:pointer;background:rgba(2,11,24,0.85);color:white;transition:transform 0.1s,box-shadow 0.2s;white-space:nowrap}
     .add-team-btn:hover{transform:translateY(-2px);box-shadow:0 0 22px rgba(107,203,119,0.6)}
     .add-team-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+
     .teams-list{display:flex;flex-direction:column;gap:12px}
     .team-admin-row{background:rgba(2,11,24,0.55);border-radius:14px;border:1px solid rgba(0,229,255,0.1);padding:14px 16px}
-    .team-top-row{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+    .team-top-row{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
     .team-display-name{font-size:16px;font-weight:900;color:#a8e4ff;flex:1}
     .team-edit-inp{flex:1;min-width:120px;background:rgba(5,30,55,0.8);border:1px solid rgba(0,229,255,0.35);border-radius:8px;padding:7px 11px;color:#a8e4ff;font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;outline:none;display:none}
     .tag-btn{font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;padding:5px 12px;border-radius:7px;border:1px solid;background:transparent;cursor:pointer;transition:background 0.15s;white-space:nowrap}
     .tag-edit{border-color:rgba(0,229,255,0.3);color:#a8e4ff}.tag-edit:hover{background:rgba(0,229,255,0.1)}
     .tag-save{border-color:rgba(107,203,119,0.4);color:#6bcb77;display:none}.tag-save:hover{background:rgba(107,203,119,0.1)}
     .tag-del{border-color:rgba(255,107,107,0.3);color:#ff6b6b}.tag-del:hover{background:rgba(255,64,64,0.1)}
-    .coin-controls{display:flex;flex-direction:column;gap:8px}
-    .coin-row-ctrl{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-    .coin-img-sm{width:38px;height:38px;object-fit:contain;flex-shrink:0}
-    .coin-lbl{font-size:11px;font-weight:700;letter-spacing:1px;color:rgba(168,228,255,0.5);width:44px;flex-shrink:0}
-    .coin-val{font-family:'Bangers',cursive;font-size:24px;min-width:40px;text-align:center;flex-shrink:0}
-    .coin-val.gold{color:#f0c040;text-shadow:0 0 8px rgba(240,192,64,0.4)}
-    .coin-val.mako{color:#74c0fc;text-shadow:0 0 8px rgba(116,192,252,0.4)}
-    .c-btn{font-family:'Bangers',cursive;font-size:16px;width:30px;height:30px;border-radius:8px;border:1px solid;background:rgba(2,11,24,0.8);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform 0.1s}
-    .c-btn:hover{transform:scale(1.15)}
-    .c-btn.plus.gold{border-color:#f0c040;color:#f0c040}.c-btn.minus.gold{border-color:#ff6b6b;color:#ff6b6b}
-    .c-btn.plus.mako{border-color:#74c0fc;color:#74c0fc}.c-btn.minus.mako{border-color:#ff6b6b;color:#ff6b6b}
-    .c-inp{width:72px;padding:9px 8px;border-radius:7px;border:1px solid rgba(255,255,255,0.25);background:rgba(2,11,24,0.7);color:white;font-family:'Nunito',sans-serif;font-size:16px;font-weight:700;text-align:center;outline:none;transition:border-color 0.2s}
-    .c-inp:focus{border-color:rgba(0,229,255,0.6)}
-    .c-add-btn{font-family:'Bangers',cursive;font-size:13px;padding:6px 11px;border-radius:8px;border:1.5px solid;background:rgba(2,11,24,0.8);cursor:pointer;transition:background 0.15s,transform 0.1s;white-space:nowrap}
-    .c-add-btn:hover{transform:scale(1.04)}
-    .c-add-btn.add-gold{border-color:#f0c040;color:#f0c040}.c-add-btn.add-gold:hover{background:rgba(240,192,64,0.1)}
-    .c-add-btn.sub-gold{border-color:#ff6b6b;color:#ff6b6b}.c-add-btn.sub-gold:hover{background:rgba(255,64,64,0.1)}
-    .c-add-btn.add-mako{border-color:#74c0fc;color:#74c0fc}.c-add-btn.add-mako:hover{background:rgba(116,192,252,0.1)}
-    .c-add-btn.sub-mako{border-color:#ff6b6b;color:#ff6b6b}.c-add-btn.sub-mako:hover{background:rgba(255,64,64,0.1)}
+
+    /* Raised amount display */
+    .raised-section{display:flex;flex-direction:column;gap:10px}
+    .raised-display{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+    .raised-label{font-size:11px;font-weight:700;letter-spacing:1.5px;color:rgba(168,228,255,0.4);text-transform:uppercase}
+    .raised-val{font-family:'Bangers',cursive;font-size:30px;color:#6bcb77;text-shadow:0 0 8px rgba(107,203,119,0.3);min-width:80px}
+    .adj-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .rand-prefix{font-family:'Bangers',cursive;font-size:18px;color:rgba(168,228,255,0.5)}
+    .r-inp{width:110px;padding:9px 10px;border-radius:8px;border:1px solid rgba(0,229,255,0.25);background:rgba(2,11,24,0.7);color:white;font-family:'Nunito',sans-serif;font-size:16px;font-weight:700;text-align:center;outline:none;transition:border-color 0.2s}
+    .r-inp:focus{border-color:rgba(0,229,255,0.6)}
+    .r-btn{font-family:'Bangers',cursive;font-size:15px;padding:8px 16px;border-radius:9px;border:1.5px solid;background:rgba(2,11,24,0.8);cursor:pointer;transition:background 0.15s,transform 0.1s;white-space:nowrap}
+    .r-btn:hover{transform:scale(1.04)}
+    .r-btn.add{border-color:#6bcb77;color:#6bcb77}.r-btn.add:hover{background:rgba(107,203,119,0.1)}
+    .r-btn.sub{border-color:#ff6b6b;color:#ff6b6b}.r-btn.sub:hover{background:rgba(255,64,64,0.1)}
+    .r-btn.set{border-color:#74c0fc;color:#74c0fc}.r-btn.set:hover{background:rgba(116,192,252,0.1)}
+    .adj-hint{font-size:11px;color:rgba(168,228,255,0.3);letter-spacing:1px}
+
     .no-teams{font-size:14px;color:rgba(168,228,255,0.35);text-align:center;padding:24px 0;letter-spacing:1px}
     .danger-btn{font-family:'Bangers',cursive;font-size:18px;letter-spacing:2px;padding:12px 24px;border-radius:12px;border:2px solid #ff6b6b;box-shadow:0 0 12px rgba(255,107,107,0.3);cursor:pointer;background:rgba(2,11,24,0.85);color:white;width:100%;transition:box-shadow 0.2s}
     .danger-btn:hover{box-shadow:0 0 26px rgba(255,107,107,0.6)}
@@ -69,9 +76,23 @@ for(var _bi=0;_bi<12;_bi++){var _bb=document.createElement('div');_bb.className=
 
 <div class="content">
   <h1>GLOBAL ADMIN</h1>
-  <p class="subtitle">Mako Aquatics &mdash; Pre-event leaderboard</p>
+  <p class="subtitle">Mako Aquatics &mdash; Fundraising</p>
 
   <div id="connStatus"></div>
+
+  <!-- Overall progress -->
+  <div class="card">
+    <div class="card-title">Overall Progress &mdash; Goal: R100 000</div>
+    <div class="goal-stats">
+      <span class="goal-total" id="adminTotal">R0</span>
+      <span id="adminRemaining">R100 000 remaining</span>
+    </div>
+    <div class="goal-bar-wrap">
+      <div class="goal-bar-fill" id="adminBar" style="width:0%">
+        <span class="goal-bar-pct" id="adminBarPct"></span>
+      </div>
+    </div>
+  </div>
 
   <div class="card">
     <div class="card-title">Add New Team</div>
@@ -83,7 +104,7 @@ for(var _bi=0;_bi<12;_bi++){var _bb=document.createElement('div');_bb.className=
   </div>
 
   <div class="card">
-    <div class="card-title" id="teamsCardTitle">Teams &amp; Coins</div>
+    <div class="card-title" id="teamsCardTitle">Teams &amp; Fundraising</div>
     <div class="teams-list" id="teamsList">
       <div class="no-teams">Loading...</div>
     </div>
@@ -91,7 +112,7 @@ for(var _bi=0;_bi<12;_bi++){var _bb=document.createElement('div');_bb.className=
 
   <div class="card">
     <div class="card-title" style="color:rgba(255,107,107,0.6)">Danger Zone</div>
-    <button class="danger-btn" onclick="resetAll()">RESET ALL COIN BALANCES TO ZERO</button>
+    <button class="danger-btn" onclick="resetAll()">RESET ALL BALANCES TO ZERO</button>
   </div>
 
   <div class="nav-row">
@@ -101,355 +122,207 @@ for(var _bi=0;_bi<12;_bi++){var _bb=document.createElement('div');_bb.className=
 <div class="toast" id="toastEl"></div>
 
 <script>
-var FB = 'https://mako-global-leaderboard-default-rtdb.firebaseio.com';
-var GOLD_IMG = 'assets/gold-mako.png';
-var MAKO_IMG = 'assets/mako-coin.png';
-var teams = {};
+var FB='https://mako-global-leaderboard-default-rtdb.firebaseio.com';
+var GOAL=100000;
+var teams={};
+var editingId=null;
+var inputFocused=false;
 
-function showToast(msg) {
-  var el = document.getElementById('toastEl');
-  el.textContent = msg;
-  el.classList.add('show');
-  setTimeout(function(){ el.classList.remove('show'); }, 2600);
+function showToast(msg){
+  var el=document.getElementById('toastEl');
+  el.textContent=msg;el.classList.add('show');
+  setTimeout(function(){el.classList.remove('show');},2600);
 }
-
-function setConnStatus(ok, msg) {
-  var el = document.getElementById('connStatus');
-  el.textContent = msg;
-  el.className = 'conn-status ' + (ok ? 'conn-ok' : 'conn-err');
+function setConnStatus(ok,msg){
+  var el=document.getElementById('connStatus');
+  el.textContent=msg;
+  el.className='conn-status '+(ok?'conn-ok':'conn-err');
 }
+function fmtRand(n){return 'R'+Math.round(n).toLocaleString('en-ZA');}
 
-var editingId = null;
-var coinInputFocused = false;
-
-// LOAD
-async function loadTeams() {
-  try {
-    var res = await fetch(FB + '/teams.json');
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    var data = await res.json();
-    teams = data || {};
-    setConnStatus(true, 'Connected to Firebase');
-    if (!editingId && !coinInputFocused) renderTeams();
-  } catch(e) {
-    setConnStatus(false, 'Firebase error: ' + e.message + ' — check database rules');
-    document.getElementById('teamsList').innerHTML = '<div class="no-teams" style="color:#ff6b6b">Cannot reach database. Open browser console (F12) for details.</div>';
-    console.error('loadTeams failed:', e);
+async function loadTeams(){
+  try{
+    var res=await fetch(FB+'/teams.json');
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    var data=await res.json();
+    teams=data||{};
+    setConnStatus(true,'Connected to Firebase');
+    updateAdminProgress();
+    if(!editingId&&!inputFocused)renderTeams();
+  }catch(e){
+    setConnStatus(false,'Firebase error: '+e.message);
+    document.getElementById('teamsList').innerHTML='<div class="no-teams" style="color:#ff6b6b">Cannot reach database.</div>';
   }
 }
 
-// RENDER
-function renderTeams() {
-  var list = document.getElementById('teamsList');
-  var keys = Object.keys(teams);
-  document.getElementById('teamsCardTitle').textContent = 'Teams & Coins (' + keys.length + ')';
-  if (keys.length === 0) {
-    list.innerHTML = '<div class="no-teams">No teams yet — add one above</div>';
-    return;
-  }
+function updateAdminProgress(){
+  var total=Object.values(teams).reduce(function(s,t){return s+(t.raised||0);},0);
+  var pct=Math.min(100,total/GOAL*100);
+  var remaining=Math.max(0,GOAL-total);
+  document.getElementById('adminTotal').textContent=fmtRand(total);
+  document.getElementById('adminRemaining').textContent=remaining>0?fmtRand(remaining)+' remaining':'Goal reached!';
+  var bar=document.getElementById('adminBar');
+  bar.style.width=pct.toFixed(1)+'%';
+  var pctLabel=document.getElementById('adminBarPct');
+  pctLabel.textContent=pct>=12?pct.toFixed(1)+'%':'';
+}
 
-  list.innerHTML = '';
-  keys.forEach(function(id) {
-    var t = teams[id];
-    var g = t.gold || 0;
-    var m = t.mako || 0;
-
-    var row = document.createElement('div');
-    row.className = 'team-admin-row';
+function renderTeams(){
+  var list=document.getElementById('teamsList');
+  var keys=Object.keys(teams);
+  document.getElementById('teamsCardTitle').textContent='Teams & Fundraising ('+keys.length+')';
+  if(keys.length===0){list.innerHTML='<div class="no-teams">No teams yet — add one above</div>';return;}
+  list.innerHTML='';
+  keys.forEach(function(id){
+    var t=teams[id];
+    var raised=t.raised||0;
+    var row=document.createElement('div');
+    row.className='team-admin-row';
 
     // Top row
-    var topRow = document.createElement('div');
-    topRow.className = 'team-top-row';
+    var topRow=document.createElement('div');
+    topRow.className='team-top-row';
+    var dn=document.createElement('span');
+    dn.className='team-display-name';dn.id='dn_'+id;dn.textContent=t.name;
+    var ei=document.createElement('input');
+    ei.className='team-edit-inp';ei.id='ei_'+id;ei.type='text';ei.value=t.name;ei.maxLength=30;ei.style.display='none';
+    var editBtn=document.createElement('button');editBtn.className='tag-btn tag-edit';editBtn.id='eb_'+id;editBtn.textContent='Edit';
+    editBtn.onclick=function(){startEdit(id);};
+    var saveBtn=document.createElement('button');saveBtn.className='tag-btn tag-save';saveBtn.id='sb_'+id;saveBtn.textContent='Save';saveBtn.style.display='none';
+    saveBtn.onclick=function(){saveName(id);};
+    var delBtn=document.createElement('button');delBtn.className='tag-btn tag-del';delBtn.textContent='Remove';
+    delBtn.onclick=function(){delTeam(id);};
+    topRow.appendChild(dn);topRow.appendChild(ei);topRow.appendChild(editBtn);topRow.appendChild(saveBtn);topRow.appendChild(delBtn);
 
-    var dn = document.createElement('span');
-    dn.className = 'team-display-name';
-    dn.id = 'dn_' + id;
-    dn.textContent = t.name;
+    // Raised section
+    var raisedSection=document.createElement('div');
+    raisedSection.className='raised-section';
 
-    var ei = document.createElement('input');
-    ei.className = 'team-edit-inp';
-    ei.id = 'ei_' + id;
-    ei.type = 'text';
-    ei.value = t.name;
-    ei.maxLength = 30;
-    ei.style.display = 'none';
+    // Amount display
+    var raisedDisplay=document.createElement('div');
+    raisedDisplay.className='raised-display';
+    var rLabel=document.createElement('span');rLabel.className='raised-label';rLabel.textContent='Amount Raised';
+    var rVal=document.createElement('span');rVal.className='raised-val';rVal.id='rv_'+id;rVal.textContent=fmtRand(raised);
+    raisedDisplay.appendChild(rLabel);raisedDisplay.appendChild(rVal);
 
-    var editBtn = document.createElement('button');
-    editBtn.className = 'tag-btn tag-edit';
-    editBtn.id = 'eb_' + id;
-    editBtn.textContent = 'Edit';
-    editBtn.onclick = function() { startEdit(id); };
+    // Adjust row
+    var adjRow=document.createElement('div');
+    adjRow.className='adj-row';
+    var pfx=document.createElement('span');pfx.className='rand-prefix';pfx.textContent='R';
+    var inp=document.createElement('input');
+    inp.className='r-inp';inp.id='ri_'+id;inp.type='number';inp.value=100;inp.min=1;inp.max=999999;inp.placeholder='Amount';
+    inp.addEventListener('focus',function(){inputFocused=true;});
+    inp.addEventListener('blur',function(){inputFocused=false;});
 
-    var saveBtn = document.createElement('button');
-    saveBtn.className = 'tag-btn tag-save';
-    saveBtn.id = 'sb_' + id;
-    saveBtn.textContent = 'Save';
-    saveBtn.style.display = 'none';
-    saveBtn.onclick = function() { saveName(id); };
+    var addBtn=document.createElement('button');addBtn.className='r-btn add';addBtn.textContent='+ADD';
+    addBtn.onclick=function(){adjRaised(id,1);};
+    var subBtn=document.createElement('button');subBtn.className='r-btn sub';subBtn.innerHTML='&minus;SUB';
+    subBtn.onclick=function(){adjRaised(id,-1);};
+    var setBtn=document.createElement('button');setBtn.className='r-btn set';setBtn.textContent='SET';
+    setBtn.onclick=function(){setRaised(id);};
 
-    var delBtn = document.createElement('button');
-    delBtn.className = 'tag-btn tag-del';
-    delBtn.textContent = 'Remove';
-    delBtn.onclick = function() { delTeam(id); };
+    var hint=document.createElement('span');hint.className='adj-hint';hint.textContent='ADD/SUB adjusts, SET replaces total';
 
-    topRow.appendChild(dn);
-    topRow.appendChild(ei);
-    topRow.appendChild(editBtn);
-    topRow.appendChild(saveBtn);
-    topRow.appendChild(delBtn);
+    adjRow.appendChild(pfx);adjRow.appendChild(inp);adjRow.appendChild(addBtn);adjRow.appendChild(subBtn);adjRow.appendChild(setBtn);
 
-    // Coin controls
-    var coinControls = document.createElement('div');
-    coinControls.className = 'coin-controls';
-
-    // Gold row
-    var goldRow = document.createElement('div');
-    goldRow.className = 'coin-row-ctrl';
-
-    var gImg = document.createElement('img');
-    gImg.className = 'coin-img-sm';
-    gImg.src = GOLD_IMG;
-    gImg.alt = 'Gold';
-
-    var gLbl = document.createElement('span');
-    gLbl.className = 'coin-lbl';
-    gLbl.textContent = 'GOLD';
-
-    var gMinus = document.createElement('button');
-    gMinus.className = 'c-btn minus gold';
-    gMinus.innerHTML = '&minus;';
-    gMinus.onclick = function() { adjCoin(id, 'gold', -1); };
-
-    var gVal = document.createElement('span');
-    gVal.className = 'coin-val gold';
-    gVal.id = 'cg_' + id;
-    gVal.textContent = g;
-
-    var gPlus = document.createElement('button');
-    gPlus.className = 'c-btn plus gold';
-    gPlus.textContent = '+';
-    gPlus.onclick = function() { adjCoin(id, 'gold', 1); };
-
-    var gInp = document.createElement('input');
-    gInp.className = 'c-inp';
-    gInp.id = 'cgi_' + id;
-    gInp.type = 'number';
-    gInp.value = 10;
-    gInp.min = 1;
-    gInp.max = 9999;
-    gInp.addEventListener('focus', function(){ coinInputFocused = true; });
-    gInp.addEventListener('blur', function(){ coinInputFocused = false; });
-
-    var gAdd = document.createElement('button');
-    gAdd.className = 'c-add-btn add-gold';
-    gAdd.textContent = '+ADD';
-    gAdd.onclick = function() { bulkCoin(id, 'gold', 1); };
-
-    var gSub = document.createElement('button');
-    gSub.className = 'c-add-btn sub-gold';
-    gSub.innerHTML = '&minus;SUB';
-    gSub.onclick = function() { bulkCoin(id, 'gold', -1); };
-
-    goldRow.appendChild(gImg);
-    goldRow.appendChild(gLbl);
-    goldRow.appendChild(gMinus);
-    goldRow.appendChild(gVal);
-    goldRow.appendChild(gPlus);
-    goldRow.appendChild(gInp);
-    goldRow.appendChild(gAdd);
-    goldRow.appendChild(gSub);
-
-    // Mako row
-    var makoRow = document.createElement('div');
-    makoRow.className = 'coin-row-ctrl';
-
-    var mImg = document.createElement('img');
-    mImg.className = 'coin-img-sm';
-    mImg.src = MAKO_IMG;
-    mImg.alt = 'Mako';
-
-    var mLbl = document.createElement('span');
-    mLbl.className = 'coin-lbl';
-    mLbl.textContent = 'MAKO';
-
-    var mMinus = document.createElement('button');
-    mMinus.className = 'c-btn minus mako';
-    mMinus.innerHTML = '&minus;';
-    mMinus.onclick = function() { adjCoin(id, 'mako', -1); };
-
-    var mVal = document.createElement('span');
-    mVal.className = 'coin-val mako';
-    mVal.id = 'cm_' + id;
-    mVal.textContent = m;
-
-    var mPlus = document.createElement('button');
-    mPlus.className = 'c-btn plus mako';
-    mPlus.textContent = '+';
-    mPlus.onclick = function() { adjCoin(id, 'mako', 1); };
-
-    var mInp = document.createElement('input');
-    mInp.className = 'c-inp';
-    mInp.id = 'cmi_' + id;
-    mInp.type = 'number';
-    mInp.value = 10;
-    mInp.min = 1;
-    mInp.max = 9999;
-    mInp.addEventListener('focus', function(){ coinInputFocused = true; });
-    mInp.addEventListener('blur', function(){ coinInputFocused = false; });
-
-    var mAdd = document.createElement('button');
-    mAdd.className = 'c-add-btn add-mako';
-    mAdd.textContent = '+ADD';
-    mAdd.onclick = function() { bulkCoin(id, 'mako', 1); };
-
-    var mSub = document.createElement('button');
-    mSub.className = 'c-add-btn sub-mako';
-    mSub.innerHTML = '&minus;SUB';
-    mSub.onclick = function() { bulkCoin(id, 'mako', -1); };
-
-    makoRow.appendChild(mImg);
-    makoRow.appendChild(mLbl);
-    makoRow.appendChild(mMinus);
-    makoRow.appendChild(mVal);
-    makoRow.appendChild(mPlus);
-    makoRow.appendChild(mInp);
-    makoRow.appendChild(mAdd);
-    makoRow.appendChild(mSub);
-
-    coinControls.appendChild(goldRow);
-    coinControls.appendChild(makoRow);
+    raisedSection.appendChild(raisedDisplay);
+    raisedSection.appendChild(adjRow);
+    raisedSection.appendChild(hint);
 
     row.appendChild(topRow);
-    row.appendChild(coinControls);
+    row.appendChild(raisedSection);
     list.appendChild(row);
   });
 }
 
-function escHtml(s) {
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+async function addTeam(){
+  var inp=document.getElementById('newTeamName');
+  var btn=document.getElementById('addTeamBtn');
+  var name=inp.value.trim();
+  if(!name){inp.focus();return;}
+  btn.disabled=true;btn.textContent='Saving...';
+  var id='team_'+Date.now();
+  var team={name:name,raised:0};
+  try{
+    var res=await fetch(FB+'/teams/'+id+'.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(team)});
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    teams[id]=team;inp.value='';
+    updateAdminProgress();renderTeams();showToast('Team added: '+name);
+  }catch(e){showToast('Save failed: '+e.message);}
+  finally{btn.disabled=false;btn.textContent='+ ADD TEAM';}
 }
 
-// ADD TEAM
-async function addTeam() {
-  var inp = document.getElementById('newTeamName');
-  var btn = document.getElementById('addTeamBtn');
-  var name = inp.value.trim();
-  if (!name) { inp.focus(); return; }
-  btn.disabled = true;
-  btn.textContent = 'Saving...';
-  var id = 'team_' + Date.now();
-  var team = { name: name, gold: 0, mako: 0 };
-  try {
-    var res = await fetch(FB + '/teams/' + id + '.json', {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(team)
-    });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    teams[id] = team;
-    inp.value = '';
-    renderTeams();
-    showToast('Team added: ' + name);
-  } catch(e) {
-    showToast('Save failed: ' + e.message);
-    console.error('addTeam failed:', e);
-  } finally {
-    btn.disabled = false;
-    btn.textContent = '+ ADD TEAM';
-  }
+function startEdit(id){
+  editingId=id;
+  document.getElementById('dn_'+id).style.display='none';
+  document.getElementById('ei_'+id).style.display='block';
+  document.getElementById('eb_'+id).style.display='none';
+  document.getElementById('sb_'+id).style.display='inline-block';
+  document.getElementById('ei_'+id).focus();
 }
-
-// EDIT NAME
-function startEdit(id) {
-  editingId = id;
-  document.getElementById('dn_' + id).style.display = 'none';
-  document.getElementById('ei_' + id).style.display = 'block';
-  document.getElementById('eb_' + id).style.display = 'none';
-  document.getElementById('sb_' + id).style.display = 'inline-block';
-  document.getElementById('ei_' + id).focus();
-}
-
-async function saveName(id) {
-  var inp = document.getElementById('ei_' + id);
-  var newName = inp.value.trim();
-  if (!newName) return;
-  try {
-    var res = await fetch(FB + '/teams/' + id + '/name.json', {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newName)
-    });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    teams[id].name = newName;
-    editingId = null;
-    document.getElementById('dn_' + id).textContent = newName;
-    document.getElementById('dn_' + id).style.display = '';
-    document.getElementById('ei_' + id).style.display = 'none';
-    document.getElementById('eb_' + id).style.display = '';
-    document.getElementById('sb_' + id).style.display = 'none';
+async function saveName(id){
+  var inp=document.getElementById('ei_'+id);
+  var newName=inp.value.trim();if(!newName)return;
+  try{
+    var res=await fetch(FB+'/teams/'+id+'/name.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(newName)});
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    teams[id].name=newName;editingId=null;
+    document.getElementById('dn_'+id).textContent=newName;
+    document.getElementById('dn_'+id).style.display='';
+    document.getElementById('ei_'+id).style.display='none';
+    document.getElementById('eb_'+id).style.display='';
+    document.getElementById('sb_'+id).style.display='none';
     showToast('Name saved!');
-  } catch(e) { editingId = null; showToast('Error: ' + e.message); }
+  }catch(e){editingId=null;showToast('Error: '+e.message);}
+}
+async function delTeam(id){
+  var name=teams[id]?teams[id].name:id;
+  if(!confirm('Remove '+name+'? This cannot be undone.'))return;
+  try{
+    var res=await fetch(FB+'/teams/'+id+'.json',{method:'DELETE',headers:{'Content-Type':'application/json'}});
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    delete teams[id];updateAdminProgress();renderTeams();showToast(name+' removed');
+  }catch(e){showToast('Error: '+e.message);}
 }
 
-// DELETE
-async function delTeam(id) {
-  var name = teams[id] ? teams[id].name : id;
-  if (!confirm('Remove ' + name + '? This cannot be undone.')) return;
-  try {
-    var res = await fetch(FB + '/teams/' + id + '.json', {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' }
-    });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    delete teams[id];
-    renderTeams();
-    showToast(name + ' removed');
-  } catch(e) { showToast('Error: ' + e.message); }
+async function adjRaised(id,sign){
+  var inp=document.getElementById('ri_'+id);
+  var amount=Math.max(1,parseInt(inp.value)||1);
+  var cur=(teams[id]&&teams[id].raised)||0;
+  var nv=Math.max(0,cur+sign*amount);
+  await saveRaised(id,nv);
+  showToast((sign>0?'+':'-')+'R'+amount.toLocaleString('en-ZA')+' for '+(teams[id]?teams[id].name:id));
 }
-
-// COINS
-async function adjCoin(id, type, delta) {
-  var cur = (teams[id] && teams[id][type]) || 0;
-  var nv = Math.max(0, cur + delta);
-  teams[id][type] = nv;
-  document.getElementById((type === 'gold' ? 'cg_' : 'cm_') + id).textContent = nv;
-  try {
-    await fetch(FB + '/teams/' + id + '/' + type + '.json', {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(nv)
-    });
-  } catch(e) { console.error('adjCoin failed:', e); }
+async function setRaised(id){
+  var inp=document.getElementById('ri_'+id);
+  var amount=Math.max(0,parseInt(inp.value)||0);
+  var name=teams[id]?teams[id].name:id;
+  if(!confirm('Set '+name+' raised amount to R'+amount.toLocaleString('en-ZA')+'?'))return;
+  await saveRaised(id,amount);
+  showToast('Set to R'+amount.toLocaleString('en-ZA')+' for '+name);
 }
-
-async function bulkCoin(id, type, sign) {
-  var inp = document.getElementById((type === 'gold' ? 'cgi_' : 'cmi_') + id);
-  var amount = Math.max(1, parseInt(inp.value) || 1);
-  await adjCoin(id, type, sign * amount);
-  var name = teams[id] ? teams[id].name : id;
-  showToast((sign > 0 ? '+' : '-') + amount + ' ' + (type === 'gold' ? 'Gold Mako' : 'Mako Coins') + ' for ' + name);
+async function saveRaised(id,nv){
+  teams[id].raised=nv;
+  document.getElementById('rv_'+id).textContent=fmtRand(nv);
+  updateAdminProgress();
+  try{
+    await fetch(FB+'/teams/'+id+'/raised.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(nv)});
+  }catch(e){console.error('saveRaised failed:',e);}
 }
-
-// RESET ALL
-async function resetAll() {
-  if (!confirm('Reset ALL coin balances to zero? Cannot be undone.')) return;
-  var ids = Object.keys(teams);
-  try {
-    await Promise.all(ids.map(function(id) {
-      return Promise.all([
-        fetch(FB + '/teams/' + id + '/gold.json', { method:'PUT', headers:{'Content-Type':'application/json'}, body:'0' }),
-        fetch(FB + '/teams/' + id + '/mako.json', { method:'PUT', headers:{'Content-Type':'application/json'}, body:'0' })
-      ]);
+async function resetAll(){
+  if(!confirm('Reset ALL fundraising amounts to zero? Cannot be undone.'))return;
+  var ids=Object.keys(teams);
+  try{
+    await Promise.all(ids.map(function(id){
+      return fetch(FB+'/teams/'+id+'/raised.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:'0'});
     }));
-    ids.forEach(function(id) { teams[id].gold = 0; teams[id].mako = 0; });
-    renderTeams();
-    showToast('All balances reset to zero');
-  } catch(e) { showToast('Error: ' + e.message); }
+    ids.forEach(function(id){teams[id].raised=0;});
+    updateAdminProgress();renderTeams();showToast('All balances reset to zero');
+  }catch(e){showToast('Error: '+e.message);}
 }
 
-// INIT
 loadTeams();
-setInterval(loadTeams, 10000);
+setInterval(loadTeams,10000);
 </script>
 </body>
 </html>
