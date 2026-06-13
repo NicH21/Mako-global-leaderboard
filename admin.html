@@ -24,36 +24,15 @@
     .goal-total{font-family:'Bangers',cursive;font-size:22px;color:#6bcb77}
     .goal-remaining{font-size:12px;color:rgba(168,228,255,0.4)}
 
-    /* Multiplier selector */
-    .mult-card-title{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(168,228,255,0.5);margin-bottom:14px}
-    .mult-options{display:flex;flex-direction:column;gap:10px}
-    .mult-option{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:11px;border:1.5px solid rgba(0,229,255,0.12);background:rgba(2,11,24,0.4);cursor:pointer;transition:border-color 0.2s,background 0.2s;position:relative}
-    .mult-option:hover{border-color:rgba(0,229,255,0.3);background:rgba(2,11,24,0.6)}
-    .mult-option.selected{border-color:rgba(116,192,252,0.6);background:rgba(116,192,252,0.08)}
-    .mult-option.selected.gold-tier{border-color:rgba(240,192,64,0.6);background:rgba(240,192,64,0.07)}
-    .mult-option.selected.silver-tier{border-color:rgba(168,228,255,0.5);background:rgba(168,228,255,0.07)}
-    .mult-cb{width:18px;height:18px;border-radius:5px;border:2px solid rgba(0,229,255,0.4);background:transparent;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background 0.15s,border-color 0.15s}
-    .mult-cb.checked{background:#74c0fc;border-color:#74c0fc}
-    .mult-cb.checked.gold-cb{background:#f0c040;border-color:#f0c040}
-    .mult-cb svg{display:none}
-    .mult-cb.checked svg{display:block}
-    .mult-info{flex:1}
-    .mult-label{font-size:14px;font-weight:900;color:#a8e4ff;margin-bottom:2px}
-    .mult-desc{font-size:11px;color:rgba(168,228,255,0.45);letter-spacing:0.5px}
-    .mult-badge{font-family:'Bangers',cursive;font-size:20px;padding:4px 12px;border-radius:8px;white-space:nowrap}
-    .badge-2x{background:rgba(240,192,64,0.15);color:#f0c040;border:1px solid rgba(240,192,64,0.3)}
-    .badge-15x{background:rgba(168,228,255,0.1);color:#a8e4ff;border:1px solid rgba(168,228,255,0.25)}
-    .badge-1x{background:rgba(116,192,252,0.1);color:#74c0fc;border:1px solid rgba(116,192,252,0.2)}
-    .mult-active-note{font-size:12px;color:rgba(168,228,255,0.5);margin-top:12px;padding:8px 12px;border-radius:8px;background:rgba(2,11,24,0.4);border:1px solid rgba(0,229,255,0.1);letter-spacing:0.5px}
-    .mult-active-note strong{color:#74c0fc}
-
-    /* Team list */
+    /* Add team */
     .add-team-row{display:flex;gap:10px;flex-wrap:wrap}
     .team-name-inp{flex:1;min-width:160px;background:rgba(5,30,55,0.8);border:1px solid rgba(0,229,255,0.25);border-radius:9px;padding:10px 14px;color:#a8e4ff;font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;outline:none;transition:border-color 0.2s}
     .team-name-inp:focus{border-color:rgba(0,229,255,0.7)}
     .add-team-btn{font-family:'Bangers',cursive;font-size:19px;letter-spacing:1px;padding:10px 22px;border-radius:10px;border:2px solid #6bcb77;box-shadow:0 0 10px rgba(107,203,119,0.3);cursor:pointer;background:rgba(2,11,24,0.85);color:white;transition:transform 0.1s,box-shadow 0.2s;white-space:nowrap}
     .add-team-btn:hover{transform:translateY(-2px);box-shadow:0 0 22px rgba(107,203,119,0.6)}
     .add-team-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+
+    /* Teams list */
     .teams-list{display:flex;flex-direction:column;gap:12px}
     .team-admin-row{background:rgba(2,11,24,0.55);border-radius:14px;border:1px solid rgba(0,229,255,0.1);padding:14px 16px}
     .team-top-row{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
@@ -64,12 +43,16 @@
     .tag-edit{border-color:rgba(0,229,255,0.3);color:#a8e4ff}.tag-edit:hover{background:rgba(0,229,255,0.1)}
     .tag-save{border-color:rgba(107,203,119,0.4);color:#6bcb77;display:none}.tag-save:hover{background:rgba(107,203,119,0.1)}
     .tag-del{border-color:rgba(255,107,107,0.3);color:#ff6b6b}.tag-del:hover{background:rgba(255,64,64,0.1)}
+
+    /* Raised display */
     .raised-section{display:flex;flex-direction:column;gap:10px}
     .raised-display{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
     .raised-label{font-size:11px;font-weight:700;letter-spacing:1.5px;color:rgba(168,228,255,0.4);text-transform:uppercase;align-self:center}
     .raised-val{font-family:'Bangers',cursive;font-size:30px;color:#6bcb77;min-width:80px}
     .coins-calc{font-size:13px;color:#74c0fc;font-weight:700;align-self:center}
-    .adj-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+
+    /* Add funds row */
+    .add-funds-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
     .rand-prefix{font-family:'Bangers',cursive;font-size:18px;color:rgba(168,228,255,0.5)}
     .r-inp{width:110px;padding:9px 10px;border-radius:8px;border:1px solid rgba(0,229,255,0.25);background:rgba(2,11,24,0.7);color:white;font-family:'Nunito',sans-serif;font-size:16px;font-weight:700;text-align:center;outline:none;transition:border-color 0.2s}
     .r-inp:focus{border-color:rgba(0,229,255,0.6)}
@@ -79,6 +62,44 @@
     .r-btn.sub{border-color:#ff6b6b;color:#ff6b6b}.r-btn.sub:hover{background:rgba(255,64,64,0.1)}
     .r-btn.set{border-color:#74c0fc;color:#74c0fc}.r-btn.set:hover{background:rgba(116,192,252,0.1)}
     .adj-hint{font-size:11px;color:rgba(168,228,255,0.3);letter-spacing:0.5px}
+
+    /* Deposit history */
+    .deposits-list{display:flex;flex-direction:column;gap:6px;margin-top:4px}
+    .deposit-item{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;background:rgba(2,11,24,0.4);border:1px solid rgba(0,229,255,0.08);font-size:12px;flex-wrap:wrap}
+    .dep-amount{font-family:'Bangers',cursive;font-size:16px;color:#6bcb77;min-width:64px}
+    .dep-coins{font-family:'Bangers',cursive;font-size:14px;color:#74c0fc}
+    .dep-period{font-size:11px;color:rgba(168,228,255,0.4);flex:1}
+    .dep-del{font-size:11px;padding:3px 8px;border-radius:5px;border:1px solid rgba(255,107,107,0.25);color:rgba(255,107,107,0.55);background:transparent;cursor:pointer;margin-left:auto;flex-shrink:0}
+    .dep-del:hover{background:rgba(255,64,64,0.1);color:#ff6b6b}
+    .no-deposits{font-size:11px;color:rgba(168,228,255,0.25);letter-spacing:1px;padding:4px 0}
+
+    /* Date modal */
+    .dmodal-overlay{display:none;position:fixed;inset:0;background:rgba(2,11,24,0.88);backdrop-filter:blur(6px);z-index:200;align-items:center;justify-content:center}
+    .dmodal-overlay.open{display:flex}
+    .dmodal{background:linear-gradient(145deg,rgba(5,20,40,0.98),rgba(2,11,24,0.98));border:2px solid rgba(0,229,255,0.3);border-radius:20px;padding:28px 28px 24px;width:90%;max-width:380px;box-shadow:0 0 40px rgba(0,229,255,0.1),0 20px 60px rgba(0,0,0,0.5)}
+    .dmodal h2{font-family:'Bangers',cursive;font-size:28px;letter-spacing:2px;color:#a8e4ff;margin-bottom:4px}
+    .dmodal-sub{font-size:12px;color:rgba(168,228,255,0.4);letter-spacing:1px;margin-bottom:20px}
+    .dmodal-amount{font-family:'Bangers',cursive;font-size:36px;color:#6bcb77;margin-bottom:20px}
+    .period-options{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+    .period-opt{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:11px;border:1.5px solid rgba(0,229,255,0.12);background:rgba(2,11,24,0.4);cursor:pointer;transition:border-color 0.2s,background 0.2s}
+    .period-opt:hover{border-color:rgba(0,229,255,0.35);background:rgba(2,11,24,0.7)}
+    .period-opt.p-gold{}.period-opt.p-gold:hover{border-color:rgba(240,192,64,0.5)}
+    .period-opt.p-silver:hover{border-color:rgba(168,228,255,0.4)}
+    .period-opt.p-blue:hover{border-color:rgba(116,192,252,0.4)}
+    .period-radio{width:16px;height:16px;border-radius:50%;border:2px solid rgba(0,229,255,0.4);background:transparent;flex-shrink:0;transition:background 0.15s,border-color 0.15s}
+    .period-info{flex:1}
+    .period-name{font-size:14px;font-weight:900;color:#a8e4ff;margin-bottom:2px}
+    .period-desc{font-size:11px;color:rgba(168,228,255,0.4)}
+    .period-rate{font-family:'Bangers',cursive;font-size:18px;white-space:nowrap}
+    .rate-gold{color:#f0c040}.rate-silver{color:#a8e4ff}.rate-blue{color:#74c0fc}
+    .dmodal-btns{display:flex;gap:10px;justify-content:flex-end}
+    .dmodal-cancel{font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;padding:9px 20px;border-radius:9px;border:1px solid rgba(168,228,255,0.2);background:transparent;color:rgba(168,228,255,0.5);cursor:pointer}
+    .dmodal-cancel:hover{background:rgba(168,228,255,0.08);color:#a8e4ff}
+    .dmodal-confirm{font-family:'Bangers',cursive;font-size:18px;padding:9px 22px;border-radius:9px;border:2px solid #6bcb77;background:rgba(2,11,24,0.85);color:white;cursor:pointer;letter-spacing:1px;transition:box-shadow 0.2s}
+    .dmodal-confirm:hover{box-shadow:0 0 16px rgba(107,203,119,0.4)}
+    .dmodal-confirm:disabled{opacity:0.4;cursor:not-allowed}
+    .period-preview{font-size:13px;color:#74c0fc;font-weight:700;min-height:20px;margin-bottom:16px}
+
     .no-teams{font-size:14px;color:rgba(168,228,255,0.35);text-align:center;padding:24px 0;letter-spacing:1px}
     .danger-btn{font-family:'Bangers',cursive;font-size:18px;letter-spacing:2px;padding:12px 24px;border-radius:12px;border:2px solid #ff6b6b;box-shadow:0 0 12px rgba(255,107,107,0.3);cursor:pointer;background:rgba(2,11,24,0.85);color:white;width:100%;transition:box-shadow 0.2s}
     .danger-btn:hover{box-shadow:0 0 26px rgba(255,107,107,0.6)}
@@ -96,6 +117,50 @@
 <script>
 for(var _bi=0;_bi<12;_bi++){var _bb=document.createElement('div');_bb.className='bubble';var _bs=6+Math.random()*18;_bb.style.cssText='width:'+_bs+'px;height:'+_bs+'px;left:'+(Math.random()*100)+'%;animation-duration:'+(9+Math.random()*10)+'s;animation-delay:-'+(Math.random()*12)+'s';document.body.appendChild(_bb);}
 </script>
+
+<!-- Date/period picker modal -->
+<div class="dmodal-overlay" id="dmodal">
+  <div class="dmodal">
+    <h2>When was it received?</h2>
+    <div class="dmodal-sub">Select the period funds arrived in the MAKO bank account</div>
+    <div class="dmodal-amount" id="dmodalAmount">R0</div>
+    <div class="period-options">
+
+      <div class="period-opt p-gold" id="popt_2x" onclick="selectPeriod('2x')">
+        <div class="period-radio" id="prad_2x"></div>
+        <div class="period-info">
+          <div class="period-name">By 30 June</div>
+          <div class="period-desc">Received in MAKO bank account by 30 June</div>
+        </div>
+        <span class="period-rate rate-gold">2x &mdash; 20 coins/R1</span>
+      </div>
+
+      <div class="period-opt p-silver" id="popt_1x5" onclick="selectPeriod('1x5')">
+        <div class="period-radio" id="prad_1x5"></div>
+        <div class="period-info">
+          <div class="period-name">By 15 July</div>
+          <div class="period-desc">Received in MAKO bank account by 15 July</div>
+        </div>
+        <span class="period-rate rate-silver">1.5x &mdash; 15 coins/R1</span>
+      </div>
+
+      <div class="period-opt p-blue" id="popt_1x" onclick="selectPeriod('1x')">
+        <div class="period-radio" id="prad_1x"></div>
+        <div class="period-info">
+          <div class="period-name">16 July &ndash; day before swimathon</div>
+          <div class="period-desc">Received from 16 July up to the swimathon</div>
+        </div>
+        <span class="period-rate rate-blue">1x &mdash; 10 coins/R1</span>
+      </div>
+
+    </div>
+    <div class="period-preview" id="periodPreview"></div>
+    <div class="dmodal-btns">
+      <button class="dmodal-cancel" onclick="closeDateModal()">Cancel</button>
+      <button class="dmodal-confirm" id="dmodalConfirm" onclick="confirmDeposit()" disabled>CONFIRM</button>
+    </div>
+  </div>
+</div>
 
 <div class="content">
   <h1>GLOBAL ADMIN</h1>
@@ -115,49 +180,6 @@ for(var _bi=0;_bi<12;_bi++){var _bb=document.createElement('div');_bb.className=
         <span class="goal-bar-pct" id="adminBarPct"></span>
       </div>
     </div>
-  </div>
-
-  <!-- Coin multiplier selector -->
-  <div class="card">
-    <div class="mult-card-title">Coin Multiplier Period</div>
-    <p style="font-size:12px;color:rgba(168,228,255,0.4);margin-bottom:14px;letter-spacing:0.5px">Select which period funds were received in. This determines how many MAKO Coins each Rand earns. Base rate is R1 = 10 coins.</p>
-    <div class="mult-options">
-
-      <div class="mult-option gold-tier" id="opt_2x" onclick="selectMult('2x')">
-        <div class="mult-cb gold-cb" id="cb_2x">
-          <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="mult-info">
-          <div class="mult-label">By 30 June</div>
-          <div class="mult-desc">Funds received in MAKO bank account by 30 June 2025</div>
-        </div>
-        <span class="mult-badge badge-2x">2x &mdash; 20 coins / R1</span>
-      </div>
-
-      <div class="mult-option silver-tier" id="opt_1x5" onclick="selectMult('1x5')">
-        <div class="mult-cb" id="cb_1x5">
-          <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="mult-info">
-          <div class="mult-label">By 15 July</div>
-          <div class="mult-desc">Funds received in MAKO bank account by 15 July 2025</div>
-        </div>
-        <span class="mult-badge badge-15x">1.5x &mdash; 15 coins / R1</span>
-      </div>
-
-      <div class="mult-option" id="opt_1x" onclick="selectMult('1x')">
-        <div class="mult-cb" id="cb_1x">
-          <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="mult-info">
-          <div class="mult-label">16 July to day before swimathon</div>
-          <div class="mult-desc">Funds received from 16 July up to the day before the swimathon</div>
-        </div>
-        <span class="mult-badge badge-1x">1x &mdash; 10 coins / R1</span>
-      </div>
-
-    </div>
-    <div class="mult-active-note" id="multActiveNote">Select a period above to see the coin rate that will apply.</div>
   </div>
 
   <div class="card">
@@ -194,66 +216,124 @@ var teams={};
 var editingId=null;
 var inputFocused=false;
 
-// Multiplier state — persisted in localStorage so it survives page refresh
-var MULT_KEY='mako_mult';
-var activeMult=localStorage.getItem(MULT_KEY)||'';
-
-var MULT_CONFIG={
-  '2x': {label:'By 30 June',rate:20,desc:'20 MAKO Coins per R1'},
-  '1x5':{label:'By 15 July',rate:15,desc:'15 MAKO Coins per R1'},
-  '1x': {label:'16 July – day before swimathon',rate:10,desc:'10 MAKO Coins per R1'}
+var PERIODS={
+  '2x': {label:'By 30 June',rate:20,rateLabel:'20 coins/R1 (2x)'},
+  '1x5':{label:'By 15 July',rate:15,rateLabel:'15 coins/R1 (1.5x)'},
+  '1x': {label:'16 Jul – swimathon',rate:10,rateLabel:'10 coins/R1 (1x)'}
 };
 
-function calcCoins(raised){
-  if(!activeMult||!MULT_CONFIG[activeMult])return null;
-  return Math.round(raised*MULT_CONFIG[activeMult].rate);
-}
-function fmtCoins(n){return n!==null?n.toLocaleString('en-ZA')+' coins':'';}
+// Modal state
+var modalTeamId=null;
+var modalSign=1; // +1 add, -1 sub
+var modalAmount=0;
+var selectedPeriod=null;
+
 function fmtRand(n){return 'R'+Math.round(n).toLocaleString('en-ZA');}
+function fmtCoins(n){return Math.round(n).toLocaleString('en-ZA');}
 
-function selectMult(key){
-  activeMult=key;
-  localStorage.setItem(MULT_KEY,key);
-  // Update visual state
-  ['2x','1x5','1x'].forEach(function(k){
-    var opt=document.getElementById('opt_'+k);
-    var cb=document.getElementById('cb_'+k);
-    if(k===key){opt.classList.add('selected');cb.classList.add('checked');}
-    else{opt.classList.remove('selected');cb.classList.remove('checked');}
-  });
-  var cfg=MULT_CONFIG[key];
-  document.getElementById('multActiveNote').innerHTML=
-    'Active: <strong>'+cfg.label+'</strong> &mdash; '+cfg.desc+'. Coin counts shown below will update.';
-  renderTeams();
-}
-
-// Apply saved selection on load
-(function(){
-  if(activeMult&&MULT_CONFIG[activeMult]){
-    var opt=document.getElementById('opt_'+activeMult);
-    var cb=document.getElementById('cb_'+activeMult);
-    if(opt)opt.classList.add('selected');
-    if(cb)cb.classList.add('checked');
-    var cfg=MULT_CONFIG[activeMult];
-    document.getElementById('multActiveNote').innerHTML=
-      'Active: <strong>'+cfg.label+'</strong> &mdash; '+cfg.desc+'.';
-  }
-})();
-
-function showToast(msg){var el=document.getElementById('toastEl');el.textContent=msg;el.classList.add('show');setTimeout(function(){el.classList.remove('show');},2600);}
+function showToast(msg){var el=document.getElementById('toastEl');el.textContent=msg;el.classList.add('show');setTimeout(function(){el.classList.remove('show');},2800);}
 function setConnStatus(ok,msg){var el=document.getElementById('connStatus');el.textContent=msg;el.className='conn-status '+(ok?'conn-ok':'conn-err');}
 
+// ---- Date modal ----
+function openDateModal(teamId, sign, amount){
+  modalTeamId=teamId;
+  modalSign=sign;
+  modalAmount=amount;
+  selectedPeriod=null;
+  // Reset UI
+  ['2x','1x5','1x'].forEach(function(k){
+    document.getElementById('popt_'+k).style.borderColor='';
+    document.getElementById('prad_'+k).style.background='transparent';
+    document.getElementById('prad_'+k).style.borderColor='rgba(0,229,255,0.4)';
+  });
+  document.getElementById('dmodalAmount').textContent=(sign>0?'+':'-')+fmtRand(amount);
+  document.getElementById('dmodalAmount').style.color=sign>0?'#6bcb77':'#ff6b6b';
+  document.getElementById('periodPreview').textContent='';
+  document.getElementById('dmodalConfirm').disabled=true;
+  document.getElementById('dmodal').classList.add('open');
+}
+
+function selectPeriod(key){
+  selectedPeriod=key;
+  ['2x','1x5','1x'].forEach(function(k){
+    var opt=document.getElementById('popt_'+k);
+    var rad=document.getElementById('prad_'+k);
+    if(k===key){
+      opt.style.borderColor=k==='2x'?'rgba(240,192,64,0.6)':k==='1x5'?'rgba(168,228,255,0.5)':'rgba(116,192,252,0.5)';
+      opt.style.background='rgba(2,11,24,0.7)';
+      rad.style.background=k==='2x'?'#f0c040':k==='1x5'?'#a8e4ff':'#74c0fc';
+      rad.style.borderColor=k==='2x'?'#f0c040':k==='1x5'?'#a8e4ff':'#74c0fc';
+    }else{
+      opt.style.borderColor='';
+      opt.style.background='';
+      rad.style.background='transparent';
+      rad.style.borderColor='rgba(0,229,255,0.4)';
+    }
+  });
+  var coins=Math.round(modalAmount*PERIODS[key].rate);
+  var sign=modalSign>0?'+':'-';
+  document.getElementById('periodPreview').textContent=
+    sign+fmtRand(modalAmount)+' = '+fmtCoins(coins)+' MAKO coins ('+PERIODS[key].rateLabel+')';
+  document.getElementById('dmodalConfirm').disabled=false;
+}
+
+function closeDateModal(){
+  document.getElementById('dmodal').classList.remove('open');
+  modalTeamId=null;selectedPeriod=null;
+}
+
+async function confirmDeposit(){
+  if(!selectedPeriod||!modalTeamId)return;
+  var t=teams[modalTeamId];
+  if(!t)return;
+  var rate=PERIODS[selectedPeriod].rate;
+  var signedAmount=modalSign*modalAmount;
+  var coinsDelta=modalSign*Math.round(modalAmount*rate);
+
+  // Add a deposit record
+  var deposit={
+    amount:signedAmount,
+    coins:coinsDelta,
+    period:selectedPeriod,
+    periodLabel:PERIODS[selectedPeriod].label,
+    ts:Date.now()
+  };
+
+  // Update totals
+  var newRaised=Math.max(0,(t.raised||0)+signedAmount);
+  var newCoins=Math.max(0,(t.coins||0)+coinsDelta);
+  var deposits=t.deposits?JSON.parse(JSON.stringify(t.deposits)):[];
+  deposits.push(deposit);
+
+  closeDateModal();
+
+  try{
+    await fetch(FB+'/teams/'+modalTeamId+'.json',{
+      method:'PATCH',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({raised:newRaised,coins:newCoins,deposits:deposits})
+    });
+    teams[modalTeamId].raised=newRaised;
+    teams[modalTeamId].coins=newCoins;
+    teams[modalTeamId].deposits=deposits;
+    updateAdminProgress();
+    renderTeams();
+    showToast((signedAmount>0?'+':'')+fmtRand(signedAmount)+' = '+fmtCoins(Math.abs(coinsDelta))+' coins for '+t.name);
+  }catch(e){showToast('Error: '+e.message);}
+}
+
+// ---- Progress ----
 function updateAdminProgress(){
   var total=Object.values(teams).reduce(function(s,t){return s+(t.raised||0);},0);
   var pct=Math.min(100,total/GOAL*100);
   var remaining=Math.max(0,GOAL-total);
   document.getElementById('adminTotal').textContent=fmtRand(total);
   document.getElementById('adminRemaining').textContent=remaining>0?fmtRand(remaining)+' remaining':'Goal reached!';
-  var bar=document.getElementById('adminBar');
-  bar.style.width=pct.toFixed(1)+'%';
+  document.getElementById('adminBar').style.width=pct.toFixed(1)+'%';
   document.getElementById('adminBarPct').textContent=pct>=12?pct.toFixed(1)+'%':'';
 }
 
+// ---- Load ----
 async function loadTeams(){
   try{
     var res=await fetch(FB+'/teams.json');
@@ -269,56 +349,135 @@ async function loadTeams(){
   }
 }
 
+// ---- Render ----
 function renderTeams(){
   var list=document.getElementById('teamsList');
   var keys=Object.keys(teams);
   document.getElementById('teamsCardTitle').textContent='Teams & Fundraising ('+keys.length+')';
   if(keys.length===0){list.innerHTML='<div class="no-teams">No teams yet — add one above</div>';return;}
   list.innerHTML='';
+
   keys.forEach(function(id){
     var t=teams[id];
     var raised=t.raised||0;
-    var coins=calcCoins(raised);
+    var coins=t.coins||0;
+    var deposits=t.deposits||[];
 
     var row=document.createElement('div');row.className='team-admin-row';
 
-    // Top row
+    // Top row: name + coin badge + edit/delete
     var topRow=document.createElement('div');topRow.className='team-top-row';
     var dn=document.createElement('span');dn.className='team-display-name';dn.id='dn_'+id;dn.textContent=t.name;
-    var coinBadge=document.createElement('span');coinBadge.className='team-coin-badge';coinBadge.id='cb2_'+id;
-    coinBadge.textContent=coins!==null?'('+coins.toLocaleString('en-ZA')+' coins)':'(select period)';
+    var coinBadge=document.createElement('span');coinBadge.className='team-coin-badge';coinBadge.id='cb_'+id;
+    coinBadge.textContent='('+fmtCoins(coins)+' coins)';
     var ei=document.createElement('input');ei.className='team-edit-inp';ei.id='ei_'+id;ei.type='text';ei.value=t.name;ei.maxLength=30;ei.style.display='none';
-    var editBtn=document.createElement('button');editBtn.className='tag-btn tag-edit';editBtn.id='eb_'+id;editBtn.textContent='Edit';editBtn.onclick=function(){startEdit(id);};
-    var saveBtn=document.createElement('button');saveBtn.className='tag-btn tag-save';saveBtn.id='sb_'+id;saveBtn.textContent='Save';saveBtn.style.display='none';saveBtn.onclick=function(){saveName(id);};
-    var delBtn=document.createElement('button');delBtn.className='tag-btn tag-del';delBtn.textContent='Remove';delBtn.onclick=function(){delTeam(id);};
+    ei.addEventListener('focus',function(){inputFocused=true;});
+    ei.addEventListener('blur',function(){inputFocused=false;});
+    var editBtn=document.createElement('button');editBtn.className='tag-btn tag-edit';editBtn.id='eb_'+id;editBtn.textContent='Edit';
+    editBtn.onclick=(function(tid){return function(){startEdit(tid);};})(id);
+    var saveBtn=document.createElement('button');saveBtn.className='tag-btn tag-save';saveBtn.id='sb_'+id;saveBtn.textContent='Save';saveBtn.style.display='none';
+    saveBtn.onclick=(function(tid){return function(){saveName(tid);};})(id);
+    var delBtn=document.createElement('button');delBtn.className='tag-btn tag-del';delBtn.textContent='Remove';
+    delBtn.onclick=(function(tid){return function(){delTeam(tid);};})(id);
     topRow.appendChild(dn);topRow.appendChild(coinBadge);topRow.appendChild(ei);topRow.appendChild(editBtn);topRow.appendChild(saveBtn);topRow.appendChild(delBtn);
 
-    // Raised section
+    // Raised display
     var raisedSection=document.createElement('div');raisedSection.className='raised-section';
     var raisedDisplay=document.createElement('div');raisedDisplay.className='raised-display';
-    var rLabel=document.createElement('span');rLabel.className='raised-label';rLabel.textContent='Amount Raised';
+    var rLabel=document.createElement('span');rLabel.className='raised-label';rLabel.textContent='Total Raised';
     var rVal=document.createElement('span');rVal.className='raised-val';rVal.id='rv_'+id;rVal.textContent=fmtRand(raised);
     var coinsDisp=document.createElement('span');coinsDisp.className='coins-calc';coinsDisp.id='cc_'+id;
-    coinsDisp.textContent=coins!==null?'= '+coins.toLocaleString('en-ZA')+' MAKO coins':'';
+    coinsDisp.textContent='= '+fmtCoins(coins)+' MAKO coins';
     raisedDisplay.appendChild(rLabel);raisedDisplay.appendChild(rVal);raisedDisplay.appendChild(coinsDisp);
 
-    var adjRow=document.createElement('div');adjRow.className='adj-row';
+    // Add funds row
+    var addFundsRow=document.createElement('div');addFundsRow.className='add-funds-row';
     var pfx=document.createElement('span');pfx.className='rand-prefix';pfx.textContent='R';
-    var inp=document.createElement('input');inp.className='r-inp';inp.id='ri_'+id;inp.type='number';inp.value=100;inp.min=1;inp.max=999999;
+    var inp=document.createElement('input');inp.className='r-inp';inp.id='ri_'+id;inp.type='number';inp.value=100;inp.min=1;inp.max=999999;inp.placeholder='Amount';
     inp.addEventListener('focus',function(){inputFocused=true;});
     inp.addEventListener('blur',function(){inputFocused=false;});
-    var addBtn=document.createElement('button');addBtn.className='r-btn add';addBtn.textContent='+ADD';addBtn.onclick=function(){adjRaised(id,1);};
-    var subBtn=document.createElement('button');subBtn.className='r-btn sub';subBtn.innerHTML='&minus;SUB';subBtn.onclick=function(){adjRaised(id,-1);};
-    var setBtn=document.createElement('button');setBtn.className='r-btn set';setBtn.textContent='SET';setBtn.onclick=function(){setRaised(id);};
-    var hint=document.createElement('span');hint.className='adj-hint';hint.textContent='ADD/SUB adjusts · SET replaces total';
-    adjRow.appendChild(pfx);adjRow.appendChild(inp);adjRow.appendChild(addBtn);adjRow.appendChild(subBtn);adjRow.appendChild(setBtn);
+    var addBtn=document.createElement('button');addBtn.className='r-btn add';addBtn.textContent='+ADD';
+    addBtn.onclick=(function(tid){return function(){promptDeposit(tid,1);};})(id);
+    var subBtn=document.createElement('button');subBtn.className='r-btn sub';subBtn.innerHTML='&minus;SUB';
+    subBtn.onclick=(function(tid){return function(){promptDeposit(tid,-1);};})(id);
+    var hint=document.createElement('span');hint.className='adj-hint';hint.textContent='Enter amount then ADD or SUB — you\'ll be asked when funds were received';
+    addFundsRow.appendChild(pfx);addFundsRow.appendChild(inp);addFundsRow.appendChild(addBtn);addFundsRow.appendChild(subBtn);
 
-    raisedSection.appendChild(raisedDisplay);raisedSection.appendChild(adjRow);raisedSection.appendChild(hint);
-    row.appendChild(topRow);row.appendChild(raisedSection);
+    // Deposit history
+    var depSection=document.createElement('div');
+    var depLabel=document.createElement('div');
+    depLabel.style.cssText='font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(168,228,255,0.3);margin-bottom:6px;margin-top:4px';
+    depLabel.textContent='Deposit history';
+    depSection.appendChild(depLabel);
+
+    var depList=document.createElement('div');depList.className='deposits-list';depList.id='dl_'+id;
+    if(deposits.length===0){
+      var nd=document.createElement('div');nd.className='no-deposits';nd.textContent='No deposits yet';
+      depList.appendChild(nd);
+    }else{
+      // Show most recent first
+      var sorted=deposits.slice().reverse();
+      sorted.forEach(function(dep,idx){
+        var realIdx=deposits.length-1-idx;
+        var di=document.createElement('div');di.className='deposit-item';
+        var da=document.createElement('span');da.className='dep-amount';
+        da.textContent=(dep.amount>=0?'+':'')+fmtRand(dep.amount);
+        da.style.color=dep.amount>=0?'#6bcb77':'#ff6b6b';
+        var dc=document.createElement('span');dc.className='dep-coins';
+        dc.textContent=(dep.coins>=0?'+':'')+fmtCoins(dep.coins)+' coins';
+        dc.style.color=dep.coins>=0?'#74c0fc':'#ff6b6b';
+        var dp=document.createElement('span');dp.className='dep-period';
+        dp.textContent=dep.periodLabel||dep.period;
+        var dd=document.createElement('button');dd.className='dep-del';dd.textContent='remove';
+        dd.onclick=(function(tid,di2){return function(){removeDeposit(tid,di2);};})(id,realIdx);
+        di.appendChild(da);di.appendChild(dc);di.appendChild(dp);di.appendChild(dd);
+        depList.appendChild(di);
+      });
+    }
+    depSection.appendChild(depList);
+
+    raisedSection.appendChild(raisedDisplay);
+    raisedSection.appendChild(addFundsRow);
+    raisedSection.appendChild(hint);
+    raisedSection.appendChild(depSection);
+
+    row.appendChild(topRow);
+    row.appendChild(raisedSection);
     list.appendChild(row);
   });
 }
 
+function promptDeposit(teamId, sign){
+  var inp=document.getElementById('ri_'+teamId);
+  var amount=Math.max(1,parseInt(inp.value)||1);
+  if(sign<0){
+    var cur=teams[teamId]?teams[teamId].raised||0:0;
+    amount=Math.min(amount,cur);
+    if(amount<=0){showToast('Nothing to subtract');return;}
+  }
+  openDateModal(teamId,sign,amount);
+}
+
+async function removeDeposit(teamId, depIdx){
+  var t=teams[teamId];if(!t)return;
+  var deposits=(t.deposits||[]).slice();
+  var dep=deposits[depIdx];if(!dep)return;
+  if(!confirm('Remove this deposit of '+(dep.amount>=0?'+':'')+fmtRand(dep.amount)+'?'))return;
+  deposits.splice(depIdx,1);
+  var newRaised=Math.max(0,(t.raised||0)-dep.amount);
+  var newCoins=Math.max(0,(t.coins||0)-dep.coins);
+  try{
+    await fetch(FB+'/teams/'+teamId+'.json',{
+      method:'PATCH',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({raised:newRaised,coins:newCoins,deposits:deposits})
+    });
+    teams[teamId].raised=newRaised;teams[teamId].coins=newCoins;teams[teamId].deposits=deposits;
+    updateAdminProgress();renderTeams();
+    showToast('Deposit removed');
+  }catch(e){showToast('Error: '+e.message);}
+}
+
+// ---- Add team ----
 async function addTeam(){
   var inp=document.getElementById('newTeamName');
   var btn=document.getElementById('addTeamBtn');
@@ -326,7 +485,7 @@ async function addTeam(){
   if(!name){inp.focus();return;}
   btn.disabled=true;btn.textContent='Saving...';
   var id='team_'+Date.now();
-  var team={name:name,raised:0};
+  var team={name:name,raised:0,coins:0,deposits:[]};
   try{
     var res=await fetch(FB+'/teams/'+id+'.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(team)});
     if(!res.ok)throw new Error('HTTP '+res.status);
@@ -367,44 +526,23 @@ async function delTeam(id){
   }catch(e){showToast('Error: '+e.message);}
 }
 
-async function adjRaised(id,sign){
-  var inp=document.getElementById('ri_'+id);
-  var amount=Math.max(1,parseInt(inp.value)||1);
-  var cur=(teams[id]&&teams[id].raised)||0;
-  var nv=Math.max(0,cur+sign*amount);
-  await saveRaised(id,nv);
-  showToast((sign>0?'+':'-')+'R'+amount.toLocaleString('en-ZA')+' for '+(teams[id]?teams[id].name:id));
-}
-async function setRaised(id){
-  var inp=document.getElementById('ri_'+id);
-  var amount=Math.max(0,parseInt(inp.value)||0);
-  var name=teams[id]?teams[id].name:id;
-  if(!confirm('Set '+name+' raised amount to R'+amount.toLocaleString('en-ZA')+'?'))return;
-  await saveRaised(id,amount);
-  showToast('Set to R'+amount.toLocaleString('en-ZA')+' for '+name);
-}
-async function saveRaised(id,nv){
-  teams[id].raised=nv;
-  document.getElementById('rv_'+id).textContent=fmtRand(nv);
-  var coins=calcCoins(nv);
-  document.getElementById('cb2_'+id).textContent=coins!==null?'('+coins.toLocaleString('en-ZA')+' coins)':'(select period)';
-  document.getElementById('cc_'+id).textContent=coins!==null?'= '+coins.toLocaleString('en-ZA')+' MAKO coins':'';
-  updateAdminProgress();
-  try{
-    await fetch(FB+'/teams/'+id+'/raised.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(nv)});
-  }catch(e){console.error('saveRaised failed:',e);}
-}
 async function resetAll(){
-  if(!confirm('Reset ALL fundraising amounts to zero? Cannot be undone.'))return;
+  if(!confirm('Reset ALL fundraising amounts and coins to zero? Cannot be undone.'))return;
   var ids=Object.keys(teams);
   try{
     await Promise.all(ids.map(function(id){
-      return fetch(FB+'/teams/'+id+'/raised.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:'0'});
+      return fetch(FB+'/teams/'+id+'.json',{
+        method:'PATCH',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({raised:0,coins:0,deposits:[]})
+      });
     }));
-    ids.forEach(function(id){teams[id].raised=0;});
+    ids.forEach(function(id){teams[id].raised=0;teams[id].coins=0;teams[id].deposits=[];});
     updateAdminProgress();renderTeams();showToast('All balances reset to zero');
   }catch(e){showToast('Error: '+e.message);}
 }
+
+// Close modal on overlay click
+document.getElementById('dmodal').addEventListener('click',function(e){if(e.target===this)closeDateModal();});
 
 loadTeams();
 setInterval(loadTeams,10000);
