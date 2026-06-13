@@ -38,6 +38,8 @@
     .live-row{display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(168,228,255,0.55);margin-bottom:18px}
     .live-dot{width:8px;height:8px;border-radius:50%;background:#6bcb77;animation:pulse 1.2s infinite}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.2}}
+
+    /* Leaderboard */
     .lb-card{background:rgba(5,20,40,0.75);backdrop-filter:blur(10px);border-radius:20px;border:1px solid rgba(0,229,255,0.12);overflow:hidden}
     .lb-header{display:grid;grid-template-columns:44px 1fr 130px 120px;padding:12px 20px;border-bottom:1px solid rgba(255,255,255,0.07);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(168,228,255,0.4)}
     .lb-header .col-right{text-align:right}
@@ -59,11 +61,14 @@
     .amount-val{font-family:'Bangers',cursive;font-size:24px;color:#6bcb77}
     .coins-cell{text-align:right}
     .coins-val{font-family:'Bangers',cursive;font-size:20px;color:#74c0fc}
-    .coins-lbl{font-size:10px;color:rgba(116,192,252,0.5);letter-spacing:1px;text-transform:uppercase}
+    .coins-lbl{font-size:10px;color:rgba(116,192,252,0.45);letter-spacing:1px;text-transform:uppercase}
     .empty-state{text-align:center;padding:48px 20px;font-size:14px;color:rgba(168,228,255,0.3);letter-spacing:1px}
+
     .admin-link-row{text-align:center;margin-top:32px}
     .admin-link{font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;padding:10px 24px;border-radius:10px;border:1px solid rgba(255,64,64,0.3);cursor:pointer;background:rgba(5,20,40,0.6);color:rgba(255,107,107,0.6);letter-spacing:1px;transition:all 0.2s;text-decoration:none;display:inline-block}
     .admin-link:hover{border-color:rgba(255,64,64,0.7);color:#ff6b6b;background:rgba(255,64,64,0.08)}
+
+    /* PIN modal */
     .modal-overlay{display:none;position:fixed;inset:0;background:rgba(2,11,24,0.88);backdrop-filter:blur(6px);z-index:100;align-items:center;justify-content:center}
     .modal-overlay.open{display:flex}
     .modal{background:linear-gradient(145deg,rgba(5,20,40,0.98),rgba(2,11,24,0.98));border:2px solid rgba(255,64,64,0.4);border-radius:20px;padding:36px 32px 28px;width:90%;max-width:340px;text-align:center;box-shadow:0 0 40px rgba(255,64,64,0.2),0 20px 60px rgba(0,0,0,0.5)}
@@ -80,8 +85,9 @@
     .pin-error{font-size:13px;color:#ff6b6b;letter-spacing:1px;height:18px;margin-bottom:8px}
     .modal-cancel{font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;padding:9px 24px;border-radius:9px;border:1px solid rgba(168,228,255,0.2);background:transparent;color:rgba(168,228,255,0.5);cursor:pointer;letter-spacing:1px}
     .modal-cancel:hover{background:rgba(168,228,255,0.08);color:#a8e4ff}
+
     @media(max-width:500px){
-      .lb-header,.team-row{grid-template-columns:36px 1fr 90px 80px;padding:12px 10px}
+      .lb-header,.team-row{grid-template-columns:36px 1fr 88px 78px;padding:12px 10px}
       .amount-val{font-size:18px}.coins-val{font-size:16px}
     }
   </style>
@@ -151,6 +157,7 @@
     </div>
     <div id="lbRows"><div class="empty-state">Loading standings...</div></div>
   </div>
+
   <div class="admin-link-row">
     <a class="admin-link" href="#" onclick="openPin();return false;">&#9881; Admin Panel</a>
   </div>
@@ -160,9 +167,8 @@
 var FB='https://mako-global-leaderboard-default-rtdb.firebaseio.com';
 var ADMIN_PIN='6721';
 var GOAL=100000;
-var MULT_KEY='mako_mult';
-var MULT_RATES={'2x':20,'1x5':15,'1x':10};
 
+// Bubbles + rays
 var bWrap=document.getElementById('bubbles');
 for(var i=0;i<22;i++){var b=document.createElement('div');b.className='bubble';var s=5+Math.random()*18;b.style.cssText='width:'+s+'px;height:'+s+'px;left:'+Math.random()*100+'%;animation-duration:'+(9+Math.random()*10)+'s;animation-delay:-'+Math.random()*12+'s';bWrap.appendChild(b);}
 var rEl=document.getElementById('rays');
@@ -175,40 +181,40 @@ var medalSVGs=[
 ];
 
 function fmtRand(n){return 'R'+Math.round(n).toLocaleString('en-ZA');}
-function getMultRate(){var m=localStorage.getItem(MULT_KEY);return(m&&MULT_RATES[m])||null;}
+function fmtCoins(n){return Math.round(n).toLocaleString('en-ZA');}
 
 async function loadLB(){
   try{
     var res=await fetch(FB+'/teams.json');
     var data=(await res.json())||{};
-    var rate=getMultRate();
     var teams=Object.entries(data)
-      .map(function(e){return{id:e[0],name:e[1].name||e[0],raised:e[1].raised||0};})
+      .map(function(e){
+        return{
+          id:e[0],
+          name:e[1].name||e[0],
+          raised:e[1].raised||0,
+          coins:e[1].coins||0
+        };
+      })
       .sort(function(a,b){return b.raised-a.raised;});
 
     var total=teams.reduce(function(s,t){return s+t.raised;},0);
     var pct=Math.min(100,total/GOAL*100);
     var remaining=Math.max(0,GOAL-total);
+
     document.getElementById('totalRaised').textContent=fmtRand(total);
-    var fill=document.getElementById('progressFill');
-    fill.style.width=pct.toFixed(1)+'%';
+    document.getElementById('progressFill').style.width=pct.toFixed(1)+'%';
     document.getElementById('progressPct').textContent=pct>=10?pct.toFixed(1)+'%':'';
     document.getElementById('goalSub').textContent=remaining>0?fmtRand(remaining)+' still needed':'Goal reached!';
 
     var container=document.getElementById('lbRows');
     if(teams.length===0){container.innerHTML='<div class="empty-state">No teams yet — check back soon!</div>';return;}
+
     var maxRaised=teams[0].raised||1;
     container.innerHTML=teams.map(function(t,i){
       var rankClass=i<3?'rank-'+(i+1):'';
       var rankDisp=i<3?medalSVGs[i]:String(i+1);
       var barWidth=maxRaised>0?Math.round(t.raised/maxRaised*100):0;
-      var coinsHtml='';
-      if(rate!==null){
-        var coins=Math.round(t.raised*rate);
-        coinsHtml='<div class="coins-cell"><div class="coins-val">'+coins.toLocaleString('en-ZA')+'</div><div class="coins-lbl">coins</div></div>';
-      }else{
-        coinsHtml='<div class="coins-cell"><div class="coins-lbl" style="color:rgba(116,192,252,0.3)">pending</div></div>';
-      }
       return '<div class="team-row '+rankClass+'">'
         +'<div class="rank">'+rankDisp+'</div>'
         +'<div class="team-info">'
@@ -216,13 +222,16 @@ async function loadLB(){
           +'<div class="team-bar-wrap"><div class="team-bar" style="width:'+barWidth+'%"></div></div>'
         +'</div>'
         +'<div class="amount-cell"><div class="amount-val">'+fmtRand(t.raised)+'</div></div>'
-        +coinsHtml
+        +'<div class="coins-cell"><div class="coins-val">'+fmtCoins(t.coins)+'</div><div class="coins-lbl">coins</div></div>'
         +'</div>';
     }).join('');
   }catch(e){console.error(e);}
 }
-loadLB();setInterval(loadLB,5000);
 
+loadLB();
+setInterval(loadLB,5000);
+
+// PIN
 var pin='';
 function openPin(){pin='';updDots();document.getElementById('pinErr').textContent='';document.getElementById('pinModal').classList.add('open');}
 function closePin(){document.getElementById('pinModal').classList.remove('open');pin='';updDots();}
