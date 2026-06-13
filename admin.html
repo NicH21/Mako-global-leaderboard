@@ -16,35 +16,59 @@
     .card{background:rgba(5,20,40,0.75);backdrop-filter:blur(8px);border-radius:18px;border:1px solid rgba(0,229,255,0.15);padding:24px 24px 20px;margin-bottom:20px}
     .card-title{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(168,228,255,0.5);margin-bottom:18px}
 
-    /* Goal progress in admin */
+    /* Goal progress */
     .goal-bar-wrap{background:rgba(2,11,24,0.6);border-radius:999px;height:18px;border:1px solid rgba(0,229,255,0.15);overflow:hidden;margin-bottom:8px}
     .goal-bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#1a9e5c,#6bcb77);transition:width 0.6s ease;display:flex;align-items:center;justify-content:flex-end;padding-right:8px}
     .goal-bar-pct{font-family:'Bangers',cursive;font-size:12px;color:rgba(2,11,24,0.9)}
-    .goal-stats{display:flex;justify-content:space-between;font-size:12px;color:rgba(168,228,255,0.4);margin-bottom:4px}
+    .goal-stats{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;flex-wrap:wrap;gap:6px}
     .goal-total{font-family:'Bangers',cursive;font-size:22px;color:#6bcb77}
+    .goal-remaining{font-size:12px;color:rgba(168,228,255,0.4)}
 
+    /* Multiplier selector */
+    .mult-card-title{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(168,228,255,0.5);margin-bottom:14px}
+    .mult-options{display:flex;flex-direction:column;gap:10px}
+    .mult-option{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:11px;border:1.5px solid rgba(0,229,255,0.12);background:rgba(2,11,24,0.4);cursor:pointer;transition:border-color 0.2s,background 0.2s;position:relative}
+    .mult-option:hover{border-color:rgba(0,229,255,0.3);background:rgba(2,11,24,0.6)}
+    .mult-option.selected{border-color:rgba(116,192,252,0.6);background:rgba(116,192,252,0.08)}
+    .mult-option.selected.gold-tier{border-color:rgba(240,192,64,0.6);background:rgba(240,192,64,0.07)}
+    .mult-option.selected.silver-tier{border-color:rgba(168,228,255,0.5);background:rgba(168,228,255,0.07)}
+    .mult-cb{width:18px;height:18px;border-radius:5px;border:2px solid rgba(0,229,255,0.4);background:transparent;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background 0.15s,border-color 0.15s}
+    .mult-cb.checked{background:#74c0fc;border-color:#74c0fc}
+    .mult-cb.checked.gold-cb{background:#f0c040;border-color:#f0c040}
+    .mult-cb svg{display:none}
+    .mult-cb.checked svg{display:block}
+    .mult-info{flex:1}
+    .mult-label{font-size:14px;font-weight:900;color:#a8e4ff;margin-bottom:2px}
+    .mult-desc{font-size:11px;color:rgba(168,228,255,0.45);letter-spacing:0.5px}
+    .mult-badge{font-family:'Bangers',cursive;font-size:20px;padding:4px 12px;border-radius:8px;white-space:nowrap}
+    .badge-2x{background:rgba(240,192,64,0.15);color:#f0c040;border:1px solid rgba(240,192,64,0.3)}
+    .badge-15x{background:rgba(168,228,255,0.1);color:#a8e4ff;border:1px solid rgba(168,228,255,0.25)}
+    .badge-1x{background:rgba(116,192,252,0.1);color:#74c0fc;border:1px solid rgba(116,192,252,0.2)}
+    .mult-active-note{font-size:12px;color:rgba(168,228,255,0.5);margin-top:12px;padding:8px 12px;border-radius:8px;background:rgba(2,11,24,0.4);border:1px solid rgba(0,229,255,0.1);letter-spacing:0.5px}
+    .mult-active-note strong{color:#74c0fc}
+
+    /* Team list */
     .add-team-row{display:flex;gap:10px;flex-wrap:wrap}
     .team-name-inp{flex:1;min-width:160px;background:rgba(5,30,55,0.8);border:1px solid rgba(0,229,255,0.25);border-radius:9px;padding:10px 14px;color:#a8e4ff;font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;outline:none;transition:border-color 0.2s}
     .team-name-inp:focus{border-color:rgba(0,229,255,0.7)}
     .add-team-btn{font-family:'Bangers',cursive;font-size:19px;letter-spacing:1px;padding:10px 22px;border-radius:10px;border:2px solid #6bcb77;box-shadow:0 0 10px rgba(107,203,119,0.3);cursor:pointer;background:rgba(2,11,24,0.85);color:white;transition:transform 0.1s,box-shadow 0.2s;white-space:nowrap}
     .add-team-btn:hover{transform:translateY(-2px);box-shadow:0 0 22px rgba(107,203,119,0.6)}
     .add-team-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
-
     .teams-list{display:flex;flex-direction:column;gap:12px}
     .team-admin-row{background:rgba(2,11,24,0.55);border-radius:14px;border:1px solid rgba(0,229,255,0.1);padding:14px 16px}
     .team-top-row{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
-    .team-display-name{font-size:16px;font-weight:900;color:#a8e4ff;flex:1}
+    .team-display-name{font-size:16px;font-weight:900;color:#a8e4ff;flex:1;min-width:0}
+    .team-coin-badge{font-family:'Bangers',cursive;font-size:14px;color:#74c0fc;background:rgba(116,192,252,0.12);border:1px solid rgba(116,192,252,0.25);border-radius:7px;padding:3px 9px;white-space:nowrap;flex-shrink:0}
     .team-edit-inp{flex:1;min-width:120px;background:rgba(5,30,55,0.8);border:1px solid rgba(0,229,255,0.35);border-radius:8px;padding:7px 11px;color:#a8e4ff;font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;outline:none;display:none}
     .tag-btn{font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;padding:5px 12px;border-radius:7px;border:1px solid;background:transparent;cursor:pointer;transition:background 0.15s;white-space:nowrap}
     .tag-edit{border-color:rgba(0,229,255,0.3);color:#a8e4ff}.tag-edit:hover{background:rgba(0,229,255,0.1)}
     .tag-save{border-color:rgba(107,203,119,0.4);color:#6bcb77;display:none}.tag-save:hover{background:rgba(107,203,119,0.1)}
     .tag-del{border-color:rgba(255,107,107,0.3);color:#ff6b6b}.tag-del:hover{background:rgba(255,64,64,0.1)}
-
-    /* Raised amount display */
     .raised-section{display:flex;flex-direction:column;gap:10px}
-    .raised-display{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-    .raised-label{font-size:11px;font-weight:700;letter-spacing:1.5px;color:rgba(168,228,255,0.4);text-transform:uppercase}
-    .raised-val{font-family:'Bangers',cursive;font-size:30px;color:#6bcb77;text-shadow:0 0 8px rgba(107,203,119,0.3);min-width:80px}
+    .raised-display{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+    .raised-label{font-size:11px;font-weight:700;letter-spacing:1.5px;color:rgba(168,228,255,0.4);text-transform:uppercase;align-self:center}
+    .raised-val{font-family:'Bangers',cursive;font-size:30px;color:#6bcb77;min-width:80px}
+    .coins-calc{font-size:13px;color:#74c0fc;font-weight:700;align-self:center}
     .adj-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
     .rand-prefix{font-family:'Bangers',cursive;font-size:18px;color:rgba(168,228,255,0.5)}
     .r-inp{width:110px;padding:9px 10px;border-radius:8px;border:1px solid rgba(0,229,255,0.25);background:rgba(2,11,24,0.7);color:white;font-family:'Nunito',sans-serif;font-size:16px;font-weight:700;text-align:center;outline:none;transition:border-color 0.2s}
@@ -54,8 +78,7 @@
     .r-btn.add{border-color:#6bcb77;color:#6bcb77}.r-btn.add:hover{background:rgba(107,203,119,0.1)}
     .r-btn.sub{border-color:#ff6b6b;color:#ff6b6b}.r-btn.sub:hover{background:rgba(255,64,64,0.1)}
     .r-btn.set{border-color:#74c0fc;color:#74c0fc}.r-btn.set:hover{background:rgba(116,192,252,0.1)}
-    .adj-hint{font-size:11px;color:rgba(168,228,255,0.3);letter-spacing:1px}
-
+    .adj-hint{font-size:11px;color:rgba(168,228,255,0.3);letter-spacing:0.5px}
     .no-teams{font-size:14px;color:rgba(168,228,255,0.35);text-align:center;padding:24px 0;letter-spacing:1px}
     .danger-btn{font-family:'Bangers',cursive;font-size:18px;letter-spacing:2px;padding:12px 24px;border-radius:12px;border:2px solid #ff6b6b;box-shadow:0 0 12px rgba(255,107,107,0.3);cursor:pointer;background:rgba(2,11,24,0.85);color:white;width:100%;transition:box-shadow 0.2s}
     .danger-btn:hover{box-shadow:0 0 26px rgba(255,107,107,0.6)}
@@ -85,13 +108,56 @@ for(var _bi=0;_bi<12;_bi++){var _bb=document.createElement('div');_bb.className=
     <div class="card-title">Overall Progress &mdash; Goal: R100 000</div>
     <div class="goal-stats">
       <span class="goal-total" id="adminTotal">R0</span>
-      <span id="adminRemaining">R100 000 remaining</span>
+      <span class="goal-remaining" id="adminRemaining">R100 000 remaining</span>
     </div>
     <div class="goal-bar-wrap">
       <div class="goal-bar-fill" id="adminBar" style="width:0%">
         <span class="goal-bar-pct" id="adminBarPct"></span>
       </div>
     </div>
+  </div>
+
+  <!-- Coin multiplier selector -->
+  <div class="card">
+    <div class="mult-card-title">Coin Multiplier Period</div>
+    <p style="font-size:12px;color:rgba(168,228,255,0.4);margin-bottom:14px;letter-spacing:0.5px">Select which period funds were received in. This determines how many MAKO Coins each Rand earns. Base rate is R1 = 10 coins.</p>
+    <div class="mult-options">
+
+      <div class="mult-option gold-tier" id="opt_2x" onclick="selectMult('2x')">
+        <div class="mult-cb gold-cb" id="cb_2x">
+          <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="mult-info">
+          <div class="mult-label">By 30 June</div>
+          <div class="mult-desc">Funds received in MAKO bank account by 30 June 2025</div>
+        </div>
+        <span class="mult-badge badge-2x">2x &mdash; 20 coins / R1</span>
+      </div>
+
+      <div class="mult-option silver-tier" id="opt_1x5" onclick="selectMult('1x5')">
+        <div class="mult-cb" id="cb_1x5">
+          <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="mult-info">
+          <div class="mult-label">By 15 July</div>
+          <div class="mult-desc">Funds received in MAKO bank account by 15 July 2025</div>
+        </div>
+        <span class="mult-badge badge-15x">1.5x &mdash; 15 coins / R1</span>
+      </div>
+
+      <div class="mult-option" id="opt_1x" onclick="selectMult('1x')">
+        <div class="mult-cb" id="cb_1x">
+          <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="mult-info">
+          <div class="mult-label">16 July to day before swimathon</div>
+          <div class="mult-desc">Funds received from 16 July up to the day before the swimathon</div>
+        </div>
+        <span class="mult-badge badge-1x">1x &mdash; 10 coins / R1</span>
+      </div>
+
+    </div>
+    <div class="mult-active-note" id="multActiveNote">Select a period above to see the coin rate that will apply.</div>
   </div>
 
   <div class="card">
@@ -128,17 +194,65 @@ var teams={};
 var editingId=null;
 var inputFocused=false;
 
-function showToast(msg){
-  var el=document.getElementById('toastEl');
-  el.textContent=msg;el.classList.add('show');
-  setTimeout(function(){el.classList.remove('show');},2600);
+// Multiplier state — persisted in localStorage so it survives page refresh
+var MULT_KEY='mako_mult';
+var activeMult=localStorage.getItem(MULT_KEY)||'';
+
+var MULT_CONFIG={
+  '2x': {label:'By 30 June',rate:20,desc:'20 MAKO Coins per R1'},
+  '1x5':{label:'By 15 July',rate:15,desc:'15 MAKO Coins per R1'},
+  '1x': {label:'16 July – day before swimathon',rate:10,desc:'10 MAKO Coins per R1'}
+};
+
+function calcCoins(raised){
+  if(!activeMult||!MULT_CONFIG[activeMult])return null;
+  return Math.round(raised*MULT_CONFIG[activeMult].rate);
 }
-function setConnStatus(ok,msg){
-  var el=document.getElementById('connStatus');
-  el.textContent=msg;
-  el.className='conn-status '+(ok?'conn-ok':'conn-err');
-}
+function fmtCoins(n){return n!==null?n.toLocaleString('en-ZA')+' coins':'';}
 function fmtRand(n){return 'R'+Math.round(n).toLocaleString('en-ZA');}
+
+function selectMult(key){
+  activeMult=key;
+  localStorage.setItem(MULT_KEY,key);
+  // Update visual state
+  ['2x','1x5','1x'].forEach(function(k){
+    var opt=document.getElementById('opt_'+k);
+    var cb=document.getElementById('cb_'+k);
+    if(k===key){opt.classList.add('selected');cb.classList.add('checked');}
+    else{opt.classList.remove('selected');cb.classList.remove('checked');}
+  });
+  var cfg=MULT_CONFIG[key];
+  document.getElementById('multActiveNote').innerHTML=
+    'Active: <strong>'+cfg.label+'</strong> &mdash; '+cfg.desc+'. Coin counts shown below will update.';
+  renderTeams();
+}
+
+// Apply saved selection on load
+(function(){
+  if(activeMult&&MULT_CONFIG[activeMult]){
+    var opt=document.getElementById('opt_'+activeMult);
+    var cb=document.getElementById('cb_'+activeMult);
+    if(opt)opt.classList.add('selected');
+    if(cb)cb.classList.add('checked');
+    var cfg=MULT_CONFIG[activeMult];
+    document.getElementById('multActiveNote').innerHTML=
+      'Active: <strong>'+cfg.label+'</strong> &mdash; '+cfg.desc+'.';
+  }
+})();
+
+function showToast(msg){var el=document.getElementById('toastEl');el.textContent=msg;el.classList.add('show');setTimeout(function(){el.classList.remove('show');},2600);}
+function setConnStatus(ok,msg){var el=document.getElementById('connStatus');el.textContent=msg;el.className='conn-status '+(ok?'conn-ok':'conn-err');}
+
+function updateAdminProgress(){
+  var total=Object.values(teams).reduce(function(s,t){return s+(t.raised||0);},0);
+  var pct=Math.min(100,total/GOAL*100);
+  var remaining=Math.max(0,GOAL-total);
+  document.getElementById('adminTotal').textContent=fmtRand(total);
+  document.getElementById('adminRemaining').textContent=remaining>0?fmtRand(remaining)+' remaining':'Goal reached!';
+  var bar=document.getElementById('adminBar');
+  bar.style.width=pct.toFixed(1)+'%';
+  document.getElementById('adminBarPct').textContent=pct>=12?pct.toFixed(1)+'%':'';
+}
 
 async function loadTeams(){
   try{
@@ -155,18 +269,6 @@ async function loadTeams(){
   }
 }
 
-function updateAdminProgress(){
-  var total=Object.values(teams).reduce(function(s,t){return s+(t.raised||0);},0);
-  var pct=Math.min(100,total/GOAL*100);
-  var remaining=Math.max(0,GOAL-total);
-  document.getElementById('adminTotal').textContent=fmtRand(total);
-  document.getElementById('adminRemaining').textContent=remaining>0?fmtRand(remaining)+' remaining':'Goal reached!';
-  var bar=document.getElementById('adminBar');
-  bar.style.width=pct.toFixed(1)+'%';
-  var pctLabel=document.getElementById('adminBarPct');
-  pctLabel.textContent=pct>=12?pct.toFixed(1)+'%':'';
-}
-
 function renderTeams(){
   var list=document.getElementById('teamsList');
   var keys=Object.keys(teams);
@@ -176,61 +278,43 @@ function renderTeams(){
   keys.forEach(function(id){
     var t=teams[id];
     var raised=t.raised||0;
-    var row=document.createElement('div');
-    row.className='team-admin-row';
+    var coins=calcCoins(raised);
+
+    var row=document.createElement('div');row.className='team-admin-row';
 
     // Top row
-    var topRow=document.createElement('div');
-    topRow.className='team-top-row';
-    var dn=document.createElement('span');
-    dn.className='team-display-name';dn.id='dn_'+id;dn.textContent=t.name;
-    var ei=document.createElement('input');
-    ei.className='team-edit-inp';ei.id='ei_'+id;ei.type='text';ei.value=t.name;ei.maxLength=30;ei.style.display='none';
-    var editBtn=document.createElement('button');editBtn.className='tag-btn tag-edit';editBtn.id='eb_'+id;editBtn.textContent='Edit';
-    editBtn.onclick=function(){startEdit(id);};
-    var saveBtn=document.createElement('button');saveBtn.className='tag-btn tag-save';saveBtn.id='sb_'+id;saveBtn.textContent='Save';saveBtn.style.display='none';
-    saveBtn.onclick=function(){saveName(id);};
-    var delBtn=document.createElement('button');delBtn.className='tag-btn tag-del';delBtn.textContent='Remove';
-    delBtn.onclick=function(){delTeam(id);};
-    topRow.appendChild(dn);topRow.appendChild(ei);topRow.appendChild(editBtn);topRow.appendChild(saveBtn);topRow.appendChild(delBtn);
+    var topRow=document.createElement('div');topRow.className='team-top-row';
+    var dn=document.createElement('span');dn.className='team-display-name';dn.id='dn_'+id;dn.textContent=t.name;
+    var coinBadge=document.createElement('span');coinBadge.className='team-coin-badge';coinBadge.id='cb2_'+id;
+    coinBadge.textContent=coins!==null?'('+coins.toLocaleString('en-ZA')+' coins)':'(select period)';
+    var ei=document.createElement('input');ei.className='team-edit-inp';ei.id='ei_'+id;ei.type='text';ei.value=t.name;ei.maxLength=30;ei.style.display='none';
+    var editBtn=document.createElement('button');editBtn.className='tag-btn tag-edit';editBtn.id='eb_'+id;editBtn.textContent='Edit';editBtn.onclick=function(){startEdit(id);};
+    var saveBtn=document.createElement('button');saveBtn.className='tag-btn tag-save';saveBtn.id='sb_'+id;saveBtn.textContent='Save';saveBtn.style.display='none';saveBtn.onclick=function(){saveName(id);};
+    var delBtn=document.createElement('button');delBtn.className='tag-btn tag-del';delBtn.textContent='Remove';delBtn.onclick=function(){delTeam(id);};
+    topRow.appendChild(dn);topRow.appendChild(coinBadge);topRow.appendChild(ei);topRow.appendChild(editBtn);topRow.appendChild(saveBtn);topRow.appendChild(delBtn);
 
     // Raised section
-    var raisedSection=document.createElement('div');
-    raisedSection.className='raised-section';
-
-    // Amount display
-    var raisedDisplay=document.createElement('div');
-    raisedDisplay.className='raised-display';
+    var raisedSection=document.createElement('div');raisedSection.className='raised-section';
+    var raisedDisplay=document.createElement('div');raisedDisplay.className='raised-display';
     var rLabel=document.createElement('span');rLabel.className='raised-label';rLabel.textContent='Amount Raised';
     var rVal=document.createElement('span');rVal.className='raised-val';rVal.id='rv_'+id;rVal.textContent=fmtRand(raised);
-    raisedDisplay.appendChild(rLabel);raisedDisplay.appendChild(rVal);
+    var coinsDisp=document.createElement('span');coinsDisp.className='coins-calc';coinsDisp.id='cc_'+id;
+    coinsDisp.textContent=coins!==null?'= '+coins.toLocaleString('en-ZA')+' MAKO coins':'';
+    raisedDisplay.appendChild(rLabel);raisedDisplay.appendChild(rVal);raisedDisplay.appendChild(coinsDisp);
 
-    // Adjust row
-    var adjRow=document.createElement('div');
-    adjRow.className='adj-row';
+    var adjRow=document.createElement('div');adjRow.className='adj-row';
     var pfx=document.createElement('span');pfx.className='rand-prefix';pfx.textContent='R';
-    var inp=document.createElement('input');
-    inp.className='r-inp';inp.id='ri_'+id;inp.type='number';inp.value=100;inp.min=1;inp.max=999999;inp.placeholder='Amount';
+    var inp=document.createElement('input');inp.className='r-inp';inp.id='ri_'+id;inp.type='number';inp.value=100;inp.min=1;inp.max=999999;
     inp.addEventListener('focus',function(){inputFocused=true;});
     inp.addEventListener('blur',function(){inputFocused=false;});
-
-    var addBtn=document.createElement('button');addBtn.className='r-btn add';addBtn.textContent='+ADD';
-    addBtn.onclick=function(){adjRaised(id,1);};
-    var subBtn=document.createElement('button');subBtn.className='r-btn sub';subBtn.innerHTML='&minus;SUB';
-    subBtn.onclick=function(){adjRaised(id,-1);};
-    var setBtn=document.createElement('button');setBtn.className='r-btn set';setBtn.textContent='SET';
-    setBtn.onclick=function(){setRaised(id);};
-
-    var hint=document.createElement('span');hint.className='adj-hint';hint.textContent='ADD/SUB adjusts, SET replaces total';
-
+    var addBtn=document.createElement('button');addBtn.className='r-btn add';addBtn.textContent='+ADD';addBtn.onclick=function(){adjRaised(id,1);};
+    var subBtn=document.createElement('button');subBtn.className='r-btn sub';subBtn.innerHTML='&minus;SUB';subBtn.onclick=function(){adjRaised(id,-1);};
+    var setBtn=document.createElement('button');setBtn.className='r-btn set';setBtn.textContent='SET';setBtn.onclick=function(){setRaised(id);};
+    var hint=document.createElement('span');hint.className='adj-hint';hint.textContent='ADD/SUB adjusts · SET replaces total';
     adjRow.appendChild(pfx);adjRow.appendChild(inp);adjRow.appendChild(addBtn);adjRow.appendChild(subBtn);adjRow.appendChild(setBtn);
 
-    raisedSection.appendChild(raisedDisplay);
-    raisedSection.appendChild(adjRow);
-    raisedSection.appendChild(hint);
-
-    row.appendChild(topRow);
-    row.appendChild(raisedSection);
+    raisedSection.appendChild(raisedDisplay);raisedSection.appendChild(adjRow);raisedSection.appendChild(hint);
+    row.appendChild(topRow);row.appendChild(raisedSection);
     list.appendChild(row);
   });
 }
@@ -246,8 +330,7 @@ async function addTeam(){
   try{
     var res=await fetch(FB+'/teams/'+id+'.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(team)});
     if(!res.ok)throw new Error('HTTP '+res.status);
-    teams[id]=team;inp.value='';
-    updateAdminProgress();renderTeams();showToast('Team added: '+name);
+    teams[id]=team;inp.value='';updateAdminProgress();renderTeams();showToast('Team added: '+name);
   }catch(e){showToast('Save failed: '+e.message);}
   finally{btn.disabled=false;btn.textContent='+ ADD TEAM';}
 }
@@ -261,8 +344,7 @@ function startEdit(id){
   document.getElementById('ei_'+id).focus();
 }
 async function saveName(id){
-  var inp=document.getElementById('ei_'+id);
-  var newName=inp.value.trim();if(!newName)return;
+  var inp=document.getElementById('ei_'+id);var newName=inp.value.trim();if(!newName)return;
   try{
     var res=await fetch(FB+'/teams/'+id+'/name.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(newName)});
     if(!res.ok)throw new Error('HTTP '+res.status);
@@ -304,6 +386,9 @@ async function setRaised(id){
 async function saveRaised(id,nv){
   teams[id].raised=nv;
   document.getElementById('rv_'+id).textContent=fmtRand(nv);
+  var coins=calcCoins(nv);
+  document.getElementById('cb2_'+id).textContent=coins!==null?'('+coins.toLocaleString('en-ZA')+' coins)':'(select period)';
+  document.getElementById('cc_'+id).textContent=coins!==null?'= '+coins.toLocaleString('en-ZA')+' MAKO coins':'';
   updateAdminProgress();
   try{
     await fetch(FB+'/teams/'+id+'/raised.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(nv)});
