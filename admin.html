@@ -284,22 +284,26 @@ function closeDateModal(){
 
 async function confirmDeposit(){
   if(!selectedPeriod||!modalTeamId)return;
-  var t=teams[modalTeamId];
-  if(!t)return;
-  var rate=PERIODS[selectedPeriod].rate;
-  var signedAmount=modalSign*modalAmount;
-  var coinsDelta=modalSign*Math.round(modalAmount*rate);
+  // Snapshot all modal state into locals BEFORE closing the modal
+  var tid=modalTeamId;
+  var period=selectedPeriod;
+  var sign=modalSign;
+  var amount=modalAmount;
 
-  // Add a deposit record
+  var t=teams[tid];
+  if(!t)return;
+  var rate=PERIODS[period].rate;
+  var signedAmount=sign*amount;
+  var coinsDelta=sign*Math.round(amount*rate);
+
   var deposit={
     amount:signedAmount,
     coins:coinsDelta,
-    period:selectedPeriod,
-    periodLabel:PERIODS[selectedPeriod].label,
+    period:period,
+    periodLabel:PERIODS[period].label,
     ts:Date.now()
   };
 
-  // Update totals
   var newRaised=Math.max(0,(t.raised||0)+signedAmount);
   var newCoins=Math.max(0,(t.coins||0)+coinsDelta);
   var deposits=t.deposits?JSON.parse(JSON.stringify(t.deposits)):[];
@@ -308,14 +312,14 @@ async function confirmDeposit(){
   closeDateModal();
 
   try{
-    await fetch(FB+'/teams/'+modalTeamId+'.json',{
+    await fetch(FB+'/teams/'+tid+'.json',{
       method:'PATCH',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({raised:newRaised,coins:newCoins,deposits:deposits})
     });
-    teams[modalTeamId].raised=newRaised;
-    teams[modalTeamId].coins=newCoins;
-    teams[modalTeamId].deposits=deposits;
+    teams[tid].raised=newRaised;
+    teams[tid].coins=newCoins;
+    teams[tid].deposits=deposits;
     updateAdminProgress();
     renderTeams();
     showToast((signedAmount>0?'+':'')+fmtRand(signedAmount)+' = '+fmtCoins(Math.abs(coinsDelta))+' coins for '+t.name);
