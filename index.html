@@ -3,7 +3,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
-  <title>Mako Aquatics — Global Leaderboard</title>
+  <title>Mako Aquatics — Fundraising Leaderboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -22,19 +22,26 @@
     .logo-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:6px}
     .logo-coin{width:72px;height:72px;object-fit:contain;opacity:0.9;filter:drop-shadow(0 0 14px rgba(168,228,255,0.4))}
     h1{font-family:'Bangers',cursive;font-size:clamp(38px,9vw,68px);letter-spacing:4px;color:#a8e4ff;text-shadow:0 0 30px rgba(0,229,255,0.5),0 4px 0 rgba(0,0,0,0.4);text-align:center;line-height:1}
-    .tagline{text-align:center;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:rgba(168,228,255,0.5);margin-bottom:36px;margin-top:6px}
-    .coin-legend{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
-    .legend-pill{display:flex;align-items:center;gap:8px;background:rgba(5,20,40,0.6);border-radius:20px;padding:7px 16px;border:1px solid rgba(255,255,255,0.08);font-size:13px;font-weight:700}
-    .legend-coin{width:34px;height:34px;object-fit:contain;opacity:0.85}
-    .legend-gold{color:#f0c040}.legend-mako{color:#74c0fc}
+    .tagline{text-align:center;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:rgba(168,228,255,0.5);margin-bottom:28px;margin-top:6px}
+
+    /* Progress bar */
+    .goal-card{background:rgba(5,20,40,0.8);border-radius:20px;border:1px solid rgba(0,229,255,0.2);padding:22px 24px;margin-bottom:24px}
+    .goal-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+    .goal-title{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:rgba(168,228,255,0.55)}
+    .goal-amount{font-family:'Bangers',cursive;font-size:28px;color:#6bcb77;text-shadow:0 0 10px rgba(107,203,119,0.4)}
+    .goal-target{font-size:13px;color:rgba(168,228,255,0.4);align-self:center}
+    .progress-track{background:rgba(2,11,24,0.7);border-radius:999px;height:22px;border:1px solid rgba(0,229,255,0.15);overflow:hidden;margin-bottom:10px}
+    .progress-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#1a9e5c,#6bcb77);transition:width 1s ease;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;min-width:0}
+    .progress-pct{font-family:'Bangers',cursive;font-size:14px;color:rgba(2,11,24,0.9);white-space:nowrap}
+    .goal-sub{font-size:12px;color:rgba(168,228,255,0.35);text-align:right;letter-spacing:1px}
+
     .live-row{display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(168,228,255,0.55);margin-bottom:18px}
     .live-dot{width:8px;height:8px;border-radius:50%;background:#6bcb77;animation:pulse 1.2s infinite}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.2}}
     .lb-card{background:rgba(5,20,40,0.75);backdrop-filter:blur(10px);border-radius:20px;border:1px solid rgba(0,229,255,0.12);overflow:hidden}
-    .lb-header{display:grid;grid-template-columns:44px 1fr 100px 100px;padding:12px 20px;border-bottom:1px solid rgba(255,255,255,0.07);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(168,228,255,0.4)}
-    .col-coin{display:flex;align-items:center;gap:5px;justify-content:center}
-    .hdr-coin{width:24px;height:24px;object-fit:contain;opacity:0.8}
-    .team-row{display:grid;grid-template-columns:44px 1fr 100px 100px;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.05);align-items:center;transition:background 0.2s}
+    .lb-header{display:grid;grid-template-columns:44px 1fr 140px;padding:12px 20px;border-bottom:1px solid rgba(255,255,255,0.07);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(168,228,255,0.4)}
+    .lb-header .col-right{text-align:right}
+    .team-row{display:grid;grid-template-columns:44px 1fr 140px;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.05);align-items:center;transition:background 0.2s}
     .team-row:last-child{border-bottom:none}
     .team-row:hover{background:rgba(0,229,255,0.04)}
     .team-row.rank-1{background:rgba(255,215,0,0.06);border-left:3px solid gold}
@@ -47,18 +54,11 @@
     .team-info{display:flex;flex-direction:column;gap:2px}
     .team-name-lb{font-size:16px;font-weight:900;color:#a8e4ff}
     .team-sub{font-size:11px;color:rgba(168,228,255,0.35);letter-spacing:1px}
-    .coin-cell{display:flex;align-items:center;justify-content:center;gap:6px}
-    .coin-thumb{width:30px;height:30px;object-fit:contain;opacity:0.9;flex-shrink:0}
-    .coin-amount{font-family:'Bangers',cursive;font-size:24px}
-    .coin-amount.gold{color:#f0c040;text-shadow:0 0 8px rgba(240,192,64,0.35)}
-    .coin-amount.mako{color:#74c0fc;text-shadow:0 0 8px rgba(116,192,252,0.35)}
+    .amount-cell{text-align:right}
+    .amount-val{font-family:'Bangers',cursive;font-size:26px;color:#6bcb77;text-shadow:0 0 8px rgba(107,203,119,0.3)}
+    .team-bar-wrap{margin-top:5px;background:rgba(2,11,24,0.5);border-radius:999px;height:5px;overflow:hidden}
+    .team-bar{height:100%;border-radius:999px;background:linear-gradient(90deg,#1a9e5c,#6bcb77)}
     .empty-state{text-align:center;padding:48px 20px;font-size:14px;color:rgba(168,228,255,0.3);letter-spacing:1px}
-    .totals-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:18px}
-    .total-pill{background:rgba(5,20,40,0.7);border-radius:14px;padding:10px 20px;border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:10px;font-size:13px}
-    .total-label{color:rgba(168,228,255,0.5);font-weight:700;letter-spacing:1px}
-    .total-val{font-family:'Bangers',cursive;font-size:24px}
-    .total-val.gold{color:#f0c040}.total-val.mako{color:#74c0fc}
-    .total-coin-img{width:30px;height:30px;object-fit:contain;opacity:0.85}
     .admin-link-row{text-align:center;margin-top:32px}
     .admin-link{font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;padding:10px 24px;border-radius:10px;border:1px solid rgba(255,64,64,0.3);cursor:pointer;background:rgba(5,20,40,0.6);color:rgba(255,107,107,0.6);letter-spacing:1px;transition:all 0.2s;text-decoration:none;display:inline-block}
     .admin-link:hover{border-color:rgba(255,64,64,0.7);color:#ff6b6b;background:rgba(255,64,64,0.08)}
@@ -79,9 +79,8 @@
     .modal-cancel{font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;padding:9px 24px;border-radius:9px;border:1px solid rgba(168,228,255,0.2);background:transparent;color:rgba(168,228,255,0.5);cursor:pointer;letter-spacing:1px}
     .modal-cancel:hover{background:rgba(168,228,255,0.08);color:#a8e4ff}
     @media(max-width:480px){
-      .lb-header,.team-row{grid-template-columns:36px 1fr 80px 80px;padding:12px 12px}
-      .coin-amount{font-size:20px}.coin-thumb{width:26px;height:26px}
-      .hdr-coin{width:20px;height:20px}
+      .lb-header,.team-row{grid-template-columns:36px 1fr 110px;padding:12px 12px}
+      .amount-val{font-size:20px}
     }
   </style>
 </head>
@@ -121,42 +120,34 @@
 
 <div class="content">
   <div class="logo-row">
-    <img id="headerMako" src="" alt="Mako Coin" class="logo-coin">
-    <img id="headerGold" src="" alt="Gold Coin" class="logo-coin">
+    <img src="assets/mako-coin.png" alt="Mako Aquatics" class="logo-coin">
   </div>
   <h1>MAKO AQUATICS</h1>
-  <p class="tagline">Global Coin Leaderboard</p>
-  <div class="coin-legend">
-    <div class="legend-pill">
-      <img id="legendGold" src="" class="legend-coin" alt="Gold Mako">
-      <span class="legend-gold">Gold Mako &mdash; purchased coins</span>
+  <p class="tagline">Fundraising Leaderboard</p>
+
+  <!-- Goal progress -->
+  <div class="goal-card">
+    <div class="goal-header">
+      <span class="goal-title">&#127945; Total Raised</span>
+      <span class="goal-amount" id="totalRaised">R0</span>
+      <span class="goal-target">Goal: R100 000</span>
     </div>
-    <div class="legend-pill">
-      <img id="legendMako" src="" class="legend-coin" alt="Mako Coins">
-      <span class="legend-mako">Mako Coins &mdash; earned coins</span>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill" style="width:0%">
+        <span class="progress-pct" id="progressPct"></span>
+      </div>
     </div>
+    <div class="goal-sub" id="goalSub">R0 still needed</div>
   </div>
+
   <div class="live-row"><span class="live-dot"></span> Live standings</div>
   <div class="lb-card">
     <div class="lb-header">
       <div>#</div>
       <div>Team</div>
-      <div class="col-coin"><img id="hdrGold" src="" class="hdr-coin" alt="Gold"> Gold</div>
-      <div class="col-coin"><img id="hdrMako" src="" class="hdr-coin" alt="Mako"> Mako</div>
+      <div class="col-right">Raised</div>
     </div>
     <div id="lbRows"><div class="empty-state">Loading standings...</div></div>
-  </div>
-  <div class="totals-row" id="totalsRow" style="display:none">
-    <div class="total-pill">
-      <img id="totalGoldImg" class="total-coin-img" src="" alt="">
-      <span class="total-label">TOTAL GOLD</span>
-      <span class="total-val gold" id="totalGold">0</span>
-    </div>
-    <div class="total-pill">
-      <img id="totalMakoImg" class="total-coin-img" src="" alt="">
-      <span class="total-label">TOTAL MAKO</span>
-      <span class="total-val mako" id="totalMako">0</span>
-    </div>
   </div>
   <div class="admin-link-row">
     <a class="admin-link" href="#" onclick="openPin();return false;">&#9881; Admin Panel</a>
@@ -164,52 +155,61 @@
 </div>
 
 <script>
-const FB='https://mako-global-leaderboard-default-rtdb.firebaseio.com';
-const ADMIN_PIN='6721';
-const GOLD_IMG='assets/gold-mako.png';
-const MAKO_IMG='assets/mako-coin.png';
-['headerGold','legendGold','hdrGold','totalGoldImg'].forEach(function(id){var el=document.getElementById(id);if(el)el.src=GOLD_IMG;});
-['headerMako','legendMako','hdrMako','totalMakoImg'].forEach(function(id){var el=document.getElementById(id);if(el)el.src=MAKO_IMG;});
+var FB='https://mako-global-leaderboard-default-rtdb.firebaseio.com';
+var ADMIN_PIN='6721';
+var GOAL=100000;
 
 var bWrap=document.getElementById('bubbles');
 for(var i=0;i<22;i++){var b=document.createElement('div');b.className='bubble';var s=5+Math.random()*18;b.style.cssText='width:'+s+'px;height:'+s+'px;left:'+Math.random()*100+'%;animation-duration:'+(9+Math.random()*10)+'s;animation-delay:-'+Math.random()*12+'s';bWrap.appendChild(b);}
 var rEl=document.getElementById('rays');
 for(var j=0;j<6;j++){var r=document.createElement('div');r.className='ray';r.style.cssText='left:'+(6+j*16)+'%;animation-duration:'+(4+Math.random()*4)+'s;animation-delay:-'+Math.random()*4+'s';rEl.appendChild(r);}
 
-const medalSVGs=[
-  // Gold medal
-  '<svg viewBox="0 0 32 36" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><polygon points="16,2 20,12 31,12 22,19 25,30 16,23 7,30 10,19 1,12 12,12" fill="#FFD700" stroke="#B8860B" stroke-width="1"/><circle cx="16" cy="17" r="7" fill="#FFC200" stroke="#B8860B" stroke-width="0.8" opacity="0.5"/></svg>',
-  // Silver medal
-  '<svg viewBox="0 0 32 36" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><polygon points="16,2 20,12 31,12 22,19 25,30 16,23 7,30 10,19 1,12 12,12" fill="#C0C0C0" stroke="#808080" stroke-width="1"/><circle cx="16" cy="17" r="7" fill="#A8A8A8" stroke="#808080" stroke-width="0.8" opacity="0.5"/></svg>',
-  // Bronze medal
-  '<svg viewBox="0 0 32 36" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><polygon points="16,2 20,12 31,12 22,19 25,30 16,23 7,30 10,19 1,12 12,12" fill="#CD7F32" stroke="#8B4513" stroke-width="1"/><circle cx="16" cy="17" r="7" fill="#B8691A" stroke="#8B4513" stroke-width="0.8" opacity="0.5"/></svg>'
+var medalSVGs=[
+  '<svg viewBox="0 0 32 36" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><polygon points="16,2 20,12 31,12 22,19 25,30 16,23 7,30 10,19 1,12 12,12" fill="#FFD700" stroke="#B8860B" stroke-width="1"/></svg>',
+  '<svg viewBox="0 0 32 36" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><polygon points="16,2 20,12 31,12 22,19 25,30 16,23 7,30 10,19 1,12 12,12" fill="#C0C0C0" stroke="#808080" stroke-width="1"/></svg>',
+  '<svg viewBox="0 0 32 36" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><polygon points="16,2 20,12 31,12 22,19 25,30 16,23 7,30 10,19 1,12 12,12" fill="#CD7F32" stroke="#8B4513" stroke-width="1"/></svg>'
 ];
+
+function fmtRand(n){
+  return 'R'+Math.round(n).toLocaleString('en-ZA');
+}
 
 async function loadLB(){
   try{
     var res=await fetch(FB+'/teams.json');
     var data=(await res.json())||{};
     var teams=Object.entries(data)
-      .map(function(e){return{id:e[0],name:e[1].name||e[0],gold:e[1].gold||0,mako:e[1].mako||0};})
-      .sort(function(a,b){return(b.gold+b.mako)-(a.gold+a.mako);});
+      .map(function(e){return{id:e[0],name:e[1].name||e[0],raised:e[1].raised||0};})
+      .sort(function(a,b){return b.raised-a.raised;});
+
+    var total=teams.reduce(function(s,t){return s+t.raised;},0);
+    var pct=Math.min(100,total/GOAL*100);
+    var remaining=Math.max(0,GOAL-total);
+
+    document.getElementById('totalRaised').textContent=fmtRand(total);
+    var fill=document.getElementById('progressFill');
+    fill.style.width=pct.toFixed(1)+'%';
+    var pctLabel=document.getElementById('progressPct');
+    if(pct>=10){pctLabel.textContent=pct.toFixed(1)+'%';}else{pctLabel.textContent='';}
+    document.getElementById('goalSub').textContent=remaining>0?fmtRand(remaining)+' still needed':'&#127881; Goal reached!';
+
     var container=document.getElementById('lbRows');
-    if(teams.length===0){container.innerHTML='<div class="empty-state">No teams yet &mdash; check back soon!</div>';return;}
+    if(teams.length===0){container.innerHTML='<div class="empty-state">No teams yet — check back soon!</div>';return;}
+    var maxRaised=teams[0].raised||1;
     container.innerHTML=teams.map(function(t,i){
       var rankClass=i<3?'rank-'+(i+1):'';
       var rankDisp=i<3?medalSVGs[i]:String(i+1);
+      var barWidth=maxRaised>0?Math.round(t.raised/maxRaised*100):0;
       return '<div class="team-row '+rankClass+'">'
         +'<div class="rank">'+rankDisp+'</div>'
-        +'<div class="team-info"><div class="team-name-lb">'+t.name+'</div><div class="team-sub">'+(t.gold+t.mako)+' total coins</div></div>'
-        +'<div class="coin-cell"><img class="coin-thumb" src="'+GOLD_IMG+'" alt="Gold"><span class="coin-amount gold">'+t.gold+'</span></div>'
-        +'<div class="coin-cell"><img class="coin-thumb" src="'+MAKO_IMG+'" alt="Mako"><span class="coin-amount mako">'+t.mako+'</span></div>'
+        +'<div class="team-info">'
+          +'<div class="team-name-lb">'+t.name+'</div>'
+          +'<div class="team-bar-wrap"><div class="team-bar" style="width:'+barWidth+'%"></div></div>'
+        +'</div>'
+        +'<div class="amount-cell"><div class="amount-val">'+fmtRand(t.raised)+'</div></div>'
         +'</div>';
     }).join('');
-    var tg=teams.reduce(function(s,t){return s+t.gold;},0);
-    var tm=teams.reduce(function(s,t){return s+t.mako;},0);
-    document.getElementById('totalGold').textContent=tg;
-    document.getElementById('totalMako').textContent=tm;
-    document.getElementById('totalsRow').style.display='flex';
-  }catch(e){}
+  }catch(e){console.error(e);}
 }
 loadLB();setInterval(loadLB,5000);
 
