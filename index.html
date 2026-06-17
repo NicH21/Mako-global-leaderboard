@@ -35,15 +35,38 @@
     .progress-pct{font-family:'Bangers',cursive;font-size:14px;color:rgba(2,11,24,0.9);white-space:nowrap}
     .goal-sub{font-size:12px;color:rgba(168,228,255,0.35);text-align:right;letter-spacing:1px}
 
+    /* Pet food card */
+    .pet-card{background:rgba(5,20,40,0.8);border-radius:20px;border:1px solid rgba(240,192,64,0.18);padding:22px 24px;margin-bottom:24px}
+    .pet-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+    .pet-title{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,192,64,0.6)}
+    .pet-amount{font-family:'Bangers',cursive;font-size:28px;color:#f0c040;text-shadow:0 0 10px rgba(240,192,64,0.3)}
+    .pet-target{font-size:13px;color:rgba(168,228,255,0.4);align-self:center}
+    .pet-track{background:rgba(2,11,24,0.7);border-radius:999px;height:22px;border:1px solid rgba(240,192,64,0.12);overflow:hidden;margin-bottom:14px}
+    .pet-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#e67e22,#f0c040);transition:width 1s ease;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;min-width:0}
+    .pet-pct{font-family:'Bangers',cursive;font-size:14px;color:rgba(2,11,24,0.9);white-space:nowrap}
+    .pet-sub{font-size:12px;color:rgba(240,192,64,0.35);text-align:right;letter-spacing:1px;margin-bottom:16px}
+
+    /* Pet food top 3 */
+    .pet-top3-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,192,64,0.45);margin-bottom:10px}
+    .pet-lb{display:flex;flex-direction:column;gap:8px}
+    .pet-row{display:grid;grid-template-columns:44px 1fr 100px;align-items:center;padding:10px 14px;border-radius:12px;background:rgba(2,11,24,0.4);border:1px solid rgba(240,192,64,0.08)}
+    .pet-row.p-rank-1{background:rgba(255,215,0,0.06);border-color:rgba(255,215,0,0.2)}
+    .pet-row.p-rank-2{background:rgba(192,192,192,0.04);border-color:rgba(192,192,192,0.15)}
+    .pet-row.p-rank-3{background:rgba(205,127,50,0.04);border-color:rgba(205,127,50,0.15)}
+    .pet-medal{font-size:22px;text-align:center}
+    .pet-team{font-size:14px;font-weight:900;color:#a8e4ff}
+    .pet-kg{font-family:'Bangers',cursive;font-size:22px;text-align:right}
+    .pet-kg-lbl{font-size:10px;color:rgba(240,192,64,0.4);letter-spacing:1px;text-transform:uppercase;text-align:right}
+
     .live-row{display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(168,228,255,0.55);margin-bottom:18px}
     .live-dot{width:8px;height:8px;border-radius:50%;background:#6bcb77;animation:pulse 1.2s infinite}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.2}}
 
-    /* Leaderboard */
-    .lb-card{background:rgba(5,20,40,0.75);backdrop-filter:blur(10px);border-radius:20px;border:1px solid rgba(0,229,255,0.12);overflow:hidden}
-    .lb-header{display:grid;grid-template-columns:44px 1fr 130px 120px;padding:12px 20px;border-bottom:1px solid rgba(255,255,255,0.07);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(168,228,255,0.4)}
+    /* Fundraising leaderboard */
+    .lb-card{background:rgba(5,20,40,0.75);backdrop-filter:blur(10px);border-radius:20px;border:1px solid rgba(0,229,255,0.12);overflow:hidden;margin-bottom:24px}
+    .lb-header{display:grid;grid-template-columns:44px 1fr 100px 110px 90px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.07);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(168,228,255,0.4)}
     .lb-header .col-right{text-align:right}
-    .team-row{display:grid;grid-template-columns:44px 1fr 130px 120px;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.05);align-items:center;transition:background 0.2s}
+    .team-row{display:grid;grid-template-columns:44px 1fr 100px 110px 90px;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.05);align-items:center;transition:background 0.2s}
     .team-row:last-child{border-bottom:none}
     .team-row:hover{background:rgba(0,229,255,0.04)}
     .team-row.rank-1{background:rgba(255,215,0,0.06);border-left:3px solid gold}
@@ -54,14 +77,18 @@
     .rank-2 .rank{color:silver}
     .rank-3 .rank{color:#cd7f32}
     .team-info{display:flex;flex-direction:column;gap:3px}
-    .team-name-lb{font-size:16px;font-weight:900;color:#a8e4ff}
+    .team-name-lb{font-size:15px;font-weight:900;color:#a8e4ff}
     .team-bar-wrap{margin-top:4px;background:rgba(2,11,24,0.5);border-radius:999px;height:5px;overflow:hidden}
     .team-bar{height:100%;border-radius:999px;background:linear-gradient(90deg,#1a9e5c,#6bcb77)}
     .amount-cell{text-align:right}
-    .amount-val{font-family:'Bangers',cursive;font-size:24px;color:#6bcb77}
+    .amount-val{font-family:'Bangers',cursive;font-size:22px;color:#6bcb77}
     .coins-cell{text-align:right}
-    .coins-val{font-family:'Bangers',cursive;font-size:20px;color:#74c0fc}
+    .coins-val{font-family:'Bangers',cursive;font-size:18px;color:#74c0fc}
     .coins-lbl{font-size:10px;color:rgba(116,192,252,0.45);letter-spacing:1px;text-transform:uppercase}
+    .kg-cell{text-align:right}
+    .kg-val{font-family:'Bangers',cursive;font-size:18px;color:#f0c040}
+    .kg-lbl{font-size:10px;color:rgba(240,192,64,0.4);letter-spacing:1px;text-transform:uppercase}
+    .paw-icon{font-size:11px}
     .empty-state{text-align:center;padding:48px 20px;font-size:14px;color:rgba(168,228,255,0.3);letter-spacing:1px}
 
     .admin-link-row{text-align:center;margin-top:32px}
@@ -86,9 +113,10 @@
     .modal-cancel{font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;padding:9px 24px;border-radius:9px;border:1px solid rgba(168,228,255,0.2);background:transparent;color:rgba(168,228,255,0.5);cursor:pointer;letter-spacing:1px}
     .modal-cancel:hover{background:rgba(168,228,255,0.08);color:#a8e4ff}
 
-    @media(max-width:500px){
-      .lb-header,.team-row{grid-template-columns:36px 1fr 88px 78px;padding:12px 10px}
-      .amount-val{font-size:18px}.coins-val{font-size:16px}
+    @media(max-width:540px){
+      .lb-header,.team-row{grid-template-columns:36px 1fr 76px 76px 66px;padding:10px 8px}
+      .amount-val{font-size:17px}.coins-val{font-size:15px}.kg-val{font-size:15px}
+      .team-name-lb{font-size:13px}
     }
   </style>
 </head>
@@ -133,6 +161,7 @@
   <h1>MAKO AQUATICS</h1>
   <p class="tagline">Fundraising Leaderboard</p>
 
+  <!-- Fundraising progress -->
   <div class="goal-card">
     <div class="goal-header">
       <span class="goal-title">Total Raised</span>
@@ -147,6 +176,25 @@
     <div class="goal-sub" id="goalSub">R0 still needed</div>
   </div>
 
+  <!-- Pet food progress -->
+  <div class="pet-card">
+    <div class="pet-header">
+      <span class="pet-title">🐾 Pet Food Donations</span>
+      <span class="pet-amount" id="petTotalLb">0 kg</span>
+      <span class="pet-target">Goal: 1 000 kg</span>
+    </div>
+    <div class="pet-track">
+      <div class="pet-fill" id="petFillLb" style="width:0%">
+        <span class="pet-pct" id="petPctLb"></span>
+      </div>
+    </div>
+    <div class="pet-sub" id="petSubLb">1 000 kg still needed</div>
+    <div class="pet-top3-label">Top 3 teams by kg donated</div>
+    <div class="pet-lb" id="petLbRows">
+      <div class="empty-state" style="padding:16px 0;font-size:13px">No donations yet</div>
+    </div>
+  </div>
+
   <div class="live-row"><span class="live-dot"></span> Live standings</div>
   <div class="lb-card">
     <div class="lb-header">
@@ -154,6 +202,7 @@
       <div>Team</div>
       <div class="col-right">Raised</div>
       <div class="col-right">MAKO Coins</div>
+      <div class="col-right">🐾 kg</div>
     </div>
     <div id="lbRows"><div class="empty-state">Loading standings...</div></div>
   </div>
@@ -167,8 +216,8 @@
 var FB='https://mako-global-leaderboard-default-rtdb.firebaseio.com';
 var ADMIN_PIN='6721';
 var GOAL=100000;
+var PET_GOAL=1000;
 
-// Bubbles + rays
 var bWrap=document.getElementById('bubbles');
 for(var i=0;i<22;i++){var b=document.createElement('div');b.className='bubble';var s=5+Math.random()*18;b.style.cssText='width:'+s+'px;height:'+s+'px;left:'+Math.random()*100+'%;animation-duration:'+(9+Math.random()*10)+'s;animation-delay:-'+Math.random()*12+'s';bWrap.appendChild(b);}
 var rEl=document.getElementById('rays');
@@ -179,23 +228,20 @@ var medalSVGs=[
   '<svg viewBox="0 0 32 36" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><polygon points="16,2 20,12 31,12 22,19 25,30 16,23 7,30 10,19 1,12 12,12" fill="#C0C0C0" stroke="#808080" stroke-width="1"/></svg>',
   '<svg viewBox="0 0 32 36" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><polygon points="16,2 20,12 31,12 22,19 25,30 16,23 7,30 10,19 1,12 12,12" fill="#CD7F32" stroke="#8B4513" stroke-width="1"/></svg>'
 ];
+var petMedals=['🥇','🥈','🥉'];
+var petMedalColors=['#f0c040','#a8e4ff','#cd7f32'];
+var petRankClasses=['p-rank-1','p-rank-2','p-rank-3'];
 
 function fmtRand(n){return 'R'+Math.round(n).toLocaleString('en-ZA');}
 function fmtCoins(n){return Math.round(n).toLocaleString('en-ZA');}
+function fmtKg(n){return (Math.round(n*10)/10).toLocaleString('en-ZA')+' kg';}
 
 async function loadLB(){
   try{
     var res=await fetch(FB+'/teams.json');
     var data=(await res.json())||{};
     var teams=Object.entries(data)
-      .map(function(e){
-        return{
-          id:e[0],
-          name:e[1].name||e[0],
-          raised:e[1].raised||0,
-          coins:e[1].coins||0
-        };
-      })
+      .map(function(e){return{id:e[0],name:e[1].name||e[0],raised:e[1].raised||0,coins:e[1].coins||0,petKg:e[1].petKg||0};})
       .sort(function(a,b){return b.raised-a.raised;});
 
     var total=teams.reduce(function(s,t){return s+t.raised;},0);
@@ -205,8 +251,33 @@ async function loadLB(){
     document.getElementById('totalRaised').textContent=fmtRand(total);
     document.getElementById('progressFill').style.width=pct.toFixed(1)+'%';
     document.getElementById('progressPct').textContent=pct>=10?pct.toFixed(1)+'%':'';
-    document.getElementById('goalSub').textContent=remaining>0?fmtRand(remaining)+' still needed':'Goal reached!';
+    document.getElementById('goalSub').textContent=remaining>0?fmtRand(remaining)+' still needed':'Goal reached! 🎉';
 
+    // Pet food totals
+    var totalKg=teams.reduce(function(s,t){return s+t.petKg;},0);
+    var petPct=Math.min(100,totalKg/PET_GOAL*100);
+    var petRemaining=Math.max(0,PET_GOAL-totalKg);
+    document.getElementById('petTotalLb').textContent=fmtKg(totalKg);
+    document.getElementById('petFillLb').style.width=petPct.toFixed(1)+'%';
+    document.getElementById('petPctLb').textContent=petPct>=10?petPct.toFixed(1)+'%':'';
+    document.getElementById('petSubLb').textContent=petRemaining>0?fmtKg(petRemaining)+' still needed':'1 tonne reached! 🎉';
+
+    // Pet food top 3
+    var petSorted=teams.slice().sort(function(a,b){return b.petKg-a.petKg;}).filter(function(t){return t.petKg>0;}).slice(0,3);
+    var petLbEl=document.getElementById('petLbRows');
+    if(petSorted.length===0){
+      petLbEl.innerHTML='<div class="empty-state" style="padding:16px 0;font-size:13px">No pet food donations yet</div>';
+    }else{
+      petLbEl.innerHTML=petSorted.map(function(t,i){
+        return '<div class="pet-row '+petRankClasses[i]+'">'
+          +'<div class="pet-medal">'+petMedals[i]+'</div>'
+          +'<div class="pet-team">'+t.name+'</div>'
+          +'<div><div class="pet-kg" style="color:'+petMedalColors[i]+'">'+fmtKg(t.petKg)+'</div><div class="pet-kg-lbl">donated</div></div>'
+          +'</div>';
+      }).join('');
+    }
+
+    // Main leaderboard
     var container=document.getElementById('lbRows');
     if(teams.length===0){container.innerHTML='<div class="empty-state">No teams yet — check back soon!</div>';return;}
 
@@ -215,6 +286,7 @@ async function loadLB(){
       var rankClass=i<3?'rank-'+(i+1):'';
       var rankDisp=i<3?medalSVGs[i]:String(i+1);
       var barWidth=maxRaised>0?Math.round(t.raised/maxRaised*100):0;
+      var kgDisplay=t.petKg>0?fmtKg(t.petKg):'—';
       return '<div class="team-row '+rankClass+'">'
         +'<div class="rank">'+rankDisp+'</div>'
         +'<div class="team-info">'
@@ -223,6 +295,7 @@ async function loadLB(){
         +'</div>'
         +'<div class="amount-cell"><div class="amount-val">'+fmtRand(t.raised)+'</div></div>'
         +'<div class="coins-cell"><div class="coins-val">'+fmtCoins(t.coins)+'</div><div class="coins-lbl">coins</div></div>'
+        +'<div class="kg-cell"><div class="kg-val" style="'+(t.petKg>0?'color:#f0c040':'color:rgba(168,228,255,0.25)')+'">'+kgDisplay+'</div>'+(t.petKg>0?'<div class="kg-lbl">kg</div>':'')+'</div>'
         +'</div>';
     }).join('');
   }catch(e){console.error(e);}
