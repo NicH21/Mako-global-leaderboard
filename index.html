@@ -57,7 +57,6 @@
     .team-name-lb{font-size:16px;font-weight:900;color:#a8e4ff}
     .team-bar-wrap{margin-top:4px;background:rgba(2,11,24,0.5);border-radius:999px;height:5px;overflow:hidden}
     .team-bar{height:100%;border-radius:999px;background:linear-gradient(90deg,#1a9e5c,#6bcb77)}
-    .petfood-pill{display:inline-flex;align-items:center;gap:4px;margin-top:2px;font-size:11px;font-weight:700;color:#f0c040;background:rgba(240,192,64,0.1);border:1px solid rgba(240,192,64,0.22);border-radius:999px;padding:2px 8px;width:fit-content}
     .amount-cell{text-align:right}
     .amount-val{font-family:'Bangers',cursive;font-size:24px;color:#6bcb77}
     .coins-cell{text-align:right}
@@ -183,12 +182,6 @@ var medalSVGs=[
 
 function fmtRand(n){return 'R'+Math.round(n).toLocaleString('en-ZA');}
 function fmtCoins(n){return Math.round(n).toLocaleString('en-ZA');}
-function fmtKg(n){
-  n=Number(n)||0;
-  var s=n.toFixed(1);
-  if(s.endsWith('.0'))s=s.slice(0,-2);
-  return s;
-}
 
 async function loadLB(){
   try{
@@ -200,8 +193,7 @@ async function loadLB(){
           id:e[0],
           name:e[1].name||e[0],
           raised:e[1].raised||0,
-          coins:e[1].coins||0,
-          petFoodKg:e[1].petFoodKg||0
+          coins:e[1].coins||0
         };
       })
       .sort(function(a,b){return b.raised-a.raised;});
@@ -223,13 +215,11 @@ async function loadLB(){
       var rankClass=i<3?'rank-'+(i+1):'';
       var rankDisp=i<3?medalSVGs[i]:String(i+1);
       var barWidth=maxRaised>0?Math.round(t.raised/maxRaised*100):0;
-      var petPill=t.petFoodKg>0?'<div class="petfood-pill">\uD83D\uDC15\uD83D\uDC08 '+fmtKg(t.petFoodKg)+' kg donated</div>':'';
       return '<div class="team-row '+rankClass+'">'
         +'<div class="rank">'+rankDisp+'</div>'
         +'<div class="team-info">'
           +'<div class="team-name-lb">'+t.name+'</div>'
           +'<div class="team-bar-wrap"><div class="team-bar" style="width:'+barWidth+'%"></div></div>'
-          +petPill
         +'</div>'
         +'<div class="amount-cell"><div class="amount-val">'+fmtRand(t.raised)+'</div></div>'
         +'<div class="coins-cell"><div class="coins-val">'+fmtCoins(t.coins)+'</div><div class="coins-lbl">coins</div></div>'
