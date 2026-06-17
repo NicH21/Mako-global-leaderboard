@@ -24,6 +24,22 @@
     .goal-total{font-family:'Bangers',cursive;font-size:22px;color:#6bcb77}
     .goal-remaining{font-size:12px;color:rgba(168,228,255,0.4)}
 
+    /* Pet food progress bar */
+    .pet-bar-wrap{background:rgba(2,11,24,0.6);border-radius:999px;height:18px;border:1px solid rgba(240,192,64,0.2);overflow:hidden;margin-bottom:8px}
+    .pet-bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#e67e22,#f0c040);transition:width 0.6s ease;display:flex;align-items:center;justify-content:flex-end;padding-right:8px}
+    .pet-bar-pct{font-family:'Bangers',cursive;font-size:12px;color:rgba(2,11,24,0.9)}
+    .pet-stats{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;flex-wrap:wrap;gap:6px}
+    .pet-total{font-family:'Bangers',cursive;font-size:22px;color:#f0c040}
+    .pet-remaining{font-size:12px;color:rgba(168,228,255,0.4)}
+
+    /* Pet food top 3 */
+    .pet-top3{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+    .pet-top3-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(168,228,255,0.35);margin-bottom:2px}
+    .pet-podium-row{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:10px;background:rgba(2,11,24,0.4);border:1px solid rgba(240,192,64,0.1)}
+    .pet-rank-badge{font-family:'Bangers',cursive;font-size:18px;width:28px;text-align:center;flex-shrink:0}
+    .pet-team-name{flex:1;font-size:14px;font-weight:900;color:#a8e4ff;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .pet-kg-val{font-family:'Bangers',cursive;font-size:20px;color:#f0c040}
+
     /* Add team */
     .add-team-row{display:flex;gap:10px;flex-wrap:wrap}
     .team-name-inp{flex:1;min-width:160px;background:rgba(5,30,55,0.8);border:1px solid rgba(0,229,255,0.25);border-radius:9px;padding:10px 14px;color:#a8e4ff;font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;outline:none;transition:border-color 0.2s}
@@ -62,6 +78,22 @@
     .r-btn.sub{border-color:#ff6b6b;color:#ff6b6b}.r-btn.sub:hover{background:rgba(255,64,64,0.1)}
     .r-btn.set{border-color:#74c0fc;color:#74c0fc}.r-btn.set:hover{background:rgba(116,192,252,0.1)}
     .adj-hint{font-size:11px;color:rgba(168,228,255,0.3);letter-spacing:0.5px}
+
+    /* Pet food section per team */
+    .pet-section{background:rgba(240,192,64,0.05);border:1px solid rgba(240,192,64,0.15);border-radius:10px;padding:12px 14px;margin-top:10px}
+    .pet-section-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,192,64,0.55);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .pet-paw{font-size:14px}
+    .pet-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .kg-prefix{font-family:'Bangers',cursive;font-size:16px;color:rgba(240,192,64,0.5)}
+    .kg-inp{width:100px;padding:8px 10px;border-radius:8px;border:1px solid rgba(240,192,64,0.25);background:rgba(2,11,24,0.7);color:white;font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;text-align:center;outline:none;transition:border-color 0.2s}
+    .kg-inp:focus{border-color:rgba(240,192,64,0.6)}
+    .kg-btn{font-family:'Bangers',cursive;font-size:14px;padding:7px 14px;border-radius:8px;border:1.5px solid;background:rgba(2,11,24,0.8);cursor:pointer;transition:background 0.15s,transform 0.1s;white-space:nowrap}
+    .kg-btn:hover{transform:scale(1.04)}
+    .kg-btn.add{border-color:#f0c040;color:#f0c040}.kg-btn.add:hover{background:rgba(240,192,64,0.1)}
+    .kg-btn.sub{border-color:#ff6b6b;color:#ff6b6b}.kg-btn.sub:hover{background:rgba(255,64,64,0.1)}
+    .kg-btn.setbtn{border-color:#74c0fc;color:#74c0fc}.kg-btn.setbtn:hover{background:rgba(116,192,252,0.1)}
+    .pet-current{font-family:'Bangers',cursive;font-size:22px;color:#f0c040;align-self:center}
+    .pet-current-label{font-size:11px;color:rgba(240,192,64,0.45);align-self:center}
 
     /* Deposit history */
     .deposits-list{display:flex;flex-direction:column;gap:6px;margin-top:4px}
@@ -111,6 +143,7 @@
     .conn-status{font-size:12px;text-align:center;margin-bottom:14px;letter-spacing:1px;padding:8px;border-radius:8px}
     .conn-ok{color:#6bcb77;background:rgba(107,203,119,0.1);border:1px solid rgba(107,203,119,0.2)}
     .conn-err{color:#ff6b6b;background:rgba(255,64,64,0.1);border:1px solid rgba(255,64,64,0.2)}
+    .section-divider{height:1px;background:rgba(0,229,255,0.08);margin:10px 0}
   </style>
 </head>
 <body>
@@ -168,7 +201,7 @@ for(var _bi=0;_bi<12;_bi++){var _bb=document.createElement('div');_bb.className=
 
   <div id="connStatus"></div>
 
-  <!-- Overall progress -->
+  <!-- Overall fundraising progress -->
   <div class="card">
     <div class="card-title">Overall Progress &mdash; Goal: R100 000</div>
     <div class="goal-stats">
@@ -179,6 +212,25 @@ for(var _bi=0;_bi<12;_bi++){var _bb=document.createElement('div');_bb.className=
       <div class="goal-bar-fill" id="adminBar" style="width:0%">
         <span class="goal-bar-pct" id="adminBarPct"></span>
       </div>
+    </div>
+  </div>
+
+  <!-- Pet food progress -->
+  <div class="card">
+    <div class="card-title">🐾 Pet Food Donations &mdash; Goal: 1 000 kg</div>
+    <div class="pet-stats">
+      <span class="pet-total" id="petTotal">0 kg</span>
+      <span class="pet-remaining" id="petRemaining">1 000 kg remaining</span>
+    </div>
+    <div class="pet-bar-wrap">
+      <div class="pet-bar-fill" id="petBar" style="width:0%">
+        <span class="pet-bar-pct" id="petBarPct"></span>
+      </div>
+    </div>
+    <!-- Top 3 kg teams -->
+    <div class="pet-top3" id="petTop3">
+      <div class="pet-top3-title">Top teams by kg donated</div>
+      <div style="font-size:12px;color:rgba(168,228,255,0.25);padding:4px 0">No donations yet</div>
     </div>
   </div>
 
@@ -212,6 +264,7 @@ for(var _bi=0;_bi<12;_bi++){var _bb=document.createElement('div');_bb.className=
 <script>
 var FB='https://mako-global-leaderboard-default-rtdb.firebaseio.com';
 var GOAL=100000;
+var PET_GOAL=1000;
 var teams={};
 var editingId=null;
 var inputFocused=false;
@@ -222,25 +275,21 @@ var PERIODS={
   '1x': {label:'16 Jul – swimathon',rate:10,rateLabel:'10 coins/R1 (1x)'}
 };
 
-// Modal state
 var modalTeamId=null;
-var modalSign=1; // +1 add, -1 sub
+var modalSign=1;
 var modalAmount=0;
 var selectedPeriod=null;
 
 function fmtRand(n){return 'R'+Math.round(n).toLocaleString('en-ZA');}
 function fmtCoins(n){return Math.round(n).toLocaleString('en-ZA');}
+function fmtKg(n){return (Math.round(n*10)/10).toLocaleString('en-ZA')+' kg';}
 
 function showToast(msg){var el=document.getElementById('toastEl');el.textContent=msg;el.classList.add('show');setTimeout(function(){el.classList.remove('show');},2800);}
 function setConnStatus(ok,msg){var el=document.getElementById('connStatus');el.textContent=msg;el.className='conn-status '+(ok?'conn-ok':'conn-err');}
 
 // ---- Date modal ----
-function openDateModal(teamId, sign, amount){
-  modalTeamId=teamId;
-  modalSign=sign;
-  modalAmount=amount;
-  selectedPeriod=null;
-  // Reset UI
+function openDateModal(teamId,sign,amount){
+  modalTeamId=teamId;modalSign=sign;modalAmount=amount;selectedPeriod=null;
   ['2x','1x5','1x'].forEach(function(k){
     document.getElementById('popt_'+k).style.borderColor='';
     document.getElementById('prad_'+k).style.background='transparent';
@@ -263,65 +312,33 @@ function selectPeriod(key){
       opt.style.background='rgba(2,11,24,0.7)';
       rad.style.background=k==='2x'?'#f0c040':k==='1x5'?'#a8e4ff':'#74c0fc';
       rad.style.borderColor=k==='2x'?'#f0c040':k==='1x5'?'#a8e4ff':'#74c0fc';
-    }else{
-      opt.style.borderColor='';
-      opt.style.background='';
-      rad.style.background='transparent';
-      rad.style.borderColor='rgba(0,229,255,0.4)';
-    }
+    }else{opt.style.borderColor='';opt.style.background='';rad.style.background='transparent';rad.style.borderColor='rgba(0,229,255,0.4)';}
   });
   var coins=Math.round(modalAmount*PERIODS[key].rate);
   var sign=modalSign>0?'+':'-';
-  document.getElementById('periodPreview').textContent=
-    sign+fmtRand(modalAmount)+' = '+fmtCoins(coins)+' MAKO coins ('+PERIODS[key].rateLabel+')';
+  document.getElementById('periodPreview').textContent=sign+fmtRand(modalAmount)+' = '+fmtCoins(coins)+' MAKO coins ('+PERIODS[key].rateLabel+')';
   document.getElementById('dmodalConfirm').disabled=false;
 }
 
-function closeDateModal(){
-  document.getElementById('dmodal').classList.remove('open');
-  modalTeamId=null;selectedPeriod=null;
-}
+function closeDateModal(){document.getElementById('dmodal').classList.remove('open');modalTeamId=null;selectedPeriod=null;}
 
 async function confirmDeposit(){
   if(!selectedPeriod||!modalTeamId)return;
-  // Snapshot all modal state into locals BEFORE closing the modal
-  var tid=modalTeamId;
-  var period=selectedPeriod;
-  var sign=modalSign;
-  var amount=modalAmount;
-
-  var t=teams[tid];
-  if(!t)return;
+  var tid=modalTeamId,period=selectedPeriod,sign=modalSign,amount=modalAmount;
+  var t=teams[tid];if(!t)return;
   var rate=PERIODS[period].rate;
   var signedAmount=sign*amount;
   var coinsDelta=sign*Math.round(amount*rate);
-
-  var deposit={
-    amount:signedAmount,
-    coins:coinsDelta,
-    period:period,
-    periodLabel:PERIODS[period].label,
-    ts:Date.now()
-  };
-
+  var deposit={amount:signedAmount,coins:coinsDelta,period:period,periodLabel:PERIODS[period].label,ts:Date.now()};
   var newRaised=Math.max(0,(t.raised||0)+signedAmount);
   var newCoins=Math.max(0,(t.coins||0)+coinsDelta);
   var deposits=t.deposits?JSON.parse(JSON.stringify(t.deposits)):[];
   deposits.push(deposit);
-
   closeDateModal();
-
   try{
-    await fetch(FB+'/teams/'+tid+'.json',{
-      method:'PATCH',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({raised:newRaised,coins:newCoins,deposits:deposits})
-    });
-    teams[tid].raised=newRaised;
-    teams[tid].coins=newCoins;
-    teams[tid].deposits=deposits;
-    updateAdminProgress();
-    renderTeams();
+    await fetch(FB+'/teams/'+tid+'.json',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({raised:newRaised,coins:newCoins,deposits:deposits})});
+    teams[tid].raised=newRaised;teams[tid].coins=newCoins;teams[tid].deposits=deposits;
+    updateAdminProgress();renderTeams();
     showToast((signedAmount>0?'+':'')+fmtRand(signedAmount)+' = '+fmtCoins(Math.abs(coinsDelta))+' coins for '+t.name);
   }catch(e){showToast('Error: '+e.message);}
 }
@@ -335,6 +352,38 @@ function updateAdminProgress(){
   document.getElementById('adminRemaining').textContent=remaining>0?fmtRand(remaining)+' remaining':'Goal reached!';
   document.getElementById('adminBar').style.width=pct.toFixed(1)+'%';
   document.getElementById('adminBarPct').textContent=pct>=12?pct.toFixed(1)+'%':'';
+
+  // Pet food progress
+  var totalKg=Object.values(teams).reduce(function(s,t){return s+(t.petKg||0);},0);
+  var petPct=Math.min(100,totalKg/PET_GOAL*100);
+  var petRemaining=Math.max(0,PET_GOAL-totalKg);
+  document.getElementById('petTotal').textContent=fmtKg(totalKg);
+  document.getElementById('petRemaining').textContent=petRemaining>0?fmtKg(petRemaining)+' remaining':'1 tonne reached! 🎉';
+  document.getElementById('petBar').style.width=petPct.toFixed(1)+'%';
+  document.getElementById('petBarPct').textContent=petPct>=12?petPct.toFixed(1)+'%':'';
+
+  // Top 3 kg
+  var sorted=Object.entries(teams)
+    .map(function(e){return{name:e[1].name,kg:e[1].petKg||0};})
+    .filter(function(t){return t.kg>0;})
+    .sort(function(a,b){return b.kg-a.kg;})
+    .slice(0,3);
+  var top3el=document.getElementById('petTop3');
+  var medals=['🥇','🥈','🥉'];
+  var colors=['#f0c040','#a8e4ff','#cd7f32'];
+  if(sorted.length===0){
+    top3el.innerHTML='<div class="pet-top3-title">Top teams by kg donated</div><div style="font-size:12px;color:rgba(168,228,255,0.25);padding:4px 0">No donations yet</div>';
+  }else{
+    var html='<div class="pet-top3-title">Top teams by kg donated</div>';
+    sorted.forEach(function(t,i){
+      html+='<div class="pet-podium-row" style="border-color:'+colors[i]+'22">'
+        +'<span class="pet-rank-badge" style="color:'+colors[i]+'">'+medals[i]+'</span>'
+        +'<span class="pet-team-name">'+t.name+'</span>'
+        +'<span class="pet-kg-val" style="color:'+colors[i]+'">'+fmtKg(t.kg)+'</span>'
+        +'</div>';
+    });
+    top3el.innerHTML=html;
+  }
 }
 
 // ---- Load ----
@@ -353,6 +402,35 @@ async function loadTeams(){
   }
 }
 
+// ---- Pet food kg actions ----
+async function adjustKg(teamId, sign){
+  var inp=document.getElementById('kgi_'+teamId);
+  var val=parseFloat(inp.value)||0;
+  if(val<=0){showToast('Enter a kg amount');return;}
+  var t=teams[teamId];if(!t)return;
+  var cur=t.petKg||0;
+  var newKg=Math.max(0,cur+sign*val);
+  try{
+    await fetch(FB+'/teams/'+teamId+'/petKg.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(newKg)});
+    teams[teamId].petKg=newKg;
+    updateAdminProgress();renderTeams();
+    showToast((sign>0?'+':'-')+val+' kg → '+fmtKg(newKg)+' for '+t.name);
+  }catch(e){showToast('Error: '+e.message);}
+}
+
+async function setKg(teamId){
+  var inp=document.getElementById('kgi_'+teamId);
+  var val=parseFloat(inp.value)||0;
+  if(val<0){showToast('Amount must be 0 or more');return;}
+  var t=teams[teamId];if(!t)return;
+  try{
+    await fetch(FB+'/teams/'+teamId+'/petKg.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(val)});
+    teams[teamId].petKg=val;
+    updateAdminProgress();renderTeams();
+    showToast('Set '+fmtKg(val)+' for '+t.name);
+  }catch(e){showToast('Error: '+e.message);}
+}
+
 // ---- Render ----
 function renderTeams(){
   var list=document.getElementById('teamsList');
@@ -366,10 +444,11 @@ function renderTeams(){
     var raised=t.raised||0;
     var coins=t.coins||0;
     var deposits=t.deposits||[];
+    var petKg=t.petKg||0;
 
     var row=document.createElement('div');row.className='team-admin-row';
 
-    // Top row: name + coin badge + edit/delete
+    // Top row
     var topRow=document.createElement('div');topRow.className='team-top-row';
     var dn=document.createElement('span');dn.className='team-display-name';dn.id='dn_'+id;dn.textContent=t.name;
     var coinBadge=document.createElement('span');coinBadge.className='team-coin-badge';coinBadge.id='cb_'+id;
@@ -413,15 +492,13 @@ function renderTeams(){
     depLabel.style.cssText='font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(168,228,255,0.3);margin-bottom:6px;margin-top:4px';
     depLabel.textContent='Deposit history';
     depSection.appendChild(depLabel);
-
     var depList=document.createElement('div');depList.className='deposits-list';depList.id='dl_'+id;
     if(deposits.length===0){
       var nd=document.createElement('div');nd.className='no-deposits';nd.textContent='No deposits yet';
       depList.appendChild(nd);
     }else{
-      // Show most recent first
-      var sorted=deposits.slice().reverse();
-      sorted.forEach(function(dep,idx){
+      var sorted2=deposits.slice().reverse();
+      sorted2.forEach(function(dep,idx){
         var realIdx=deposits.length-1-idx;
         var di=document.createElement('div');di.className='deposit-item';
         var da=document.createElement('span');da.className='dep-amount';
@@ -440,10 +517,37 @@ function renderTeams(){
     }
     depSection.appendChild(depList);
 
+    // --- Pet food section ---
+    var petSection=document.createElement('div');petSection.className='pet-section';
+    var petTitle=document.createElement('div');petTitle.className='pet-section-title';
+    petTitle.innerHTML='<span class="pet-paw">🐾</span> Pet Food Donation (kg)';
+    var petCurrentRow=document.createElement('div');petCurrentRow.style.cssText='display:flex;align-items:baseline;gap:8px;margin-bottom:10px';
+    var petCur=document.createElement('span');petCur.className='pet-current';petCur.id='pk_'+id;petCur.textContent=fmtKg(petKg);
+    var petCurLabel=document.createElement('span');petCurLabel.className='pet-current-label';petCurLabel.textContent='donated so far';
+    petCurrentRow.appendChild(petCur);petCurrentRow.appendChild(petCurLabel);
+
+    var petRow=document.createElement('div');petRow.className='pet-row';
+    var kgPfx=document.createElement('span');kgPfx.className='kg-prefix';kgPfx.textContent='kg';
+    var kgInp=document.createElement('input');kgInp.className='kg-inp';kgInp.id='kgi_'+id;kgInp.type='number';kgInp.value=10;kgInp.min=0;kgInp.step=0.1;kgInp.placeholder='kg';
+    kgInp.addEventListener('focus',function(){inputFocused=true;});
+    kgInp.addEventListener('blur',function(){inputFocused=false;});
+    var kgAdd=document.createElement('button');kgAdd.className='kg-btn add';kgAdd.textContent='+ADD';
+    kgAdd.onclick=(function(tid){return function(){adjustKg(tid,1);};})(id);
+    var kgSub=document.createElement('button');kgSub.className='kg-btn sub';kgSub.innerHTML='&minus;SUB';
+    kgSub.onclick=(function(tid){return function(){adjustKg(tid,-1);};})(id);
+    var kgSet=document.createElement('button');kgSet.className='kg-btn setbtn';kgSet.textContent='SET';
+    kgSet.onclick=(function(tid){return function(){setKg(tid);};})(id);
+    petRow.appendChild(kgPfx);petRow.appendChild(kgInp);petRow.appendChild(kgAdd);petRow.appendChild(kgSub);petRow.appendChild(kgSet);
+
+    petSection.appendChild(petTitle);
+    petSection.appendChild(petCurrentRow);
+    petSection.appendChild(petRow);
+
     raisedSection.appendChild(raisedDisplay);
     raisedSection.appendChild(addFundsRow);
     raisedSection.appendChild(hint);
     raisedSection.appendChild(depSection);
+    raisedSection.appendChild(petSection);
 
     row.appendChild(topRow);
     row.appendChild(raisedSection);
@@ -451,18 +555,14 @@ function renderTeams(){
   });
 }
 
-function promptDeposit(teamId, sign){
+function promptDeposit(teamId,sign){
   var inp=document.getElementById('ri_'+teamId);
   var amount=Math.max(1,parseInt(inp.value)||1);
-  if(sign<0){
-    var cur=teams[teamId]?teams[teamId].raised||0:0;
-    amount=Math.min(amount,cur);
-    if(amount<=0){showToast('Nothing to subtract');return;}
-  }
+  if(sign<0){var cur=teams[teamId]?teams[teamId].raised||0:0;amount=Math.min(amount,cur);if(amount<=0){showToast('Nothing to subtract');return;}}
   openDateModal(teamId,sign,amount);
 }
 
-async function removeDeposit(teamId, depIdx){
+async function removeDeposit(teamId,depIdx){
   var t=teams[teamId];if(!t)return;
   var deposits=(t.deposits||[]).slice();
   var dep=deposits[depIdx];if(!dep)return;
@@ -471,17 +571,12 @@ async function removeDeposit(teamId, depIdx){
   var newRaised=Math.max(0,(t.raised||0)-dep.amount);
   var newCoins=Math.max(0,(t.coins||0)-dep.coins);
   try{
-    await fetch(FB+'/teams/'+teamId+'.json',{
-      method:'PATCH',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({raised:newRaised,coins:newCoins,deposits:deposits})
-    });
+    await fetch(FB+'/teams/'+teamId+'.json',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({raised:newRaised,coins:newCoins,deposits:deposits})});
     teams[teamId].raised=newRaised;teams[teamId].coins=newCoins;teams[teamId].deposits=deposits;
-    updateAdminProgress();renderTeams();
-    showToast('Deposit removed');
+    updateAdminProgress();renderTeams();showToast('Deposit removed');
   }catch(e){showToast('Error: '+e.message);}
 }
 
-// ---- Add team ----
 async function addTeam(){
   var inp=document.getElementById('newTeamName');
   var btn=document.getElementById('addTeamBtn');
@@ -489,7 +584,7 @@ async function addTeam(){
   if(!name){inp.focus();return;}
   btn.disabled=true;btn.textContent='Saving...';
   var id='team_'+Date.now();
-  var team={name:name,raised:0,coins:0,deposits:[]};
+  var team={name:name,raised:0,coins:0,deposits:[],petKg:0};
   try{
     var res=await fetch(FB+'/teams/'+id+'.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(team)});
     if(!res.ok)throw new Error('HTTP '+res.status);
@@ -531,21 +626,17 @@ async function delTeam(id){
 }
 
 async function resetAll(){
-  if(!confirm('Reset ALL fundraising amounts and coins to zero? Cannot be undone.'))return;
+  if(!confirm('Reset ALL fundraising amounts, coins, and pet food kg to zero? Cannot be undone.'))return;
   var ids=Object.keys(teams);
   try{
     await Promise.all(ids.map(function(id){
-      return fetch(FB+'/teams/'+id+'.json',{
-        method:'PATCH',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({raised:0,coins:0,deposits:[]})
-      });
+      return fetch(FB+'/teams/'+id+'.json',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({raised:0,coins:0,deposits:[],petKg:0})});
     }));
-    ids.forEach(function(id){teams[id].raised=0;teams[id].coins=0;teams[id].deposits=[];});
+    ids.forEach(function(id){teams[id].raised=0;teams[id].coins=0;teams[id].deposits=[];teams[id].petKg=0;});
     updateAdminProgress();renderTeams();showToast('All balances reset to zero');
   }catch(e){showToast('Error: '+e.message);}
 }
 
-// Close modal on overlay click
 document.getElementById('dmodal').addEventListener('click',function(e){if(e.target===this)closeDateModal();});
 
 loadTeams();
