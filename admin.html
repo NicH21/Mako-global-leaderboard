@@ -568,8 +568,9 @@ async function removeDeposit(teamId,depIdx){
   var dep=deposits[depIdx];if(!dep)return;
   if(!confirm('Remove this deposit of '+(dep.amount>=0?'+':'')+fmtRand(dep.amount)+'?'))return;
   deposits.splice(depIdx,1);
-  var newRaised=Math.max(0,(t.raised||0)-dep.amount);
-  var newCoins=Math.max(0,(t.coins||0)-dep.coins);
+  // Recompute totals from remaining deposits to avoid sign errors
+  var newRaised=Math.max(0,deposits.reduce(function(s,d){return s+d.amount;},0));
+  var newCoins=Math.max(0,deposits.reduce(function(s,d){return s+d.coins;},0));
   try{
     await fetch(FB+'/teams/'+teamId+'.json',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({raised:newRaised,coins:newCoins,deposits:deposits})});
     teams[teamId].raised=newRaised;teams[teamId].coins=newCoins;teams[teamId].deposits=deposits;
