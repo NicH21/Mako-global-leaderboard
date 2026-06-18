@@ -566,15 +566,12 @@ async function removeDeposit(teamId,depIdx){
   var t=teams[teamId];if(!t)return;
   var deposits=(t.deposits||[]).slice();
   var dep=deposits[depIdx];if(!dep)return;
-  if(!confirm('Remove this deposit of '+(dep.amount>=0?'+':'')+fmtRand(dep.amount)+'?'))return;
+  if(!confirm('Remove this log entry of '+(dep.amount>=0?'+':'')+fmtRand(dep.amount)+'?\n\nNote: this only removes the history entry — the team\'s balance is not changed.'))return;
   deposits.splice(depIdx,1);
-  // Recompute totals from remaining deposits to avoid sign errors
-  var newRaised=Math.max(0,deposits.reduce(function(s,d){return s+d.amount;},0));
-  var newCoins=Math.max(0,deposits.reduce(function(s,d){return s+d.coins;},0));
   try{
-    await fetch(FB+'/teams/'+teamId+'.json',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({raised:newRaised,coins:newCoins,deposits:deposits})});
-    teams[teamId].raised=newRaised;teams[teamId].coins=newCoins;teams[teamId].deposits=deposits;
-    updateAdminProgress();renderTeams();showToast('Deposit removed');
+    await fetch(FB+'/teams/'+teamId+'/deposits.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(deposits)});
+    teams[teamId].deposits=deposits;
+    renderTeams();showToast('Log entry removed');
   }catch(e){showToast('Error: '+e.message);}
 }
 
