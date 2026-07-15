@@ -94,6 +94,8 @@
     .kg-btn.setbtn{border-color:#74c0fc;color:#74c0fc}.kg-btn.setbtn:hover{background:rgba(116,192,252,0.1)}
     .pet-current{font-family:'Bangers',cursive;font-size:22px;color:#f0c040;align-self:center}
     .pet-current-label{font-size:11px;color:rgba(240,192,64,0.45);align-self:center}
+    .pet-bonus-note{font-size:11px;color:#f0c040;letter-spacing:0.5px;margin-top:8px;background:rgba(240,192,64,0.08);border:1px solid rgba(240,192,64,0.2);border-radius:7px;padding:6px 10px;display:flex;align-items:center;gap:6px}
+    .pet-bonus-note.inactive{color:rgba(168,228,255,0.3);background:transparent;border-color:rgba(168,228,255,0.1)}
 
     /* Deposit history */
     .deposits-list{display:flex;flex-direction:column;gap:6px;margin-top:4px}
@@ -275,6 +277,13 @@ var PERIODS={
   '1x': {label:'1 Aug – swimathon',rate:10,rateLabel:'10 coins/R1 (1x)'}
 };
 
+// Pet food bonus: 500 MAKO coins per kg donated above 50kg
+var PET_BONUS_THRESHOLD_KG=50;
+var PET_BONUS_COINS_PER_KG=500;
+function petBonusCoins(kg){
+  return Math.max(0,(kg||0)-PET_BONUS_THRESHOLD_KG)*PET_BONUS_COINS_PER_KG;
+}
+
 var modalTeamId=null;
 var modalSign=1;
 var modalAmount=0;
@@ -414,7 +423,10 @@ async function adjustKg(teamId, sign){
     await fetch(FB+'/teams/'+teamId+'/petKg.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(newKg)});
     teams[teamId].petKg=newKg;
     updateAdminProgress();renderTeams();
-    showToast((sign>0?'+':'-')+val+' kg → '+fmtKg(newKg)+' for '+t.name);
+    var bonus=petBonusCoins(newKg);
+    var msg=(sign>0?'+':'-')+val+' kg → '+fmtKg(newKg)+' for '+t.name;
+    if(bonus>0)msg+=' (bonus: '+fmtCoins(bonus)+' coins)';
+    showToast(msg);
   }catch(e){showToast('Error: '+e.message);}
 }
 
@@ -427,7 +439,10 @@ async function setKg(teamId){
     await fetch(FB+'/teams/'+teamId+'/petKg.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(val)});
     teams[teamId].petKg=val;
     updateAdminProgress();renderTeams();
-    showToast('Set '+fmtKg(val)+' for '+t.name);
+    var bonus=petBonusCoins(val);
+    var msg='Set '+fmtKg(val)+' for '+t.name;
+    if(bonus>0)msg+=' (bonus: '+fmtCoins(bonus)+' coins)';
+    showToast(msg);
   }catch(e){showToast('Error: '+e.message);}
 }
 
@@ -445,6 +460,8 @@ function renderTeams(){
     var coins=t.coins||0;
     var deposits=t.deposits||[];
     var petKg=t.petKg||0;
+    var bonus=petBonusCoins(petKg);
+    var totalCoins=coins+bonus;
 
     var row=document.createElement('div');row.className='team-admin-row';
 
@@ -452,7 +469,7 @@ function renderTeams(){
     var topRow=document.createElement('div');topRow.className='team-top-row';
     var dn=document.createElement('span');dn.className='team-display-name';dn.id='dn_'+id;dn.textContent=t.name;
     var coinBadge=document.createElement('span');coinBadge.className='team-coin-badge';coinBadge.id='cb_'+id;
-    coinBadge.textContent='('+fmtCoins(coins)+' coins)';
+    coinBadge.textContent='('+fmtCoins(totalCoins)+' coins)';
     var ei=document.createElement('input');ei.className='team-edit-inp';ei.id='ei_'+id;ei.type='text';ei.value=t.name;ei.maxLength=30;ei.style.display='none';
     ei.addEventListener('focus',function(){inputFocused=true;});
     ei.addEventListener('blur',function(){inputFocused=false;});
@@ -470,7 +487,7 @@ function renderTeams(){
     var rLabel=document.createElement('span');rLabel.className='raised-label';rLabel.textContent='Total Raised';
     var rVal=document.createElement('span');rVal.className='raised-val';rVal.id='rv_'+id;rVal.textContent=fmtRand(raised);
     var coinsDisp=document.createElement('span');coinsDisp.className='coins-calc';coinsDisp.id='cc_'+id;
-    coinsDisp.textContent='= '+fmtCoins(coins)+' MAKO coins';
+    coinsDisp.textContent='= '+fmtCoins(totalCoins)+' MAKO coins';
     raisedDisplay.appendChild(rLabel);raisedDisplay.appendChild(rVal);raisedDisplay.appendChild(coinsDisp);
 
     // Add funds row
@@ -539,9 +556,22 @@ function renderTeams(){
     kgSet.onclick=(function(tid){return function(){setKg(tid);};})(id);
     petRow.appendChild(kgPfx);petRow.appendChild(kgInp);petRow.appendChild(kgAdd);petRow.appendChild(kgSub);petRow.appendChild(kgSet);
 
+    // Bonus note — 500 coins per kg over 50kg
+    var petBonusNote=document.createElement('div');
+    petBonusNote.id='pbn_'+id;
+    if(bonus>0){
+      petBonusNote.className='pet-bonus-note';
+      petBonusNote.innerHTML='🎉 <span>Over 50kg bonus: <strong>+'+fmtCoins(bonus)+' MAKO coins</strong> ('+(Math.round((petKg-PET_BONUS_THRESHOLD_KG)*10)/10)+'kg over 50kg × 500)</span>';
+    }else{
+      petBonusNote.className='pet-bonus-note inactive';
+      var toGo=Math.max(0,PET_BONUS_THRESHOLD_KG-petKg);
+      petBonusNote.textContent=toGo>0?(Math.round(toGo*10)/10)+'kg to go until the 50kg bonus kicks in (+500 coins/kg after that)':'Bonus active';
+    }
+
     petSection.appendChild(petTitle);
     petSection.appendChild(petCurrentRow);
     petSection.appendChild(petRow);
+    petSection.appendChild(petBonusNote);
 
     raisedSection.appendChild(raisedDisplay);
     raisedSection.appendChild(addFundsRow);
