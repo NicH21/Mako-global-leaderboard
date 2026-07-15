@@ -57,6 +57,7 @@
     .pet-team{font-size:14px;font-weight:900;color:#a8e4ff}
     .pet-kg{font-family:'Bangers',cursive;font-size:22px;text-align:right}
     .pet-kg-lbl{font-size:10px;color:rgba(240,192,64,0.4);letter-spacing:1px;text-transform:uppercase;text-align:right}
+    .pet-row-bonus{font-size:10px;color:#f0c040;text-align:right;letter-spacing:0.5px;margin-top:2px}
 
     .live-row{display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(168,228,255,0.55);margin-bottom:18px}
     .live-dot{width:8px;height:8px;border-radius:50%;background:#6bcb77;animation:pulse 1.2s infinite}
@@ -85,6 +86,7 @@
     .coins-cell{text-align:right}
     .coins-val{font-family:'Bangers',cursive;font-size:18px;color:#74c0fc}
     .coins-lbl{font-size:10px;color:rgba(116,192,252,0.45);letter-spacing:1px;text-transform:uppercase}
+    .coins-bonus-note{font-size:10px;color:#f0c040;letter-spacing:0.5px;margin-top:2px}
     .kg-cell{text-align:right}
     .kg-val{font-family:'Bangers',cursive;font-size:18px;color:#f0c040}
     .kg-lbl{font-size:10px;color:rgba(240,192,64,0.4);letter-spacing:1px;text-transform:uppercase}
@@ -218,6 +220,13 @@ var ADMIN_PIN='6721';
 var GOAL=100000;
 var PET_GOAL=1000;
 
+// Pet food bonus: 500 MAKO coins per kg donated above 50kg
+var PET_BONUS_THRESHOLD_KG=50;
+var PET_BONUS_COINS_PER_KG=500;
+function petBonusCoins(kg){
+  return Math.max(0,(kg||0)-PET_BONUS_THRESHOLD_KG)*PET_BONUS_COINS_PER_KG;
+}
+
 var bWrap=document.getElementById('bubbles');
 for(var i=0;i<22;i++){var b=document.createElement('div');b.className='bubble';var s=5+Math.random()*18;b.style.cssText='width:'+s+'px;height:'+s+'px;left:'+Math.random()*100+'%;animation-duration:'+(9+Math.random()*10)+'s;animation-delay:-'+Math.random()*12+'s';bWrap.appendChild(b);}
 var rEl=document.getElementById('rays');
@@ -269,10 +278,13 @@ async function loadLB(){
       petLbEl.innerHTML='<div class="empty-state" style="padding:16px 0;font-size:13px">No pet food donations yet</div>';
     }else{
       petLbEl.innerHTML=petSorted.map(function(t,i){
+        var bonus=petBonusCoins(t.petKg);
         return '<div class="pet-row '+petRankClasses[i]+'">'
           +'<div class="pet-medal">'+petMedals[i]+'</div>'
           +'<div class="pet-team">'+t.name+'</div>'
-          +'<div><div class="pet-kg" style="color:'+petMedalColors[i]+'">'+fmtKg(t.petKg)+'</div><div class="pet-kg-lbl">donated</div></div>'
+          +'<div><div class="pet-kg" style="color:'+petMedalColors[i]+'">'+fmtKg(t.petKg)+'</div><div class="pet-kg-lbl">donated</div>'
+          +(bonus>0?'<div class="pet-row-bonus">+'+fmtCoins(bonus)+' bonus coins</div>':'')
+          +'</div>'
           +'</div>';
       }).join('');
     }
@@ -287,6 +299,8 @@ async function loadLB(){
       var rankDisp=i<3?medalSVGs[i]:String(i+1);
       var barWidth=maxRaised>0?Math.round(t.raised/maxRaised*100):0;
       var kgDisplay=t.petKg>0?fmtKg(t.petKg):'—';
+      var bonus=petBonusCoins(t.petKg);
+      var totalCoins=t.coins+bonus;
       return '<div class="team-row '+rankClass+'">'
         +'<div class="rank">'+rankDisp+'</div>'
         +'<div class="team-info">'
@@ -294,7 +308,9 @@ async function loadLB(){
           +'<div class="team-bar-wrap"><div class="team-bar" style="width:'+barWidth+'%"></div></div>'
         +'</div>'
         +'<div class="amount-cell"><div class="amount-val">'+fmtRand(t.raised)+'</div></div>'
-        +'<div class="coins-cell"><div class="coins-val">'+fmtCoins(t.coins)+'</div><div class="coins-lbl">coins</div></div>'
+        +'<div class="coins-cell"><div class="coins-val">'+fmtCoins(totalCoins)+'</div><div class="coins-lbl">coins</div>'
+        +(bonus>0?'<div class="coins-bonus-note">+'+fmtCoins(bonus)+' 🐾 bonus</div>':'')
+        +'</div>'
         +'<div class="kg-cell"><div class="kg-val" style="'+(t.petKg>0?'color:#f0c040':'color:rgba(168,228,255,0.25)')+'">'+kgDisplay+'</div>'+(t.petKg>0?'<div class="kg-lbl">kg</div>':'')+'</div>'
         +'</div>';
     }).join('');
