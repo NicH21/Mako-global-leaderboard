@@ -229,10 +229,10 @@ for(var _bi=0;_bi<12;_bi++){var _bb=document.createElement('div');_bb.className=
 
   <!-- Pet food progress -->
   <div class="card">
-    <div class="card-title">🐾 Pet Food Donations &mdash; Goal: 1 000 kg</div>
+    <div class="card-title">🐾 Pet Food Donations &mdash; Goal: 2 000 kg</div>
     <div class="pet-stats">
       <span class="pet-total" id="petTotal">0 kg</span>
-      <span class="pet-remaining" id="petRemaining">1 000 kg remaining</span>
+      <span class="pet-remaining" id="petRemaining">2 000 kg remaining</span>
     </div>
     <div class="pet-bar-wrap">
       <div class="pet-bar-fill" id="petBar" style="width:0%">
@@ -276,7 +276,7 @@ for(var _bi=0;_bi<12;_bi++){var _bb=document.createElement('div');_bb.className=
 <script>
 var FB='https://mako-global-leaderboard-default-rtdb.firebaseio.com';
 var GOAL=100000;
-var PET_GOAL=1000;
+var PET_GOAL=2000;
 var teams={};
 var editingId=null;
 var inputFocused=false;
@@ -400,7 +400,7 @@ function updateAdminProgress(){
   var petPct=Math.min(100,totalKg/PET_GOAL*100);
   var petRemaining=Math.max(0,PET_GOAL-totalKg);
   document.getElementById('petTotal').textContent=fmtKg(totalKg);
-  document.getElementById('petRemaining').textContent=petRemaining>0?fmtKg(petRemaining)+' remaining':'1 tonne reached! 🎉';
+  document.getElementById('petRemaining').textContent=petRemaining>0?fmtKg(petRemaining)+' remaining':'2 tonnes reached! 🎉';
   document.getElementById('petBar').style.width=petPct.toFixed(1)+'%';
   document.getElementById('petBarPct').textContent=petPct>=12?petPct.toFixed(1)+'%':'';
 
