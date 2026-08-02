@@ -97,6 +97,16 @@
     .pet-bonus-note{font-size:11px;color:#f0c040;letter-spacing:0.5px;margin-top:8px;background:rgba(240,192,64,0.08);border:1px solid rgba(240,192,64,0.2);border-radius:7px;padding:6px 10px;display:flex;align-items:center;gap:6px}
     .pet-bonus-note.inactive{color:rgba(168,228,255,0.3);background:transparent;border-color:rgba(168,228,255,0.1)}
 
+    /* Post-swimathon per-lap donation section per team (raised total only, no coins) */
+    .lap-section{background:rgba(116,192,252,0.05);border:1px solid rgba(116,192,252,0.18);border-radius:10px;padding:12px 14px;margin-top:10px}
+    .lap-section-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(116,192,252,0.65);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .lap-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .lap-btn{font-family:'Bangers',cursive;font-size:14px;padding:7px 14px;border-radius:8px;border:1.5px solid;background:rgba(2,11,24,0.8);cursor:pointer;transition:background 0.15s,transform 0.1s;white-space:nowrap}
+    .lap-btn:hover{transform:scale(1.04)}
+    .lap-btn.add{border-color:#74c0fc;color:#74c0fc}.lap-btn.add:hover{background:rgba(116,192,252,0.1)}
+    .lap-btn.sub{border-color:#ff6b6b;color:#ff6b6b}.lap-btn.sub:hover{background:rgba(255,64,64,0.1)}
+    .lap-hint{font-size:11px;color:rgba(116,192,252,0.4);letter-spacing:0.5px;margin-top:8px}
+
     /* Deposit history */
     .deposits-list{display:flex;flex-direction:column;gap:6px;margin-top:4px}
     .deposit-item{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;background:rgba(2,11,24,0.4);border:1px solid rgba(0,229,255,0.08);font-size:12px;flex-wrap:wrap}
@@ -352,6 +362,29 @@ async function confirmDeposit(){
   }catch(e){showToast('Error: '+e.message);}
 }
 
+// ---- Post-swimathon per-lap donations: adds straight to raised, NEVER touches coins ----
+async function adjustLapDonation(teamId,sign){
+  var inp=document.getElementById('lapi_'+teamId);
+  var amount=Math.max(1,parseInt(inp.value)||1);
+  var t=teams[teamId];if(!t)return;
+  if(sign<0){
+    var cur=t.raised||0;
+    amount=Math.min(amount,cur);
+    if(amount<=0){showToast('Nothing to subtract');return;}
+  }
+  var signedAmount=sign*amount;
+  var newRaised=Math.max(0,(t.raised||0)+signedAmount);
+  var deposit={amount:signedAmount,coins:0,period:'lap',periodLabel:'Per-lap donation (post-swimathon, no coins)',ts:Date.now()};
+  var deposits=t.deposits?JSON.parse(JSON.stringify(t.deposits)):[];
+  deposits.push(deposit);
+  try{
+    await fetch(FB+'/teams/'+teamId+'.json',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({raised:newRaised,deposits:deposits})});
+    teams[teamId].raised=newRaised;teams[teamId].deposits=deposits;
+    updateAdminProgress();renderTeams();
+    showToast((signedAmount>0?'+':'')+fmtRand(signedAmount)+' lap donation for '+t.name+' (no coins added)');
+  }catch(e){showToast('Error: '+e.message);}
+}
+
 // ---- Progress ----
 function updateAdminProgress(){
   var total=Object.values(teams).reduce(function(s,t){return s+(t.raised||0);},0);
@@ -534,6 +567,24 @@ function renderTeams(){
     }
     depSection.appendChild(depList);
 
+    // --- Post-swimathon per-lap donation section (adds to raised only, never adds coins) ---
+    var lapSection=document.createElement('div');lapSection.className='lap-section';
+    var lapTitle=document.createElement('div');lapTitle.className='lap-section-title';
+    lapTitle.innerHTML='🏊 Post-Swimathon: Per-Lap Donations';
+    var lapRow=document.createElement('div');lapRow.className='lap-row';
+    var lapPfx=document.createElement('span');lapPfx.className='rand-prefix';lapPfx.textContent='R';
+    var lapInp=document.createElement('input');lapInp.className='r-inp';lapInp.id='lapi_'+id;lapInp.type='number';lapInp.value=100;lapInp.min=1;lapInp.max=999999;lapInp.placeholder='Amount';
+    lapInp.addEventListener('focus',function(){inputFocused=true;});
+    lapInp.addEventListener('blur',function(){inputFocused=false;});
+    var lapAdd=document.createElement('button');lapAdd.className='lap-btn add';lapAdd.textContent='+ADD';
+    lapAdd.onclick=(function(tid){return function(){adjustLapDonation(tid,1);};})(id);
+    var lapSub=document.createElement('button');lapSub.className='lap-btn sub';lapSub.innerHTML='&minus;SUB';
+    lapSub.onclick=(function(tid){return function(){adjustLapDonation(tid,-1);};})(id);
+    lapRow.appendChild(lapPfx);lapRow.appendChild(lapInp);lapRow.appendChild(lapAdd);lapRow.appendChild(lapSub);
+    var lapHint=document.createElement('div');lapHint.className='lap-hint';
+    lapHint.textContent='Adds straight to Total Raised above — no MAKO coins are awarded for this';
+    lapSection.appendChild(lapTitle);lapSection.appendChild(lapRow);lapSection.appendChild(lapHint);
+
     // --- Pet food section ---
     var petSection=document.createElement('div');petSection.className='pet-section';
     var petTitle=document.createElement('div');petTitle.className='pet-section-title';
@@ -577,6 +628,7 @@ function renderTeams(){
     raisedSection.appendChild(addFundsRow);
     raisedSection.appendChild(hint);
     raisedSection.appendChild(depSection);
+    raisedSection.appendChild(lapSection);
     raisedSection.appendChild(petSection);
 
     row.appendChild(topRow);
