@@ -183,14 +183,14 @@
     <div class="pet-header">
       <span class="pet-title">🐾 Pet Food Donations</span>
       <span class="pet-amount" id="petTotalLb">0 kg</span>
-      <span class="pet-target">Goal: 1 000 kg</span>
+      <span class="pet-target">Goal: 2 000 kg</span>
     </div>
     <div class="pet-track">
       <div class="pet-fill" id="petFillLb" style="width:0%">
         <span class="pet-pct" id="petPctLb"></span>
       </div>
     </div>
-    <div class="pet-sub" id="petSubLb">1 000 kg still needed</div>
+    <div class="pet-sub" id="petSubLb">2 000 kg still needed</div>
     <div class="pet-top3-label">Top 3 teams by kg donated</div>
     <div class="pet-lb" id="petLbRows">
       <div class="empty-state" style="padding:16px 0;font-size:13px">No donations yet</div>
@@ -218,7 +218,7 @@
 var FB='https://mako-global-leaderboard-default-rtdb.firebaseio.com';
 var ADMIN_PIN='6721';
 var GOAL=100000;
-var PET_GOAL=1000;
+var PET_GOAL=2000;
 
 // Pet food bonus: 500 MAKO coins per kg donated above 50kg
 var PET_BONUS_THRESHOLD_KG=50;
@@ -269,7 +269,7 @@ async function loadLB(){
     document.getElementById('petTotalLb').textContent=fmtKg(totalKg);
     document.getElementById('petFillLb').style.width=petPct.toFixed(1)+'%';
     document.getElementById('petPctLb').textContent=petPct>=10?petPct.toFixed(1)+'%':'';
-    document.getElementById('petSubLb').textContent=petRemaining>0?fmtKg(petRemaining)+' still needed':'1 tonne reached! 🎉';
+    document.getElementById('petSubLb').textContent=petRemaining>0?fmtKg(petRemaining)+' still needed':'2 tonnes reached! 🎉';
 
     // Pet food top 3
     var petSorted=teams.slice().sort(function(a,b){return b.petKg-a.petKg;}).filter(function(t){return t.petKg>0;}).slice(0,3);
